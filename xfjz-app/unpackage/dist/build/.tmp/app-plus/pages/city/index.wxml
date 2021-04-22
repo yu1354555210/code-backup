@@ -1,0 +1,1 @@
+<view class="container"><view class="status-bar"></view><ss-select-city vue-id="1" hotCitys="{{hotCitys}}" value="{{getCity}}" data-event-opts="{{[['^onSelect',[['selectCity']]]]}}" bind:onSelect="__e" bind:__l="__l"></ss-select-city></view>

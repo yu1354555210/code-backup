@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "砍一刀",
+  "navigationBarBackgroundColor": "#f96a2a",
+  "backgroundColor": "#f96a2a",
+  "usingComponents": {
+    "uni-popup": "/components/uni-popup/uni-popup",
+    "common-detail": "/components/common-detail/index"
+  }
+}

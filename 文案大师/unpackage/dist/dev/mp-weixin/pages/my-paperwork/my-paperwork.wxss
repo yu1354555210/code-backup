@@ -1,0 +1,12 @@
+.my-paperwork {
+  padding-top: 10rpx;
+  background-color: #fff;
+  -webkit-border-radius: 40rpx 40rpx 0px 0px;
+          border-radius: 40rpx 40rpx 0px 0px;
+}
+.my-paperwork .work-list .work-body {
+  background-color: #f7f8f8;
+  -webkit-border-radius: 42rpx;
+          border-radius: 42rpx;
+}
+

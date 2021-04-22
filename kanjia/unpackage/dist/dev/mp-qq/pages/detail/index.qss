@@ -1,0 +1,86 @@
+page {
+  background-color: #f96a2a;
+}
+.content {
+  padding: 40rpx 15rpx;
+}
+.content .success-wrapper {
+  width: 600rpx;
+  height: 750rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  text-align: center;
+  position: relative;
+  padding: 65rpx 0;
+}
+.content .success-wrapper .icon-close {
+  position: absolute;
+  width: 32rpx;
+  height: 30rpx;
+  right: 30rpx;
+  top: 30rpx;
+}
+.content .success-wrapper .success-award-info {
+  font-size: 30rpx;
+  color: #000;
+  line-height: 50rpx;
+}
+.content .success-wrapper .success-award-info text {
+  font-size: 40rpx;
+  color: #fb5d2b;
+}
+.content .success-wrapper .sucess-image {
+  width: 496rpx;
+  height: 411rpx;
+  display: inline-block;
+  margin: 0 auto 20rpx;
+}
+.content .success-wrapper .success-btn {
+  width: 300rpx;
+  height: 90rpx;
+  display: inline-block;
+}
+.popup-wrapper {
+  width: 600rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  text-align: center;
+  padding: 50rpx 0;
+}
+.popup-info {
+  font-size: 38rpx;
+  margin-bottom: 40rpx;
+}
+.popup-info text {
+  display: block;
+  color: #f03d0a;
+  margin: 20rpx 0;
+}
+.popup-btn-box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.popup-btn {
+  width: 450rpx;
+  height: 100rpx;
+  margin-bottom: 20rpx;
+  padding: 0;
+}
+.popup-btn:first-child {
+  margin-bottom: 30rpx;
+}
+.popup-btn image {
+  height: 100%;
+}
+

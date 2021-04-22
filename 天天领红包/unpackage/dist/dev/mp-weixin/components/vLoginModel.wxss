@@ -1,0 +1,41 @@
+.login-dialog-wrapper {
+  width: 500rpx;
+  height: 300rpx;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 10rpx;
+}
+.login-dialog-wrapper .login-dialog-title {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  font-size: 30rpx;
+}
+.login-dialog-wrapper .login-dialog-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  border-top: 1rpx solid #eee;
+}
+.login-dialog-wrapper .login-dialog-btn button {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  border: none;
+  border-radius: initial;
+  font-size: 30rpx;
+}
+.login-dialog-wrapper .login-dialog-btn button:first-child {
+  background-color: #fff;
+}
+.login-dialog-wrapper .login-dialog-btn button::after {
+  display: none;
+}
+

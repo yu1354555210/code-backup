@@ -1,0 +1,73 @@
+.container {
+  position: relative;
+}
+.home-topbar {
+  position: absolute;
+  height: 45rpx;
+  top: 45rpx;
+  left: 0;
+  width: 100%;
+  padding: 0 20rpx;
+  z-index: 66;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.home-topbar .location {
+  color: #ffffff;
+  font-size: 32rpx;
+}
+.home-topbar .location image {
+  width: 32rpx;
+  height: 39rpx;
+  margin-right: 5rpx;
+}
+.home-topbar .search {
+  width: 39rpx;
+  height: 38rpx;
+}
+.screen-swiper {
+  height: 525rpx;
+}
+.activity {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.activity .activity-image {
+  width: 350rpx;
+  height: 212rpx;
+}
+.activity .activity-image image {
+  height: 100%;
+}
+.tab-hb {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+          align-items: flex-end;
+}
+.tab-hb .this-title {
+  margin-right: 28rpx;
+}
+.tab-hb .this-title.this-title-normal .title-info {
+  font-size: 24rpx;
+}
+.tab-hb .this-title.this-title-normal .title-info:after {
+  display: none;
+}
+

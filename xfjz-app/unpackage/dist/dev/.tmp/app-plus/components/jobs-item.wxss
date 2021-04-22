@@ -1,0 +1,107 @@
+.jobs-vertical-body {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.jobs-vertical-body .jobs-vertical-item {
+  margin-bottom: 20rpx;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 344rpx;
+          flex: 0 0 344rpx;
+  width: 344rpx;
+  height: 378rpx;
+  background: #ffffff;
+  box-shadow: 0px 0px 13rpx 0px rgba(104, 154, 255, 0.35);
+  border-radius: 20rpx;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.jobs-item {
+  width: 100%;
+  padding: 30rpx 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.jobs-item .jobs-fl {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.jobs-item image {
+  width: 96rpx;
+  height: 96rpx;
+}
+.jobs-item .jobs-info {
+  margin-left: 20rpx;
+}
+.jobs-item .jobs-info .jobs-name {
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.jobs-item .jobs-info .jobs-cates {
+  font-size: 20rpx;
+  font-weight: 500;
+  color: #a4a4a7;
+  margin: 15rpx 0;
+}
+.jobs-item .jobs-tags {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.jobs-item .jobs-tags text {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  margin-right: 10rpx;
+  text-align: center;
+  height: 40rpx;
+  padding: 0 20rpx;
+  color: #2e2e30;
+  font-size: 20rpx;
+  border-radius: 5rpx;
+  background: #fcf5ee;
+}
+.jobs-item .jobs-fr {
+  position: relative;
+}
+.jobs-item .jobs-money-text {
+  color: #ff5f56;
+  font-size: 30rpx;
+  font-weight: bold;
+  display: inline-block;
+  vertical-align: middle;
+}
+.jobs-item .jobs-money-icon {
+  display: inline-block;
+  vertical-align: middle;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAMAAADyHTlpAAABL1BMVEVHcEz+XWT/W2T/U2P8XmT/WmX/W2T/W1v/TF//RlD/V2T8XGX9XGT9X2P/s1f/ZlX/w1f/yFj/V2T/ZVn/sVn/wVf+ZmD/v1j/tVn/ZFn+blv/ZlX/Y1f/lVr/YFf/plb/jFn/rFb/eFX+nVr/fFb/e1f/m1j/i1j/jVf/qFr/YVn8j2D+jlf/hVX//////Pz/+vv/Y1X//v7/YE3/9/n/8PP/7u7/cVT/alb/ulj/iFX/eFL/rlf/tlH/v1j/gFD/kVX/nVb/fln/8+j/9PP/9fb/6uf/a0z/pln/ok7/6e7/z8r/sVD/3tv/wrn/4+T/qFD/mU7/38z/hkn/oJD/sqX/mH//27T/k0//llr/yY3/hnj/6t3/qEL/VkP/zbD/x6P/tYb/q3H/tGD/wHnmPeOcAAAALnRSTlMAKRIKMCEbAQYDDkU7Vv729v4WrK7oZtSUloPs4EXW86Ti94fn09XB5WvFWtv0jfGlBgAABCZJREFUOMtdlQlX4koQhZuQQDRBHVlUHMdtdJ6jLwnZAIMOBJIQwi6bgII+//9veFVNUMc6HPXEj5vb1dW3CVlXPB7fIIRnuAgLFeEYnpANeEi+FoIbGwx3lD35dXNzc/nr5PyIY+DRVzhOSUbMXvz89/a2XH6sVCrHp5fnRwxl459J+HpUPPh5Ztv2LWUBrtePT/fZTar8FxnLXJxZtmX/gXp4eJhMkC1t7V3FPrGUjBwc5vN5y7KABNVyudfr+cim9yPvLCXZ5HYey7IHi3m1VqvOxy913/dLpa2dFBuyQPJ8JLldyOc9z267iipJ8JFUpbqo+13KRngeWSRjB9uFQsHzBi5C76W603q3tFXc2Y8hS4BkModAavl2ze10TFWV8SMpVahxCdn0FQMs4fmo+COHZCAHmqbNTFWGUpVFqXk3rfVLza3i/d5RlOcJfX0up2ltWeoUnp/ht6woilr97+mpOZblcbNZXFkgfFT4ngN0oIBaW9OebVdWdFle+N3mmwnq0+Zd8T4NsiQULbgqAMbsWfOGiqIr5qv/1OzrOsoDirKEZ3/g64eqrDuOjm7tjqLri57/9GY6NV1Wx3d399/2WJ4wiUMqKgFqOMZI87yhIXfqPb/UNwxHV6RqER1cM4TLbodOATWMFrTXbhnDSc+fNiiqylPqgCNsEshcW5VgMY5pmgPPs4bB46RX7zdMikrUQYol4m9EWxKiNdPQWzPPuh2VJ5WlYSAKmzEvolmRiLiqnImo4sA/zaFlwcT2XlsGqOqKLKFZimJXtQKiwBrtwXAQosvlcu58oGnhA1VlRTahrzCJiPq0r8pf6NqAiqrD2Ww0smG4X19e3qZzEFXXBoSPZQGqw8JMozP68/AYNMCp4VD0fVnQrBw2i6KdVqsVINqGP+YG9aqOEU2JhKUjMJDXXp899DqBk7X2Gm4BS7jM4boF4bJoByqV7tMWomq4sVcciQnhuNDGtoIgaM/AwDII+n0TURyXIqwqRmJsOIRw8HSnZjTel9Uwamg1HEIW0EgiHG06W6bbQLQcdFxEw9H+lr7mAOXEJMp6bXisg6q5QrFZDnwdD8z9TkoEdJdD2dUxVOkUdIaj0QsdKxjA8BheR7hdwsQ4NhsebgVZo9GBWpEKHG4g0+csF2PIJsgKSRoZeYgMMGHQAhAio0sjIyWA6CaJgmwkQYMo79lDF/oDu4ZVXWIQIZmIgGiURFGWTfx+j7d2yzVdt794qVTCyEqwKBqFHGAomzykmYmpScMYtpYGbHpFMpgD/CZaYIXs9zPLsr9G8em5wOLrNyFdNvjoihUzyXXAr26Deun4NJURV2QU4i2O7C6yrJBJfr42ji9PMgJeS7FdJOM0itesKCTgLrr4Bwpuo2xCED+RYWxTD/RuAzqRyGTgB3IAhm8H8n+uDywmgfDcCQAAAABJRU5ErkJggg==);
+  background-size: 100% 100%;
+  margin-right: 10rpx;
+  width: 42rpx;
+  height: 42rpx;
+}
+

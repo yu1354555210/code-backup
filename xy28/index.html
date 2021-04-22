@@ -1,0 +1,631 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<link rel="stylesheet" type="text/css" href="css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="layer/mobile/need/layer.css" />
+		<link rel="stylesheet" type="text/css" href="css/new_style.css" />
+		<style type="text/css">
+			.lock-position {
+				position: fixed;
+				height: 100%;
+				width: 100%;
+				overflow: hidden;
+			}
+			
+			.code_box {
+				-webkit-overflow-scrolling: touch;
+			}
+		</style>
+	</head>
+
+	<body class="bg_gray">
+		<div class="aui-content index_auto_content">
+			<ul class="aui-list aui-media-list">
+				<li class="bs_flex_row">
+					<div class="aui-media-list-item-inner">
+						<div class="aui-list-item-text index_flex_box">
+							<div class="aui-list-item-title beanbg" id="bean">
+								<img src="image/bean.png" class="bean">
+								<span>
+									<small id="beantext"></small>
+								</span>
+								<img src="image/add.png" class="add">
+							</div>
+							<div class="aui-list-item-right index_auto" id="auto"><img src="image/autotouzhu.png"><i>自动投注</i>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<section class="aui-grid">
+		</section>
+		<div class="load_more">加载中...</div>
+
+		<footer class="aui-bar aui-bar-tab" id="footer">
+			<div class="aui-bar-tab-item aui-active" onclick="javascript:window.location.href='index.html'">
+				<i class="iconfont icon-home"></i>
+				<div class="aui-bar-tab-label">首页</div>
+			</div>
+			<div class="aui-bar-tab-item" onclick="javascript:window.location.href='my.html'">
+				<i class="iconfont icon-my"></i>
+				<div class="aui-bar-tab-label">我的投注</div>
+			</div>
+			<div class="aui-bar-tab-item " onclick="javascript:window.location.href='lottery.html'">
+				<i class="iconfont icon-gift"></i>
+				<div class="aui-bar-tab-label">金豆抽奖</div>
+			</div>
+			<div class="aui-bar-tab-item">
+				<i class="iconfont icon-trend" onclick="javascript:window.location.href='trend.html'"></i>
+				<div class="aui-bar-tab-label">开奖走势</div>
+			</div>
+			<div class="aui-bar-tab-item">
+				<i class="iconfont icon-text" onclick="javascript:window.location.href='rule.html'"></i>
+				<div class="aui-bar-tab-label">规则玩法</div>
+			</div>
+		</footer>
+		<div style="display:none">
+			<script src="https://s22.cnzz.com/z_stat.php?id=1273592771&web_id=1273592771" language="JavaScript"></script>
+		</div>
+	</body>
+
+	<script type="text/javascript" src="js/api.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="layer/mobile/layer.js"></script>
+	<script type="text/javascript" src="layer/layer.js"></script>
+	<script type="text/javascript" src="js/fn.js"></script>
+	<script type="text/javascript">
+		if(isWeixinBrowser()) {
+			var tokens = getUrlParam("tokens");
+			var openid = getUrlParam("openid");
+			if(save('g', 'openid') == null){
+				window.localStorage.setItem('openid', openid);
+			}
+			if(save('g', 'tokens') == null) {
+				window.localStorage.setItem('tokens', tokens);
+			}
+		} else {
+			if(save('g', 'tokens') == null) window.location.href = './login.html';
+		}
+
+		var token = window.localStorage.getItem('tokens');
+		var openid = window.localStorage.getItem('openid');
+		getGold();
+		//---------------------Start-----------------------//
+		RestIndex(tipStr);
+		$("#beantext").text(save('g', 'gold'));
+		//---------------------Start-----------------------//
+		$('#auto').on('click', function() {
+			// alert(token)
+			loadData("get_auto_info", "index.php?g=lucky&m=api&a=api", {
+				token: token
+			}, function(e) {
+
+				if(e.data != '') {
+					window.localStorage.setItem('autoData', JSON.stringify(e.data));
+					layer.open({
+						type: 2,
+						title: '<img src="image/touzhu.png" style="display:inline;width:20px;vertical-align: middle;">自动投注</span>',
+						maxmin: true,
+						shadeClose: true, //点击遮罩关闭层
+						area: ['90%', '19rem'],
+						content: 'autodetail.html',
+						skin: 'layui-auto-iframe',
+						success: function(layero, index) {}
+					});
+
+				} else {
+					layer.open({
+						type: 2,
+						title: '<img src="image/touzhu.png" style="display:inline;width:20px;vertical-align: middle">自动投注</span>',
+						maxmin: true,
+						shadeClose: true, //点击遮罩关闭层
+						area: ['90%', '22.8rem'],
+						content: 'auto.html',
+						skin: 'layui-auto-iframe',
+						success: function(layero, index) {
+							if(isiOS) {
+								$("html,body").addClass("lock-position");
+							} else {
+								$(document).scrollTop(1);
+							}
+						},
+						end: function() {
+							$("html,body").removeClass("lock-position");
+						}
+					});
+
+				}
+			});
+		});
+		$('#autodetail').on('click', function() {
+			layer.open({
+				type: 2,
+				title: '自动投注',
+				maxmin: true,
+				shadeClose: true, //点击遮罩关闭层
+				area: ['90%', '22.8rem'],
+				content: 'autodetail.html',
+				skin: 'layui-auto-iframe',
+				success: function(layero, index) {}
+
+			});
+		});
+
+		$('#bean').on('click', function(index) {
+			loadData('info', 'index.php?g=lucky&m=api&a=api', {
+				token: token
+			}, function(e) {
+				if(e.code != 1) {
+					parent.layer.msg('获取用户信息失败', {
+						shade: 0.3
+					});
+					window.location.href = './login.html';
+				} else {
+					var lucky_gold = e.data.lucky_gold;
+					var lucky_diamond = e.data.lucky_diamond;
+					layer1.open({
+						type: 1,
+						title: '<div class="winpop_top"><div class="flex_tit"><div><img src="image/me.png" class="bean"><i class="tit">兑换金豆</i></div><span><img src="image/bean.png" class="bean"><i class="tit">' + lucky_gold + '</i></span></div></div>',
+						maxmin: true,
+						shadeClose: true, //点击遮罩关闭层
+						area: ['90%', '350px'], //宽高
+						content: '<div class="aui-content layui-text winpop_con" ><ul class="aui-list"><li class="aui-list-item" id="bz0" value="100" style="padding:0 0.75rem"><div class="aui-list-item-inner"><div class="aui-list-item-title "><img src="image/bean.png" class="bean" style="margin-right:10px;"><i class="tit">100000</i></div><div class="aui-list-item-right"><div class="aui-btn aui-btn-danger aui-btn-block aui-btn-outlined aui-btn-sm winpop_zs_btn"><img src="image/diamond.png" class="diamond"><i class="tit">100</i></div></div></div></li> <li class="aui-list-item" id="bz1" value="200" style="padding:0 0.75rem"><div class="aui-list-item-inner"><div class="aui-list-item-title "><img src="image/bean.png" class="bean" style="margin-right:10px;"><i class="tit">200000</i></div><div class="aui-list-item-right"><div class="aui-btn aui-btn-danger aui-btn-block aui-btn-outlined aui-btn-sm winpop_zs_btn"><img src="image/diamond.png" class="diamond"><i class="tit">200</i></div></div></div></li><li class="aui-list-item" id="bz2" value="500" style="padding:0 0.75rem"><div class="aui-list-item-inner"><div class="aui-list-item-title "><img src="image/bean.png" class="bean" style="margin-right:10px;"><i class="tit">500000</i></div><div class="aui-list-item-right"><div class="aui-btn aui-btn-danger aui-btn-block aui-btn-outlined aui-btn-sm winpop_zs_btn"><img src="image/diamond.png" class="diamond"><i class="tit">500</i></div> </div></div></li><li class="aui-list-item" id="bz3" value="1000" style="padding:0 0.75rem"><div class="aui-list-item-inner"><div class="aui-list-item-title "><img src="image/bean.png" class="bean" style="margin-right:10px;"><i class="tit">1000000</i></div><div class="aui-list-item-right"><div class="aui-btn aui-btn-danger aui-btn-block aui-btn-outlined aui-btn-sm winpop_zs_btn"><img src="image/diamond.png" class="diamond"><i class="tit">1000</i></div></div></div></li><li class="aui-list-item" id="bz4" value="2000" style="padding:0 0.75rem"><div class="aui-list-item-inner"><div class="aui-list-item-title "><img src="image/bean.png" class="bean" style="margin-right:10px;"><i class="tit">2000000</i></div><div class="aui-list-item-right"><div class="aui-btn aui-btn-danger aui-btn-block aui-btn-outlined aui-btn-sm winpop_zs_btn"><img src="image/diamond.png" class="diamond"><i class="tit">2000</i></div></div></div></li><li class="aui-list-item" id="bz5" value="5000" style="padding:0 0.75rem"><div class="aui-list-item-inner"><div class="aui-list-item-title "><img src="image/bean.png" class="bean" style="margin-right:10px;"><i class="tit">5000000</i></div><div class="aui-list-item-right"><div class="aui-btn aui-btn-danger aui-btn-block aui-btn-outlined aui-btn-sm winpop_zs_btn"><img src="image/diamond.png" class="diamond"><i class="tit">5000</i></div></div></div></li></ul></div><div><div class="aui-info" style="width:100%;"><div class="aui-info-item" style="margin:0 auto;"><p class="" style="font-size: 12px;margin:0 auto;">每次成功抓娃娃都会获得一定数量的金豆<span class="winpop_foot_info" id="howbeans">如何赚金豆</span></p></div></div></div>',
+						success: function(layero, index) {
+							$('#howbeans').on('click', function() {
+								layer.open({
+									type: 1,
+									anim: 'up',
+									title: '<span><img src="image/how.png" style="display:inline;width:20px;vertical-align: middle;margin-right:5px;">如何赚金豆<span>',
+									area: ['85%'],
+									skin: 'layui-layer-iframe',
+									shadeClose: true, //点击遮罩关闭层
+									content: '<section class="aui-content"><div class="aui-card-list"><div class="aui-card-list-header">1、抓娃娃</div><div class="aui-card-list-content-padded" style="padding:0.1rem 0.75rem;">APP中每次抓娃娃（无论成功抓到与否）都会赠送一定数额的金豆，抓娃娃花费的娃娃币越多，赠送的金豆越多</div><div class="aui-card-list-header">2、彩钻</div><div class="aui-card-list-content-padded" style="padding:0.1rem 0.75rem;">使用彩钻可以兑换金豆</div><div class="aui-card-list-header">3、特殊活动</div><div class="aui-card-list-content-padded" style="padding:0.1rem 0.75rem;">幸运28不定时举行各种活动，活动中有丰富的奖品，积极参加活动有机会获得大量金豆</div></div></section>',
+								});
+							});
+							var diamond = 0;
+							for(var i = 0; i < 6; i++) {
+								$("#bz" + i).bind("click", {
+									'diamond': $("#bz" + i).val()
+								}, function(e) {
+									diamondsClick(e);
+								});
+							}
+
+							function diamondsClick(e) {
+								loadData('exchange_gold', 'index.php?g=lucky&m=api&a=api', {
+									token: token,
+									diamonds: e.data.diamond
+								}, function(e) {
+									if(e.code == 1) {
+										layer.msg('兑换成功');
+										layer1.closeAll();
+										location.reload();
+									} else if(e.code == -1) {
+										layer1.open({
+											anim: 'up',
+											shadeClose: true, //点击遮罩关闭层
+											content: '彩钻不足是否前往购买彩钻？',
+											btn: ['购买彩钻', '关闭'],
+											yes: function(index, layero) {
+												layer1.closeAll(),
+													layer1.open({
+														type: 1,
+														title: '<div class="winpop_top"><div class="flex_tit"><div><img src="image/me.png" class="bean"><i class="tit">获取彩钻</i></div><span><img src="image/diamond.png" class="diamond"><i class="tit">' + lucky_diamond + '</i></span></div></div>',
+														anim: 'up',
+														shadeClose: true, //点击遮罩关闭层
+														content: '<div class="aui-content layui-text winpop_con" ><ul class="aui-list"><li class="aui-list-item" style="padding: 0 0.75rem" id="pay0" value="10"><div class="aui-list-item-inner"><div class="aui-list-item-title"><img src="image/diamond.png" class="diamond" style="margin-right:10px;">100</div><div class="aui-list-item-right"><div class="aui-btn aui-btn-danger aui-btn-block aui-btn-outlined aui-btn-sm winpop_zs_btn" >￥10</div></div></div></li><li  class="aui-list-item" style="padding: 0 0.75rem" id="pay1" value="20"><div class="aui-list-item-inner"><div class="aui-list-item-title"><img src="image/diamond.png" class="diamond" style="margin-right:10px;">200</div><div class="aui-list-item-right"><div class="aui-btn aui-btn-danger aui-btn-block aui-btn-outlined aui-btn-sm winpop_zs_btn" >￥20</div></div></div></li><li  class="aui-list-item" style="padding: 0 0.75rem" id="pay2" value="50"><div class="aui-list-item-inner"><div class="aui-list-item-title"><img src="image/diamond.png" class="diamond" style="margin-right:10px;">500</div><div class="aui-list-item-right"><div class="aui-btn aui-btn-danger aui-btn-block aui-btn-outlined aui-btn-sm winpop_zs_btn" >￥50</div> </div></div></li><li  class="aui-list-item" style="padding: 0 0.75rem" id="pay3" value="100"><div class="aui-list-item-inner"><div class="aui-list-item-title"><img src="image/diamond.png" class="diamond" style="margin-right:10px;">1000</div><div class="aui-list-item-right"><div class="aui-btn aui-btn-danger aui-btn-block aui-btn-outlined aui-btn-sm winpop_zs_btn" >￥100</div></div></div></li><li  class="aui-list-item" style="padding: 0 0.75rem" id="pay4" value="200"><div class="aui-list-item-inner"><div class="aui-list-item-title"><img src="image/diamond.png" class="diamond" style="margin-right:10px;">2000</div><div class="aui-list-item-right"><div class="aui-btn aui-btn-danger aui-btn-block aui-btn-outlined aui-btn-sm winpop_zs_btn" >￥200</div></div></div></li><li  class="aui-list-item" style="padding: 0 0.75rem" id="pay5" value="500"><div class="aui-list-item-inner"><div class="aui-list-item-title"><img src="image/diamond.png" class="diamond" style="margin-right:10px;">5000</div><div class="aui-list-item-right"><div class="aui-btn aui-btn-danger aui-btn-block aui-btn-outlined aui-btn-sm winpop_zs_btn" >￥500</div></div></div></li></ul></div><div></div>',
+														success: function(index, layero) {
+															var money = 0;
+															for(var i = 0; i < 6; i++) {
+																$("#pay" + i).bind("click", {
+																	'money': $("#pay" + i).val()
+																}, function(e) {
+																	if(isWeixinBrowser()) {
+																		h5WechaPay(e);
+																	} else {
+																		layer1.open({
+																			anim: 'up',
+																			shadeClose: true, //点击遮罩关闭层
+																			content: '<div class="aui-btn aui-btn-info pay_btn" style="background-color:#00CC33 !important;margin:5px auto;border-radius: 2.5rem;width:60%;" id="wechat"><img src="image/wechat.png" class="diamond pay_icon"><i class="tit">微信支付　</i></div><div class="aui-btn aui-btn-info pay_btn" style="margin:5px auto;border-radius: 2.5rem;width:60%;" id="alipay"><img src="image/alipay.png" class="diamond pay_icon"><i class="tit">支付宝支付</i></div><h2 style="margin:5px auto; color:#d81e36;">￥' + e.data.money + '</h2>',
+																			success: function(index, layero) {
+																				$('#wechat').on('click', function(index) {
+																					wechatpay(e);
+																				});
+																				$('#alipay').on('click', function(index) {
+																					alipay(e);
+																				});
+																			}
+																		});
+																	}
+
+																});
+															}
+
+															function h5WechaPay(e) {
+																loadData('jsapi_recharge', 'index.php?g=lucky&m=api&a=api', {
+																	token: token,
+																	openid: openid,
+																	money: e.data.money
+																}, function(res) {
+																	var data = res.data;
+																	var appid = data.package.appId;
+																	var nonceStr = data.package.nonceStr;
+																	var xpackage = data.package.package;
+																	var signType = data.package.signType;
+																	var timeStamp = data.package.timeStamp;
+																	var paySign = data.package.paySign;
+																	var oid = data.oid;
+
+																	function onBridgeReady() {
+																		WeixinJSBridge.invoke(
+																			'getBrandWCPayRequest', {
+																				"appId": appid,
+																				"timeStamp": timeStamp,
+																				"nonceStr": nonceStr,
+																				"package": xpackage,
+																				"signType": signType,
+																				"paySign": paySign,
+																			},
+																			function(res) {
+																				if(res.err_msg == "get_brand_wcpay_request:ok") {
+																					parent.layer.msg('充值成功', {
+																						time: 1000
+																					});
+																				}
+																				if(res.err_msg == "get_brand_wcpay_request:cancel") {
+																					parent.layer.msg('充值失败', {
+																						time: 1000
+																					});
+																				}
+																				if(res.err_msg == "get_brand_wcpay_request:fail") {
+																					parent.layer.msg('充值失败', {
+																						time: 1000
+																					});
+																				}
+																			}
+																		);
+																	}
+																	if(typeof WeixinJSBridge == "undefined") {
+																		if(document.addEventListener) {
+																			document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+																		} else if(document.attachEvent) {
+																			document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+																			document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+																		}
+																	} else {
+																		onBridgeReady();
+																	}
+																});
+															}
+
+															function wechatpay(e) {
+																loadData('weixin_recharge', 'index.php?g=lucky&m=api&a=api', {
+																	token: token,
+																	money: e.data.money
+																}, function(e) {
+																	window.location.href = e.data.mweb_url;
+																});
+															}
+
+															function alipay(e) {
+																loadData('ali_recharge', 'index.php?g=lucky&m=api&a=api', {
+																	token: token,
+																	money: e.data.money
+																}, function(e) {
+																	const div = document.createElement('div');
+																	div.innerHTML = e.data.mweb_url;
+																	document.body.appendChild(div);
+																	document.forms.alipaysubmit.submit();
+																	// layer.msg(e.msg);
+																});
+															}
+														}
+													});
+											}
+										});
+									} else if(e.code != 1 || e.code != -1) {
+										layer.msg('网络异常请重试');
+									}
+								});
+
+							}
+						}
+					});
+				}
+			});
+		});
+		var size = pagesize;
+		var pageFlag = true;
+		$(window).scroll(function() {
+			var scrollTop = $(this).scrollTop(); //滚动条距离顶部的高度  
+			var scrollHeight = $(document).height(); //当前页面的总高度  
+			var clientHeight = $(this).height(); //当前可视的页面高度  
+			if(scrollTop + clientHeight >= scrollHeight) { //距离顶部+当前高度 >=文档总高度 即代表滑动到底部   
+				if(!pageFlag) return;
+				page++;
+				pageFlag = false;
+				loadData('index', 'index.php?g=lucky&m=api&a=api', {
+					token: window.localStorage.getItem('tokens'),
+					page: page,
+					pagesize: size
+				}, function(e) {
+					if(e.code == 1) {
+						if(e.data == "") {
+							$(".load_more").html("已加载全部数据").addClass("load_more_over");
+						} else {
+							pageFlag = true;
+							$(".aui-grid").append(createIndex(e));
+						}
+					} else {
+						alert('加载数据错误');
+					}
+				});
+			}
+
+			if($(document).scrollTop() <= 0) {
+				$(document).scrollTop(1);
+			}
+		});
+
+		//---------------------首页生成-----------------------//
+		function createIndex(e) {
+			var html = '';
+			$.each(e.data, function(key, val) {
+				html += '<div class="index_item">';
+				html += left(key, val);
+				html += mind(key, val);
+				html += right(key, val, e.data[key].id);
+				html += '</div>';
+			});
+			return html;
+		}
+
+		//---------------------首页左侧-----------------------//
+		function left(key, val) {
+			return '<div class="aui-col-xs-4">' +
+				'<div class="aui-grid-label index_fl_flex">' +
+				'<div class="term" id="left_' + key + '">' + val.expect + '期</div>' +
+				'<span style="font-size: 0.6rem;">' + timestampToTime(val.end_time, "hm") + '</span>' +
+				'</div>' +
+				'</div>';
+		}
+
+		//---------------------首页中部-----------------------//
+		function mind(key, val) {
+
+			var html = '';
+			var classSrt = '';
+			var timesArr = formatSeconds(parseInt(val.end_time) - parseInt(val.server_time));
+			var str = '距截止：';
+			key == 0 ? classSrt = "\"timeOne\"" : classSrt = "\"timeTwo\"";
+			if(val.status == 0) {
+				html += '<div class="aui-col-xs-5 index_item_middle">';
+				html += '     <div class="aui-grid-label">';
+				html += '<div id =' + classSrt + '>';
+				if(timesArr[1] <= 0) {
+					html += str + '<span class="aui-text-danger">' + timesArr[2] + '</span>' + '秒' + '</div>';
+				} else {
+					html += str + '<span class="aui-text-danger">' + timesArr[1] + '</span>' + '分' + '<span class="aui-text-danger">' + timesArr[2] + '</span>' + '秒' + '</div>';
+				}
+				html += '<div>金豆池：<span class="aui-text-danger">' + val.total_gold + '</span></div></div></div>';
+			} else if(val.status == 1) {
+				html += '<div class="aui-col-xs-4">';
+				html += '<div class="aui-grid-label index_item_grid_middle">';
+				$.each(val.mid_number, function(k, v) {
+					if(k == 2) {
+						html += '<div class="qiu">' + v + '</div>=';
+					} else {
+						html += '<div class="qiu">' + v + '</div>+';
+					}
+				});
+				html += '<div class="qiusum">' + val.luck_number + '</div></div></div>';
+			} else {
+				html += '<div class="aui-col-xs-5 index_item_grid_middle">';
+				html += '<div class="qiu">' + '?' + '</div>+' + '<div class="qiu">' + '?' + '</div>+' + '<div class="qiu">' + '?' + '</div>=';
+				html += '<div class="qiusum">' + '?' + '</div></div>';
+			}
+
+			return html;
+		}
+
+		//---------------------首页右侧-----------------------//
+		function right(key, val, cid) {
+
+			var html = '';
+			if(val.status == 0) {
+				save('s', 'lastweek_' + key, val.user_number);
+				html += '<div class="aui-col-xs-3">';
+				html += '<div class="aui-grid-label" style="text-align:right;" id="buy_' + key + '">';
+				var tips_str = '';
+				if(key == 0) {
+					tips_str = '投注';
+					if(val.user_status == 1) tips_str = '已投注';
+					html += ' <button class="aui-btn aui-btn-danger" id="by_' + key + '" onclick="openSelect(' + "\'by_" + key + "\'" + ',' + 1 + ',' + cid + ')" style="margin: auto;border-radius: 2.5rem;width:88%;">' + tips_str + '</button></div></div>';
+				}
+				if(key == 1) {
+					if(val.user_status == 1) {
+						tips_str = '已投注';
+						html += ' <button class="aui-btn aui-btn-danger" id="by_' + key + '" onclick="openSelect(' + "\'by_" + key + "\'" + ',' + 1 + ',' + cid + ')" style="margin: auto;border-radius: 2.5rem;width:88%;">' + tips_str + '</button></div></div>';
+					} else {
+						if(parseInt(val.end_time) - parseInt(val.server_time) > 0) {
+							tips_str = '投注';
+							html += ' <button class="aui-btn aui-btn-danger" id="by_' + key + '" onclick="openSelect(' + "\'by_" + key + "\'" + ',' + 1 + ',' + cid + ')" style="margin: auto;border-radius: 2.5rem;width:88%;">' + tips_str + '</button></div></div>';
+						} else {
+							tips_str = '停止投注';
+							html += ' <button class="aui-btn" id="by_' + key + '" onclick="openSelect(' + "\'by_" + key + "\'" + ',' + 1 + ',' + cid + ')" style="margin: auto;border-radius: 2.5rem;width:88%;">' + tips_str + '</button></div></div>';
+						}
+					}
+				}
+
+			} else if(val.status == 1) {
+				html += '<div class="aui-col-xs-4">';
+				html += '<div class="aui-grid-label" style="font-size: 0.6rem;text-align: right;margin-right: 0.2rem;margin-top: 0rem;">';
+				html += '<div style="padding-right:5%;">中奖人数：<span class="aui-text-danger">' + val.luck_count + '</span></div>';
+				if(val.income >= 0) {
+					html += '<div style="padding-right:5%;">盈亏：<span class="aui-text-info aui-text-danger">' + val.income + '</span></div></div></div>';
+				} else {
+					html += '<div style="padding-right:5%;">盈亏：<span class="aui-text-info">' + val.income + '</span></div></div></div>';
+				}
+
+			} else {
+				html += '<div class="aui-col-xs-3">';
+				html += '<div class="aui-grid-label" style="text-align:right;">';
+				html += '<button class="aui-btn" style="margin: auto;border-radius: 2.5rem;width:88%;">延迟开奖</button></div></div>';
+			}
+
+			return html;
+		}
+
+		function reloadFun() {
+			setTimeout(function() {
+				location.reload();
+			}, 1000)
+		}
+
+		//---------------------首页重置-----------------------//
+		function RestIndex(str) {
+			loadData("index", "index.php?g=lucky&m=api&a=api", {
+				token: token
+			}, function(e) {
+				window.localStorage.setItem('nowBeg', JSON.stringify(e.data[0].expect));
+				save('r', 'nowBtn');
+				$(".aui-grid").empty();
+				$(".aui-grid").append(createIndex(e));
+				timeOne = parseInt(e.data[0].end_time) - parseInt(e.data[0].server_time);
+				timeTwo = parseInt(e.data[1].end_time) - parseInt(e.data[1].server_time);
+
+				var t2 = window.setInterval(function() {
+					var nowBtn = save('g', 'nowBtn');
+					//检测当前是否有弹窗
+					if(nowBtn != null) {
+						str = '剩余：';
+						if(parseInt(nowBtn) == 0) timeOne = frameTime('diag', str, timeOne, '#diag_' + nowBtn);
+						if(parseInt(nowBtn) == 1) timeTwo = frameTime('diag', str, timeTwo, '#diag_' + nowBtn);
+					} else {
+						timeOne = frameTime('index', str, timeOne, '#timeOne');
+						if(timeTwo > 0) {
+							if(timeTwo <= 90) {
+								$("#buy_1").empty();
+								$("#buy_1").append('<button class="aui-btn" style="margin: auto;border-radius: 2.5rem;width:88%;">停止投注</button>');
+								timeTwo = frameTime('index', '距开奖：', timeTwo, '#timeTwo');
+							} else {
+								timeTwo = frameTime('index', str, timeTwo, '#timeTwo');
+							}
+						} else {
+							$("#timeTwo").empty();
+							$("#timeTwo").append('<span class="aui-list-item-right">' + '开奖中' + '</span>');
+							$("#buy_1").empty();
+							$("#buy_1").append('<button class="aui-btn" style="margin: auto;border-radius: 2.5rem;width:88%;">开奖中</button>');
+							window.localStorage.setItem('timeOpen', e.data[1].expect);
+						}
+					}
+					timeOne--;
+					timeTwo--;
+				}, 1000);
+
+				var t1 = window.setInterval(function() {
+					if(save('g', 'timeOpen') != null) {
+						loadData("index", "index.php?g=lucky&m=api&a=api", {
+							token: window.localStorage.getItem('tokens'),
+							page: 1,
+							pagesize: 10
+						}, function(ea) {
+							$.each(ea.data, function(key, val) {
+								if(val.expect == save('g', 'timeOpen')) {
+									if(val.open_time != "0") {
+										window.clearInterval(t1);
+										window.clearInterval(t2);
+										window.location.reload()
+									} else {
+										$("#timeTwo").empty();
+										$("#timeTwo").append('<span class="aui-list-item-right" >' + '开奖中' + '</span>');
+										$("#buy_1").empty();
+										$("#buy_1").append('<button class="aui-btn" style="margin: auto;border-radius: 2.5rem;width:88%;">开奖中</button>');
+									}
+								}
+							});
+						});
+					}
+				}, 5000);
+			});
+		}
+
+		//---------------------投注弹窗-----------------------//
+		function openSelect(str, val, cid) {
+
+			var temp_id = str.split('_');
+			var week = $("#left_" + temp_id[1]).html();
+			var new_week = week.substring(0, week.length - 1);
+			save('s', 'nowBeg', new_week);
+			save('s', 'nowBtn', parseInt(temp_id[1]));
+			save('s', 'cid', cid);
+			layer.open({
+				type: 2,
+				title: '<div style="width:100%;display: -webkit-box;"><div style="width:33%;text-align: left;"><img src="image/touzhu.png" style="display:inline;width:20px;vertical-align: middle;margin-right:0.25rem">投注</div><div style="width:33%;text-align: center;">' +
+					week + '</div><div style="width:33%;text-align: right;font-size:0.5rem;"><span class="aui-text-danger" id="diag_' + temp_id[1] + '"></span></div></div>',
+				maxmin: true,
+				shadeClose: true, //点击遮罩关闭层
+				area: ['90%', '19.8rem'],
+				content: 'select.html',
+				success: function(layero, index) {
+
+					if(isiOS) {
+						$("html,body").addClass("lock-position");
+					} else {
+						$(document).scrollTop(1);
+					}
+
+					save('s', 'endBeg', val);
+					save('s', 'iframe', index);
+				},
+				cancel: function(index, layero) {
+					save('r', 'nowBtn')
+					save('r', 'iframe')
+				},
+				end: function() {
+					$("body,html").removeClass("position-fix");
+					save('r', 'nowBtn');
+					save('r', 'iframe')
+				}
+			});
+		}
+
+		// alert($(window).width())
+
+		//--------------------每秒时间显示规则变更-------------//
+		function frameTime(type, str, t, el) {
+			$(el).empty();
+			var html = '';
+			var times = formatSeconds(t);
+			//弹窗结束按钮停止
+			if(times[0] <= 0 && times[1] <= 0 && times[2] <= 0) {
+				if(type == 'diag') {
+					html += '<span class="aui-list-item-right">' + '开奖中' + '</span>';
+					if(save('g', 'nowBtn') != null && save('g', 'iframe') != null) $(window.frames["layui-layer-iframe" + save('g', 'nowBtn')].document).find("#newsItem_" + save('g', 'iframe')).attr('class', 'aui-btn aui-btn-block aui-btn-outlined aui-btn-sm').text('开奖中');
+				}
+			} else {
+				if(times[0] <= 0 && times[1] <= 0) {
+					if(type == 'index') html += str + '<span class="aui-text-danger">' + times[2] + '</span>' + '秒';
+					if(type == 'diag') html += str + '<span class="aui-list-item-right">' + times[2] + '</span>' + '秒';
+				} else {
+					if(times[0] > 0) {
+						if(type == 'index') html += '<div>' + str + '<span class="aui-text-danger">' + times[0] + '</span>' + '时' + '<span class="aui-text-danger">' + times[1] + '</span>' + '分' + '<span class="aui-text-danger">' + times[2] + '</span>' + '秒' + '</div>';
+						if(type == 'diag') html += str + '<span class="aui-text-danger">' + times[0] + '</span>' + '时' + '<span class="aui-text-danger">' + times[1] + '</span>' + '分' + '<span class="aui-text-danger">' + times[2] + '</span>' + '秒';
+					} else {
+						if(type == 'index') html += '<div>' + str + '<span class="aui-text-danger">' + times[1] + '</span>' + '分' + '<span class="aui-text-danger">' + times[2] + '</span>' + '秒' + '</div>';
+						if(type == 'diag') html += str + '<span class="aui-text-danger">' + times[1] + '</span>' + '分' + '<span class="aui-text-danger">' + times[2] + '</span>' + '秒';
+					}
+				}
+			}
+			$(el).append(html);
+			return t;
+		}
+	</script>
+
+</html>

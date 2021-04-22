@@ -1,0 +1,1 @@
+<view class="downTime-wrapper data-v-380199c0"><view hidden="{{!(!isShow)}}" class="time data-v-380199c0"><text class="hour data-v-380199c0">{{myHours}}</text>:<text class="minute data-v-380199c0">{{myMinutes}}</text>:<text class="second data-v-380199c0">{{mySeconds}}</text></view><text hidden="{{!(isShow)}}" class="second data-v-380199c0">{{clocker}}</text></view>

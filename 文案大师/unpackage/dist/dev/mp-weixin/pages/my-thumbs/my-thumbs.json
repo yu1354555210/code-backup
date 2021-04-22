@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "我的赞",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "good-list": "/components/good-list/good-list"
+  }
+}

@@ -1,0 +1,73 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"projectname": "豆荚游戏财神版",
+	"qqappid": "1110748806",
+	"scripts": {
+		"beforeCompile": "",
+		"beforePreview": "",
+		"beforeUpload": ""
+	},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"list": []
+		},
+		"gamePlugin": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"name": "result",
+					"query": "",
+					"id": 0,
+					"pathName": "pages/redbag-result/redbag-result"
+				},
+				{
+					"name": "task",
+					"query": "",
+					"id": 1,
+					"pathName": "pages/task/task"
+				},
+				{
+					"name": "mine",
+					"query": "",
+					"id": 2,
+					"pathName": "pages/mine/mine"
+				},
+				{
+					"name": "account-cash",
+					"query": "",
+					"id": 3,
+					"pathName": "pages/account-cash/account-cash"
+				},
+				{
+					"name": "income-list",
+					"query": "",
+					"id": 4,
+					"pathName": "pages/income-list/income-list"
+				}
+			]
+		}
+	}
+}

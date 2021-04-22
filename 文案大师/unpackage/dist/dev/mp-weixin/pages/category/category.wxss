@@ -1,0 +1,78 @@
+page {
+  background-color: #fff;
+}
+.category-sticky {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: #f7f8f8;
+}
+.category-box {
+  background-color: #fff;
+  margin-top: 175rpx;
+}
+.category-top {
+  background-color: #fff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  font-size: 24rpx;
+  height: 80rpx;
+  -webkit-border-radius: 40rpx 40rpx 0 0;
+          border-radius: 40rpx 40rpx 0 0;
+  overflow: hidden;
+  color: #8fa2a6;
+}
+.category-top text {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  text-align: center;
+}
+.category-top text:first-child {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 20%;
+          flex: 0 0 20%;
+}
+.category-list .category-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  text-align: center;
+  height: 95rpx;
+}
+.category-list .category-item>view {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+}
+.category-list .category-item .ranking-num {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 20%;
+          flex: 0 0 20%;
+  font-size: 28rpx;
+  color: #8fa2a6;
+  font-weight: bold;
+}
+.category-list .category-item .ranking-num image {
+  width: 60rpx;
+  height: 72rpx;
+}
+.category-list .category-item .username {
+  font-size: 30rpx;
+  color: #333;
+}
+.category-list .category-item .num {
+  font-size: 30rpx;
+  color: #333;
+}
+

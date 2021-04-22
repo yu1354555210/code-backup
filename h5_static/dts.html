@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)http://www.yimenapp.com/down/81046 -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>欢迎大家使用</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <style>body{padding:0;margin:0;color:#666}h1,h2,h3,h4,h5,h6{color:#585f69;margin-top:5px;text-shadow:none;font-weight:normal;font-family:NotoSansHans-Regular,AvenirNext-Regular,"proxima-nova","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei","Open Sans","Helvetica Neue",Arial,sans-serif}.container{position:relative;width:1140px;margin:0 auto;overflow:hidden}hr{height:0;line-height:0;border-top:1px dotted #eee;margin:30px 0}.header{}.header h1{float:left;font-size:22px;margin:10px 0;line-height:60px}.header div{float:right;line-height:80px;font-size:14px;color:#888}.ios{width:50%;float:left;margin-left:-1px;border-right:1px solid #bbb}.adr{width:50%;float:left}button{background-color:#1abc9c;padding:10px;font-size:16px;color:white;padding-left:38px;border:none;background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAA8UlEQVRIS+2V0Q3CMAxE7zaBCWADxCTABrABIzACI3QDxAaMwAjd4JCrpFiFNCmiSEj1Tz6S3LPPjkKMHBxZH4MAkpYAapL30sSGAo4mTLJZS2ICZF2aLPrcIklbABXJOqpIehnT8DZmJKt3tGQPJJ0ArACsI6QLCOIXAAeS50EAOyzJLi0ixANKxJtHmTPRQwDsw3mzozfzqJsFdCq5ApgF65K2+KSLAA6yCZd3Kc+7jrQAs4KkTU4yQuNvOXGv5QEiWVxRJpFW66cA+0RsMoo/k0QV9inNSdr6HFNJNh29PciNtNu3fjaJfsXzPvD/Ax79s4QZ0tN89wAAAABJRU5ErkJggg==');background-repeat:no-repeat;background-position:10px center;cursor:pointer}button[disabled]{background-color:lightgray}.beta{padding-left:10px}@media (max-width:550px){.container{width:100%}.header h1{text-align:center;float:none;margin:20px 0 0 0;line-height:40px}.header div{text-align:center;float:none;line-height:32px;font-size:12px}.beta{line-height:24px !important}.ios,.adr{width:100%;border:none;margin:0;padding-top:30px}.ico{display:none}}</style>
+    <link rel="stylesheet" href="./dts_files/layer.css" id="layui_layer_skinlayercss" style="">
+</head>
+<body>
+<div style="background-color:#FCFCFC;border-bottom:1px solid #eee">
+    <div class="header container">
+        <h1><img style="height:32px" src="./dts_files/t.cshtml"></h1>
+        <div></div>
+    </div>
+</div>
+<div class="container" style="text-align:center;padding-top:40px"><img src="./dts_files/360.360.jpg" width="96" height="96"></div>
+<hr class="ico">
+<div class="container" style="text-align:center">
+    <div style="font-size:12px">或者用手机扫描下面的二维码安装</div>
+    <img src="./dts_files/qrcode.png" width="132" height="132" style="margin-top:20px">
+</div>
+<hr>
+<div class="container">
+    <div style="width:80%;margin:0 auto;text-align:center">
+        <div class="ios">
+            <button onclick="ios(this)">下载iOS版</button>
+            <div style="margin-top:10px;font-size:12px">适用于苹果设备</div>
+        </div>
+        <div class="adr">
+            <button onclick="adr(this)">下载Android版</button>
+            <div style="margin-top:10px;font-size:12px">适用于安卓设备</div>
+        </div>
+    </div>
+</div>
+<div style="background-color:#f4f4f4;border-top:solid 1px #e5e5e5;padding:30px 0;margin-top:30px">
+    <div class="container"><h1 style="font-size:22px"></h1></div>
+</div>
+<script src="./dts_files/jquery.min.js"></script>
+<script src="./dts_files/layer.js"></script>
+<script>var wxIos="请点击微信右上角按钮，然后在弹出的菜单中点击 “在Safari中打开” 即可安装。";var wxAdr="请点击微信右上角按钮，然后在弹出的菜单中点击 “在浏览器打开” 即可安装。";var qqIos="请点击QQ右上角按钮，然后在弹出的菜单中点击 “用Safari打开” 即可安装。";var qqAdr="请点击QQ右上角按钮，然后在弹出的菜单中点击 “用浏览器打开” 即可安装。";function d(b,u){if(u.indexOf("http")==0){location.href=u;return;}
+$(b).prop("disabled",true);$.get(u,null,function(r){if(r.m){layer.alert(r.m);}else{location.href=r.d.url;}
+$(b).prop("disabled",false);});}
+function ios(b){if(/MicroMessenger/.test(navigator.userAgent)){layer.alert(wxIos);}else if(/QQ\//.test(navigator.userAgent)){layer.alert(qqIos);}else{d(b,"https://itunes.apple.com/cn/app/%E5%A4%A9%E5%A0%82%E5%A5%87%E8%BF%B9/id1388234207?mt=8")}}
+function adr(b){if(/MicroMessenger/.test(navigator.userAgent)){layer.alert(wxAdr);}else if(/QQ\//.test(navigator.userAgent)){layer.alert(qqAdr);}else{d(b,"https://dl.binglue.com/apks/dtsqj.apk")}}</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="layer/theme/default/layer.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="css/new_style.css"/>
+    <style type="text/css" media="screen">
+    	html,body{
+    		background-color: #fff;
+    		height: 100%;
+    	}
+    	.aui-content{
+    		overflow: hidden;
+    	}
+    	
+    </style>
+</head>
+
+<body>
+    <section class="aui-content layui-text auto_detail_con" style="border-bottom: 1px solid #eee; padding: 0.47619rem 0;">
+        <ul class="aui-list">
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner" id="start_week"></div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner" id="week_num"></div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner" id="week_gold"></div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner" id="end_week"></div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner" id="last_week"></div>
+            </li>
+	    </ul>
+	</section>
+    <section class="aui-content layui-text">
+        <ul class="aui-list">
+            <li class="layui-layer-title" style="border-bottom: none;">
+                自动投注详情
+                <span style="color:#ccc;font-size: 0.6rem;margin-left: 0.238095rem;">每期都会对以下号码进行对应投注</span>
+            </li>
+        </ul>
+    </section>
+    <div class="code_box_auto code_skin0 run" style="overflow-y: auto;width: 100%;overflow-x: none">
+    <section class="aui-grid" >
+        <div class="aui-row aui-border-t aui-border-b auto_qiu_list" id="autolists">
+
+        </div>
+        </section>
+    </div>
+<div>
+<button class="aui-btn aui-btn-outlined" style="width: 35%;margin:0.3rem 33% 0;border-radius: 2.5rem;" id="new">停止自动投注</button>
+
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="layer/layer.js"></script>
+
+    <div style="display:none">
+        <script src="https://s22.cnzz.com/z_stat.php?id=1273592771&web_id=1273592771" language="JavaScript"></script>
+    </div>
+</body>
+<script type="text/javascript" src="js/api.js"></script>
+
+<script type="text/javascript" src="js/fn.js"></script>
+<script>
+    if(save('g','tokens')==null)window.location.href='./login.html';
+        var data=JSON.parse(window.localStorage.getItem('autoData'));
+            window.localStorage.removeItem('autoData');
+        $("#start_week").text('开始期号：'+ data.start_expect+"期");
+        $("#week_num").text('投注期数：'+data.nums);
+        $("#week_gold").text('每期投注金豆：'+data.golds);
+        $("#end_week").text('已投注：'+data.backed);
+        $("#last_week").text('剩余：'+(parseFloat(data.nums)-parseFloat(data.backed)));
+        var tempArr =data.cathectic.split(',')
+        var html='';
+        $.each(tempArr,function (key,val){
+                var newVal=val.split(':');
+                html+='<div class="aui-col-xs-4"><div class="auto_flex_row">';
+                html+='<div class="qiusum">'+newVal[0]+'</div><span style="font-size: 0.6rem;">'+newVal[1]+'</span>';
+                html+='</div></div>'
+        });
+       $("#autolists").append(html)
+
+    $('#new').on('click', function(){
+        loadData("auto_stop", "index.php?g=lucky&m=api&a=api", {
+            token: token
+        }, function (e) {
+            if(e.code==1){
+                window.localStorage.setItem('auto',false);
+                parent.layer.closeAll();
+                parent.layer.msg('暂停成功', {shade: 0.3,time:1000});
+                // window.localStorage.setItem('gold',parseFloat(window.localStorage.getItem('gold'))+(data.golds*(parseFloat(data.nums)-parseFloat(data.backed))));
+                parent.location.reload()
+            }
+        });
+    });
+</script>
+
+</html>

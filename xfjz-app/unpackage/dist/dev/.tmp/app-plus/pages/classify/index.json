@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "cates-item": "/components/cates-item"
+  }
+}

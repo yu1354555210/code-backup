@@ -1,0 +1,55 @@
+.login-bg {
+  width: 750rpx;
+  height: 1334rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+.tourist-btn {
+  position: absolute;
+  top: 55rpx;
+  right: 65rpx;
+  width: 78rpx;
+  height: 77rpx;
+}
+.tourist-btn image {
+  height: 100%;
+}
+.login-box {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  padding-top: 250rpx;
+}
+.login-box image {
+  width: 162rpx;
+  height: 162rpx;
+}
+.login-box text {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #ffffff;
+  margin-top: 30rpx;
+}
+.login-box .login-btn {
+  width: 650rpx;
+  height: 88rpx;
+  margin-top: 100rpx;
+}
+.login-box .login-btn image {
+  width: 100%;
+  height: 100%;
+}
+

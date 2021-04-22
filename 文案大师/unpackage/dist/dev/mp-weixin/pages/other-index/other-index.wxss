@@ -1,0 +1,9 @@
+.other-content {
+  background-color: #fff;
+  overflow: hidden;
+  padding: 35rpx 0 0;
+}
+.mine-header {
+  margin-bottom: 60rpx;
+}
+

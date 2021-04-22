@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "文案大师",
+  "usingComponents": {
+    "me-tabs": "/components/me-tabs/me-tabs",
+    "u-tabbar": "/uview-ui/components/u-tabbar/u-tabbar",
+    "mescroll-item": "/pages/index/mescroll-swiper-item",
+    "mescroll-top-item": "/pages/index/mescroll-swiper-top-item"
+  }
+}

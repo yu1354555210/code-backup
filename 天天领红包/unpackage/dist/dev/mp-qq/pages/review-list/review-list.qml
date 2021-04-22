@@ -1,0 +1,1 @@
+<view><v-list vue-id="94b96390-1" iconName="review" dataList="{{dataList}}" bind:__l="__l"></v-list></view>

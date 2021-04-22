@@ -1,0 +1,35 @@
+.no-data {
+  width: 100%;
+  height: 60vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.no-data image {
+  width: 298rpx;
+  height: 339rpx;
+  margin: 30rpx 0 90rpx;
+}
+.no-data .no-data-text {
+  font-size: 30rpx;
+  color: #999;
+}
+.no-data .no-data-btn {
+  width: 342rpx;
+  height: 100rpx;
+}
+.no-data .no-data-btn image {
+  width: 100%;
+  height: 100%;
+}
+

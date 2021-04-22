@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "大师榜",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "u-tabs": "/uview-ui/components/u-tabs/u-tabs",
+    "u-tag": "/uview-ui/components/u-tag/u-tag",
+    "u-tabbar": "/uview-ui/components/u-tabbar/u-tabbar"
+  }
+}

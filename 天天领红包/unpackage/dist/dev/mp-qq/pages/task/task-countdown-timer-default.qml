@@ -1,0 +1,1 @@
+<text>{{minute}}</text><text>:</text><text>{{second}}</text>

@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "天天迎财神",
+  "navigationBarBackgroundColor": "#fe3e30",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "mescroll-uni": "/components/mescroll-uni/mescroll-uni",
+    "countup": "/components/countUp",
+    "v-dialog": "/components/vDialog"
+  }
+}

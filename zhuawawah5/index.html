@@ -1,0 +1,304 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>娃娃来了</title>
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="description" content="娃娃来了">
+		<link rel="stylesheet" href="http://wawah5-1252571264.cossh.myqcloud.com/css/style0402.css">
+		<link rel="stylesheet" href="http://wawah5-1252571264.file.myqcloud.com/css/mescroll.min.css">
+		<link href="http://wawah5-1252571264.file.myqcloud.com/css/swiper.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="http://wawah5-1252571264.cossh.myqcloud.com/css/barrager.css" />
+
+		<script type="text/javascript" src="http://wawah5-1252571264.file.myqcloud.com/js/fontrem.js"></script>
+		<script type="text/javascript" src="http://wawah5-1252571264.file.myqcloud.com/js/jquery-2.1.4.js"></script>
+		<script type="text/javascript" src="http://wawah5-1252571264.file.myqcloud.com/js/swiper.min.js"></script>
+		<script type="text/javascript" src="http://wawah5-1252571264.file.myqcloud.com/js/jquery-weui.js"></script>
+
+		<script src="//sqimg.qq.com/expert_qq/wawaji/1.2/TXWawaVideo.min.js"></script>
+		<script src="//sqimg.qq.com/expert_qq/webrtc/1.2/WebRTCAPI.min.js"></script>
+		<script src="//cdn.bootcss.com/reconnecting-websocket/1.0.0/reconnecting-websocket.min.js"></script>
+		<script src="http://cdn.wowgotcha.com/sdk/html5/panda-wawaji-3.0.3.min.js"></script>
+
+		<script type="text/javascript" src="http://wawah5-1252571264.file.myqcloud.com/js/webim.js"></script>
+		<script type="text/javascript" src="http://wawah5-1252571264.file.myqcloud.com/js/json2.js"></script>
+		<script type="text/javascript" src="http://wawah5-1252571264.file.myqcloud.com/js/demo_group_notice.js"></script>
+		<script type="text/javascript" src="http://wawah5-1252571264.cossh.myqcloud.com/js/jquery.barrager.js"></script>
+
+		<script src="js/mescroll.min.js?v=225" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript" charset="utf-8"></script>-->
+		<style type="text/css">
+			body,
+			html {
+				-webkit-overflow-scrolling: touch;
+			}
+			
+			.bg_whife,
+			#app {
+				background-color: #fff;
+				height: 100%;
+			}
+			
+			.loader {
+				width: 0.15rem;
+				height: 0.15rem;
+				position: fixed;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				box-sizing: border-box;
+				display: flex;
+				/*多轮布局*/
+				align-items: center;
+				/*垂直*/
+				justify-content: center;
+				/*水平*/
+			}
+			
+			@-webkit-keyframes loading-3 {
+				50% {
+					transform: scale(0.4);
+					opacity: .4;
+				}
+				100% {
+					transform: scale(1);
+					opacity: 1;
+				}
+			}
+			
+			.loading-3 {
+				position: relative;
+			}
+			
+			.loading-3 i {
+				display: block;
+				width: 15px;
+				height: 15px;
+				border-radius: 50%;
+				background-color: #333;
+				position: absolute;
+			}
+			
+			.loading-3 i:nth-child(1) {
+				top: 25px;
+				left: 0;
+				-webkit-animation: loading-3 1s ease 0s infinite;
+			}
+			
+			.loading-3 i:nth-child(2) {
+				top: 17px;
+				left: 17px;
+				-webkit-animation: loading-3 1s ease -0.12s infinite;
+			}
+			
+			.loading-3 i:nth-child(3) {
+				top: 0px;
+				left: 25px;
+				-webkit-animation: loading-3 1s ease -0.24s infinite;
+			}
+			
+			.loading-3 i:nth-child(4) {
+				top: -17px;
+				left: 17px;
+				-webkit-animation: loading-3 1s ease -0.36s infinite;
+			}
+			
+			.loading-3 i:nth-child(5) {
+				top: -25px;
+				left: 0;
+				-webkit-animation: loading-3 1s ease -0.48s infinite;
+			}
+			
+			.loading-3 i:nth-child(6) {
+				top: -17px;
+				left: -17px;
+				-webkit-animation: loading-3 1s ease -0.6s infinite;
+			}
+			
+			.loading-3 i:nth-child(7) {
+				top: 0px;
+				left: -25px;
+				-webkit-animation: loading-3 1s ease -0.72s infinite;
+			}
+			
+			.loading-3 i:nth-child(8) {
+				top: 17px;
+				left: -17px;
+				-webkit-animation: loading-3 1s ease -0.84s infinite;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrapper index_bg loading_box" style="display: none;">
+			<div class="logo"><img src="http://wawah5-1252571264.file.myqcloud.com/newimg/login_logo.png"><span>娃娃来了</span></div>
+			<div class="loader">
+				<div class="loading-3">
+					<i></i>
+					<i></i>
+					<i></i>
+					<i></i>
+					<i></i>
+					<i></i>
+					<i></i>
+					<i></i>
+				</div>
+			</div>
+
+		</div>
+		<script>
+			$(function() {
+				$("body,html").height($(window).height());
+				$("body,html").css("overflow", "hidden");
+			});
+
+			function getUrlParam(name) {
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+				if(r != null) return unescape(r[2]);
+				return null;
+			}
+
+			function getCookie(name) {
+				var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+				if(arr = document.cookie.match(reg))
+					return unescape(arr[2]);
+				else
+					return null;
+			}
+
+			function setCookie(name, value) {
+				var Days = 30;
+				var exp = new Date();
+				exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+				document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+			}
+			var apiUrl = "http://wawa.paopaoren.cn/";
+			var redirecturl = "http://h5wawash.popmen.cn/wawalaile/index.html?bundle_name=h5.mfzww2";
+			var token = "";
+			if(token != null && token != "") {
+				var mta = document.createElement("script");
+				mta.src = "/wawalaile/dist/build.js";
+				document.body.appendChild(mta);
+			} else {
+				var code = getUrlParam('code');
+				if(code == null) {
+					var login = function() {
+						var appid = "wxa5547e3852c868cc";
+						var url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid + "&redirect_uri=" + redirecturl + "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
+						location.href = url;
+					}
+					var isvisited = getCookie("isvisited");
+					if(isvisited != null) {
+						login();
+					} else {
+						var loginpage;
+						loginpage = '<div class="wrapper index_bg" style="display:"><div class="logo"><img src="http://wawah5-1252571264.file.myqcloud.com/newimg/login_logo.png"><span>娃娃来了</span></div><div class="login_btn" onclick="login()"><img src="http://wawah5-1252571264.file.myqcloud.com/newimg/wechat_login.png"></div><div class="login_other">登入注册表示同意用户协议与隐私条款</div></div>';
+						$('body').append(loginpage);
+						setCookie("isvisited", "true");
+					}
+
+				} else {
+					var token = getCookie("token");
+					if(token != null && token != "") {
+						var mta = document.createElement("script");
+						mta.src = "/wawalaile/dist/build.js?v=123";
+						document.body.appendChild(mta);
+						$("body,html").css({
+							'height': '100%',
+							'overflow': 'visible'
+						});
+					} else {
+						var isvisited = getCookie("isvisited");
+						if(isvisited != null) {
+							$(".loading_box").show();
+							var bundle_name = getUrlParam('bundle_name');
+							var url = apiUrl + "api/public/?service=Login.weixinLogin&code=" + code + "&channel=h5&bundle_name=" + bundle_name;
+							$.get(url, function(data) {
+								var dataobj = JSON.stringify(data);
+								dataobj = JSON.parse(dataobj);
+								console.log(dataobj)
+								if(dataobj.code == 1) {
+
+									var mta = document.createElement("script");
+									mta.src = "/wawalaile/dist/build.js?v=123";
+									document.body.appendChild(mta);
+
+									$("body,html").css({
+										'height': '100%',
+										'overflow': 'visible'
+									});
+									setTimeout(function() {
+										$(".loading_box").hide();
+									}, 500)
+
+									if(dataobj.data.regcoin) {
+										setCookie("isNewPel", dataobj.data.regcoin);
+									} else {
+										setCookie("isNewPel", 'no');
+									}
+
+									setCookie("token", dataobj.data.token);
+									setCookie("uid", dataobj.data.id);
+									setCookie("user_sig", dataobj.data.user_sig);
+									setCookie("openid", dataobj.data.wxopenid);
+
+									if(dataobj.data.avatar == "" || dataobj.data.avatar == apiUrl) {
+										dataobj.data.avatar = 'http://wawah5-1252571264.file.myqcloud.com/newimg/default_img.png';
+									}
+									localStorage.setItem("user_img", dataobj.data.avatar);
+									localStorage.setItem("user_gender", dataobj.data.sex);
+									localStorage.setItem("user_name", dataobj.data.user_nicename);
+									localStorage.setItem("coin", dataobj.data.coin);
+									localStorage.setItem("uid", dataobj.data.id);
+									localStorage.setItem("bgmusic", dataobj.data.user_setting.bgmusic);
+									localStorage.setItem("yx", dataobj.data.user_setting.yx);
+								} else {
+									alert("授权失败,请重试!");
+								}
+
+							});
+						} else {
+							var login = function() {
+								var appid = "wxa5547e3852c868cc";
+								var url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid + "&redirect_uri=" + redirecturl + "&response_type=code&scope=snsapi_userinfo&connect_redirect=1&state=#wechat_redirect";
+								location.href = url;
+							}
+							login();
+							setCookie("isvisited", "true");
+						}
+					}
+				}
+			}
+		</script>
+		<div id="app" class="bg_app">
+			<keep-alive>
+				<router-view v-if="$route.meta.keepAlive" v-transition class="minhei"></router-view>
+			</keep-alive>
+			<router-view v-if="!$route.meta.keepAlive" v-transition class="minhei"></router-view>
+
+		</div>
+		<script>
+			$("body").bind('contextmenu', function(e) {
+				e.preventDefault();
+			});
+		</script>
+
+		<audio src="http://p0kv2ukb4.bkt.clouddn.com/img_5a294b9e46a10.mp3" id="bg_music" loop="loop" preload="auto"></audio>
+		<audio src="http://p0kv2ukb4.bkt.clouddn.com/img_5a2fdf16a0695.mp3" id="btn_music" preload="auto"></audio>
+		<audio src="http://p0kv2ukb4.bkt.clouddn.com/img_5a2feb06f410a.mp3" id="grab_music" preload="auto"></audio>
+		<audio src="http://p0kv2ukb4.bkt.clouddn.com/img_5a2feaec1714a.mp3" id="start_music" preload="auto"></audio>
+		<audio src="http://p0kv2ukb4.bkt.clouddn.com/img_5a2feacfd0e3d.mp3" id="success_music" preload="auto"></audio>
+		<audio src="http://p0kv2ukb4.bkt.clouddn.com/img_5a2feaf955fb0.mp3" id="fail_music" preload="auto"></audio>
+		<audio src="http://p0kv2ukb4.bkt.clouddn.com/img_5a2feae06942a.mp3" id="time_music" preload="auto"></audio>
+
+	</body>
+
+</html>

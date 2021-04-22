@@ -1,0 +1,1 @@
+<view><block wx:if="{{item.is_coll===2}}"><view data-event-opts="{{[['tap',[['handleCollect',[1,item.id||item.content_id]]]]]}}" class="collect" bindtap="__e"></view></block><block wx:else><view data-event-opts="{{[['tap',[['handleCollect',[2,item.id||item.content_id]]]]]}}" class="collect-active" bindtap="__e"></view></block></view>

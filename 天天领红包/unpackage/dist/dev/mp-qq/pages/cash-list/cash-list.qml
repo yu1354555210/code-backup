@@ -1,0 +1,1 @@
+<view><v-list vue-id="5992f182-1" iconName="cash" dataList="{{dataList}}" bind:__l="__l"></v-list></view>

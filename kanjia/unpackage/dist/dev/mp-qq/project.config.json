@@ -1,0 +1,79 @@
+{
+  "description": "项目配置文件。",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "minified": true
+  },
+  "compileType": "miniprogram",
+  "projectname": "kanjia",
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "current": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "current": 0,
+      "list": [
+        {
+          "name": "detail",
+          "query": "",
+          "id": 0,
+          "pathName": "pages/detail/index"
+        },
+        {
+          "name": "invite",
+          "query": "bargain_id=52",
+          "id": 1,
+          "pathName": "pages/invite/index"
+        },
+        {
+          "name": "lottery",
+          "query": "",
+          "id": 2,
+          "pathName": "pages/lottery/index"
+        },
+        {
+          "name": "mine",
+          "query": "",
+          "id": 3,
+          "pathName": "pages/mine/index"
+        },
+        {
+          "name": "redbags",
+          "query": "",
+          "id": 4,
+          "pathName": "pages/redbags/index"
+        },
+        {
+          "name": "awards",
+          "query": "",
+          "id": 5,
+          "pathName": "pages/awards/index"
+        },
+        {
+          "name": "cash",
+          "query": "",
+          "id": 6,
+          "pathName": "pages/cash/index"
+        },
+        {
+          "name": "question",
+          "query": "",
+          "id": 7,
+          "pathName": "pages/question/index"
+        }
+      ]
+    }
+  },
+  "qqappid": "1110173271"
+}

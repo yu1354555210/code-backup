@@ -1,0 +1,504 @@
+/* ============================================================
+   flex：定义布局为盒模型
+   flex-v：盒模型垂直布局
+   flex-1：子元素占据剩余的空间
+   flex-align-center：子元素垂直居中
+   flex-pack-center：子元素水平居中
+   flex-pack-justify：子元素两端对齐
+   兼容性：ios 4+、android 2.3+、winphone8+
+   ============================================================ */
+.flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.flex-v {
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.flex-1 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+.flex-align-center {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.flex-pack-center {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.flex-pack-justify {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.bgsize {
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+}
+.dialog-container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 666;
+}
+.dialog-wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 0.1rem;
+}
+.dialog-wrapper.dialog-exit {
+  width: 5.6rem;
+  height: 5.08rem;
+  padding: 1.14rem 0.47rem 0.62rem;
+}
+.dialog-wrapper.dialog-exit:before {
+  content: "";
+  position: absolute;
+  top: -0.24rem;
+  left: 0;
+  background: url(../img/dialog-exit-bg.png) no-repeat center top;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  height: 1.4rem;
+  width: 100%;
+}
+.dialog-wrapper.dialog-exit dl {
+  text-align: center;
+  padding: 0.6rem 0.6rem;
+}
+.dialog-wrapper.dialog-exit dl dt {
+  color: #ff4930;
+  font-size: 0.36rem;
+  margin-bottom: 0.3rem;
+}
+.dialog-wrapper.dialog-exit dl dd {
+  font-size: 0.3rem;
+  color: #696969;
+  line-height: 0.4rem;
+}
+.dialog-wrapper.dialog-exit .dialog-btn-box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.dialog-wrapper.dialog-exit.dialog-close-webview {
+  height: 3.5rem;
+  padding-top: 0;
+}
+.dialog-wrapper.dialog-exit.dialog-close-webview dl dt {
+  color: #000;
+}
+.dialog-wrapper.dialog-exit.dialog-close-webview:before {
+  display: none;
+}
+.dialog-wrapper.dialog-rule {
+  width: 5.6rem;
+  height: 4.74rem;
+}
+.dialog-wrapper.dialog-rule .dialog-rule-top {
+  background-image: url(../img/dialog-rule-bg.png);
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 0.98rem;
+  text-align: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-size: 0.36rem;
+}
+.dialog-wrapper.dialog-rule ul {
+  padding: 0 0.3rem;
+  margin-top: 0.6rem;
+}
+.dialog-wrapper.dialog-rule ul li {
+  margin-bottom: 0.4rem;
+  font-size: 0.26rem;
+  color: #696969;
+}
+.dialog-wrapper.dialog-result {
+  background-image: url(../img/dialog-result-bg.png);
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 5.67rem;
+  height: 7.93rem;
+  padding: 1.6rem 0.6rem;
+  background-color: transparent;
+  border-radius: 0;
+}
+.dialog-wrapper.dialog-result .result {
+  padding-top: 0.45rem;
+  text-align: center;
+  color: #ff4930;
+}
+.dialog-wrapper.dialog-result .result dt {
+  font-size: 0.42rem;
+  margin-bottom: 0.4rem;
+}
+.dialog-wrapper.dialog-result .result dd {
+  font-size: 0.34rem;
+}
+.dialog-wrapper.dialog-result .result dd span {
+  font-size: 1rem;
+  margin-right: 0.1rem;
+}
+.dialog-wrapper.dialog-result ul {
+  margin-top: 1.1rem;
+  padding-bottom: 0.3rem;
+}
+.dialog-wrapper.dialog-result ul li {
+  margin-bottom: 0.22rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 0.26rem;
+  color: #696969;
+  padding: 0 0.05rem;
+}
+.dialog-wrapper.dialog-result ul li span {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0.1rem 0 0.08rem;
+}
+.dialog-wrapper.dialog-result ul li a {
+  text-decoration: underline;
+  color: #ff4930;
+}
+.dialog-wrapper.dialog-result ul li .this-icon {
+  height: 0.26rem;
+}
+.dialog-wrapper.dialog-bind-phone {
+  width: 5.6rem;
+  height: 6rem;
+}
+.dialog-wrapper.dialog-bind-phone .dialog-phone-info p {
+  text-align: center;
+  font-size: 0.32rem;
+  color: #313f56;
+}
+.dialog-wrapper.dialog-bind-phone .dialog-phone-img {
+  margin: 0.6rem 0 0.3rem;
+  text-align: center;
+}
+.dialog-wrapper.dialog-bind-phone .dialog-phone-img img {
+  width: 4.37rem;
+  height: 2.34rem;
+}
+.dialog-wrapper.dialog-bind-phone .dialog-btn-box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 0.45rem;
+}
+.dialog-wrapper.dialog-bind-phone .dialog-btn-box .dialog-list-btn {
+  background-color: #2a8cfd;
+  width: 3.8rem;
+}
+.dialog-wrapper.dialog-bind-login {
+  width: 5.6rem;
+  height: 4rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.dialog-wrapper.dialog-bind-login .dialog-phone-info p {
+  text-align: center;
+  font-size: 0.32rem;
+  color: #313f56;
+  line-height: 0.5rem;
+}
+.dialog-wrapper.dialog-bind-login .dialog-btn-box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 0.45rem;
+}
+.dialog-wrapper.dialog-bind-login .dialog-btn-box .dialog-list-btn {
+  background-color: #2a8cfd;
+  width: 3.8rem;
+}
+.dialog-wrapper.dialog-bind-reward {
+  width: 5.2rem;
+  height: 6.76rem;
+  background-image: url(../img/reward-bg.png);
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  background-color: transparent;
+  padding: 0.85rem 0;
+  color: #fbe7b6;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.dialog-wrapper.dialog-bind-reward .dialog-reward-title {
+  font-size: 0.48rem;
+}
+.dialog-wrapper.dialog-bind-reward .dialog-reward-num {
+  padding-top: 0.6rem;
+  font-size: 1.56rem;
+}
+.dialog-wrapper.dialog-bind-reward .dialog-reward-num span {
+  font-size: 0.54rem;
+}
+.dialog-wrapper.dialog-bind-reward .dialog-reward-btn {
+  margin-top: 0.3rem;
+  width: 2.84rem;
+  height: 0.84rem;
+  background-color: #debc88;
+  font-size: 0.36rem;
+  color: #403c45;
+  border: none;
+  margin-bottom: 0.1rem;
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+  border-radius: 200px;
+}
+.dialog-wrapper.dialog-refresh {
+  width: 4.76rem;
+  height: 7.35rem;
+}
+.dialog-wrapper.dialog-refresh .dialog-btn-box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 0.45rem;
+}
+.dialog-wrapper.dialog-refresh .dialog-refresh-top {
+  background-image: url(../img/refresh-title-bg.png);
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 0.84rem;
+  padding-left: 0.17rem;
+  text-align: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-size: 0.29rem;
+}
+.dialog-wrapper.dialog-refresh .dialog-refresh-list {
+  background-image: url(../img/refresh-list-bg.png);
+  width: 4.13rem;
+  height: 4.57rem;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  margin: 0.3rem auto;
+}
+.dialog-wrapper.dialog-refresh .dialog-refresh-list ul {
+  padding: 0.6rem 0.4rem 0;
+}
+.dialog-wrapper.dialog-refresh .dialog-refresh-list ul li {
+  margin-bottom: 0.4rem;
+  color: #2a8cfd;
+  font-size: 0.26rem;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.dialog-wrapper.dialog-refresh .dialog-refresh-list ul li.refresh-cur {
+  color: #b4d0fe;
+}
+.dialog-wrapper.dialog-refresh .dialog-refresh-list ul li.refresh-tag span:first-child:after {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  background-image: url(../img/refresh-tag.png);
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 1.2rem;
+  height: 0.41rem;
+  margin-left: 0.1rem;
+}
+.dialog-wrapper .dialog-close {
+  background-image: url(../img/dialog-close.png);
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 0.6rem;
+  height: 0.6rem;
+  position: absolute;
+  bottom: -1.4rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.dialog-wrapper .dialog-btn-box .dialog-btn {
+  width: 2.17rem;
+  height: 0.78rem;
+  border-radius: 200px;
+  color: #fff;
+  font-size: 0.3rem;
+  outline: none;
+  border: none;
+  background-color: #ff4930;
+}
+.dialog-wrapper .dialog-btn-box .dialog-btn.dialog-cancel-btn {
+  background-color: #b9bdc2;
+}
+.dialog-wrapper .dialog-btn-box .dialog-btn.dialog-list-btn {
+  background-color: #2a8cfd;
+  width: 3.8rem;
+}
+.dialog-wrapper.dialog-jgg {
+  border-radius: 0.2rem;
+  padding-bottom: 0.7rem;
+  width: 5.42rem;
+}
+.dialog-wrapper.dialog-jgg:before {
+  content: "";
+  position: absolute;
+  top: -0.9rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+}
+.dialog-wrapper.dialog-jgg.dialog-phone:before {
+  background-image: url(../img/popup-top1.png);
+  height: 2.1rem;
+  width: 1.82rem;
+}
+.dialog-wrapper.dialog-jgg.dialog-jgg-result:before,
+.dialog-wrapper.dialog-jgg.dialog-tips:before {
+  background-image: url(../img/popup-top2.png);
+  height: 2.1rem;
+  width: 3.78rem;
+}
+.dialog-wrapper.dialog-jgg.dialog-tips:before {
+  background-image: url(../img/popup-top3.png);
+}
+.dialog-wrapper.dialog-jgg .dialog-info {
+  font-size: 0.36rem;
+  color: #ff4930;
+  text-align: center;
+  padding: 1.6rem 0 0.7rem;
+  line-height: 0.5rem;
+}
+.dialog-wrapper.dialog-jgg .dialog-jgg-box {
+  text-align: center;
+}
+.dialog-wrapper.dialog-jgg .dialog-jgg-box .dialog-btn {
+  width: 3.17rem;
+  height: 0.78rem;
+  background-image: url(../img/popup-btn.png);
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+}
+.dialog-wrapper.dialog-jgg .dialog-close {
+  bottom: auto;
+  left: auto;
+  top: -1.45rem;
+  right: 0;
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+.close-webview {
+  background-image: url(../img/close-icon.png);
+  width: 0.5rem;
+  height: 0.5rem;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 1rem;
+  left: 0.1rem;
+}

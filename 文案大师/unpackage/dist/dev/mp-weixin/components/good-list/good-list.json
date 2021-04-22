@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "u-tag": "/uview-ui/components/u-tag/u-tag",
+    "u-read-more": "/uview-ui/components/u-read-more/u-read-more",
+    "collect": "/components/collect/collect",
+    "likes": "/components/likes/likes"
+  },
+  "component": true
+}

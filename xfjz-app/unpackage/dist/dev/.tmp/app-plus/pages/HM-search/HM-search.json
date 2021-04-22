@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom",
+    "no-data": "/components/no-data",
+    "m-search": "/components/mehaotian-search-revision/mehaotian-search-revision",
+    "jobs-item": "/components/jobs-item"
+  }
+}

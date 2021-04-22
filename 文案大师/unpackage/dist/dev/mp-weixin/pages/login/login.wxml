@@ -1,0 +1,1 @@
+<view class="content"><image class="login-bg" src="../../static/login-bg.png" mode="widthFix"></image><image class="logo" src="../../static/logo.png" mode="widthFix"></image><button class="login-btn u-reset-button" type="primary" data-event-opts="{{[['tap',[['login',['$event']]]]]}}" bindtap="__e"><image src="../../static/wechat-btn.png" mode="widthFix"></image></button></view>

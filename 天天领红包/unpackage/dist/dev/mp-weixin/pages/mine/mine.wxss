@@ -1,0 +1,192 @@
+.mine-user-box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  padding: 40rpx 20rpx 20rpx;
+}
+.mine-user-box image {
+  margin-right: 20rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.mine-user-box .user-info {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.mine-user-box .username {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+.mine-user-box .uid {
+  font-size: 24rpx;
+  color: #999;
+}
+.mine-nav-list {
+  padding: 0 20rpx;
+}
+.mine-nav-list .mine-nav-item {
+  border-bottom: 1rpx solid #eee;
+  position: relative;
+}
+.mine-nav-list .mine-nav-item .mine-nav-link {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  position: relative;
+  padding: 40rpx 0;
+}
+.mine-nav-list .mine-nav-item .mine-nav-link .mine-item-icon {
+  width: 31rpx;
+  height: 34rpx;
+  margin-right: 13rpx;
+}
+.mine-nav-list .mine-nav-item>image {
+  width: 15rpx;
+  height: 24rpx;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.mine-nav-list .mine-nav-item:nth-child(2) .mine-item-icon {
+  width: 29rpx;
+  height: 32rpx;
+}
+.mine-nav-list .mine-nav-item:nth-child(3) .mine-item-icon {
+  width: 28rpx;
+  height: 36rpx;
+}
+.mine-money-box {
+  width: 100%;
+  height: 440rpx;
+  position: relative;
+}
+.mine-money-box .mine-money-body {
+  padding: 60rpx;
+  height: calc(100% - 120rpx);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.mine-money-box .mine-money-body .mine-money-top {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.mine-money-box .mine-money-body .mine-money-top image {
+  width: 40rpx;
+  height: 39rpx;
+  margin-right: 20rpx;
+}
+.mine-money-box .mine-money-body .mine-money-top text {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #fff;
+}
+.mine-money-box .mine-money-body .mine-money-middle {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  font-size: 70rpx;
+  font-weight: bold;
+  color: #fff;
+}
+.mine-money-box .mine-money-body .mine-money-bottom {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  width: 100%;
+  margin-top: 20rpx;
+}
+.mine-money-box .mine-money-body .mine-money-bottom .mine-money-bottom-item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  color: #fff;
+  position: relative;
+}
+.mine-money-box .mine-money-body .mine-money-bottom .mine-money-bottom-item:last-child {
+  padding-left: 40rpx;
+}
+.mine-money-box .mine-money-body .mine-money-bottom .mine-money-bottom-item:last-child::after {
+  content: '';
+  display: block;
+  width: 2rpx;
+  height: 50rpx;
+  background: #ffb4ae;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.mine-money-box .mine-money-body .mine-money-bottom .mine-money-bottom-item .mine-money-bottom-text {
+  font-size: 24rpx;
+}
+.mine-money-box .mine-money-body .mine-money-bottom .mine-money-bottom-item .mine-money-bottom-price {
+  font-size: 30rpx;
+  font-weight: bold;
+}
+button.logout-btn {
+  width: 710rpx;
+  height: 90rpx;
+  background: #eee;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #999;
+  margin-top: 46rpx;
+}
+button.logout-btn::after {
+  display: none;
+}
+

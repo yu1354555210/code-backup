@@ -1,0 +1,127 @@
+.account-cash {
+  position: relative;
+  width: 100%;
+  height: 275rpx;
+}
+.account-cash .account-cash-body {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  height: 100%;
+  padding: 0 60rpx;
+  color: #fff;
+}
+.account-cash .account-cash-body .account-cash-left {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.account-cash .account-cash-body .account-cash-left image {
+  width: 40rpx;
+  height: 39rpx;
+  margin-right: 20rpx;
+}
+.account-cash .account-cash-body .account-cash-left text {
+  font-size: 30rpx;
+  font-weight: 500;
+}
+.account-cash .account-cash-body>text {
+  font-size: 70rpx;
+  font-weight: bold;
+}
+.cash-select-list {
+  padding: 0 20rpx;
+}
+.cash-select-list .cash-title {
+  font-size: 28rpx;
+  color: #333;
+  padding-bottom: 30rpx;
+}
+.cash-select-list .cash-list {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.cash-select-list .cash-list .cash-item {
+  width: 165rpx;
+  height: 100rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  border: 2rpx solid #eee;
+  border-radius: 20rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 40rpx;
+}
+.cash-select-list .cash-list .cash-item.cur {
+  background: rgba(254,60,45,0.1);
+  border-color: #fe3c2d;
+}
+.cash-select-list .cash-list .cash-item text+text {
+  font-size: 24rpx;
+  color: #fe3a2a;
+}
+.cash-select-list .cash-list::after {
+  content: '';
+  display: inline-block;
+  width: 165rpx;
+}
+.cash-rule {
+  padding: 0 20rpx;
+}
+.cash-rule .cash-rule-title {
+  color: #333;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.cash-rule .cash-rule-list {
+  font-size: 24rpx;
+  color: #999;
+  line-height: 50rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.cash-btn {
+  width: 260rpx;
+  height: 80rpx;
+  background: -webkit-linear-gradient(bottom, #ff594f, #fe3525);
+  background: linear-gradient(0deg, #ff594f, #fe3525);
+  box-shadow: 0px 3rpx 38rpx 0px rgba(0,0,0,0.14);
+  border-radius: 40rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #fff;
+  margin: 120rpx auto 0;
+}
+

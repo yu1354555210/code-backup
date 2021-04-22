@@ -1,0 +1,220 @@
+.notice-box {
+  width: 100%;
+  z-index: 66;
+  position: absolute;
+  height: 66rpx;
+}
+.focus {
+  width: 100%;
+  height: 266rpx;
+  position: relative;
+}
+.focus image {
+  height: 100%;
+}
+.pos-r {
+  position: relative;
+}
+.section {
+  overflow: hidden;
+  padding: 25rpx 15rpx;
+}
+.home-title {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.home-title .title-fl {
+  font-size: 34rpx;
+  color: #ff5754;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.home-title .title-fl image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+.home-title .title-fr {
+  font-size: 26rpx;
+  color: #999;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.item {
+  padding: 30rpx 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  height: 260rpx;
+  border-bottom: 2rpx solid #eee;
+}
+.item .item-fl {
+  width: 206rpx;
+  height: 206rpx;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 206rpx;
+          flex: 0 0 206rpx;
+  border-radius: 50%;
+  margin-right: 25rpx;
+  overflow: hidden;
+}
+.item .item-fl image {
+  height: 100%;
+}
+.item .item-fr {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: space-around;
+          justify-content: space-around;
+}
+.item .item-fr .item-title {
+  font-size: 30rpx;
+  color: #000;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.item .item-fr .progress-box {
+  width: 380rpx;
+  margin-left: 10rpx;
+}
+.item .item-fr .item-bottom {
+  margin-left: 10rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.item .item-fr .item-bottom .user-num {
+  color: #f60;
+  font-size: 30rpx;
+}
+.item .item-fr .item-bottom .percent {
+  font-size: 30rpx;
+  color: #ff5754;
+}
+.item .item-fr .item-bottom .outtime {
+  font-size: 24rpx;
+  color: #999;
+  margin-left: 35rpx;
+}
+.item .item-fr .item-bottom .item-btn {
+  width: 182rpx;
+  height: 66rpx;
+  font-size: 30rpx;
+  padding: 0;
+  margin: 0;
+  background-color: #ff9031;
+}
+.item .item-fr .item-bottom .item-btn.active {
+  background-color: #d84936;
+}
+.redbags-popup-wrapper {
+  position: relative;
+  width: 600rpx;
+  height: 760rpx;
+}
+.redbags-popup-wrapper .redbags-popup {
+  height: 100%;
+}
+.redbags-popup-wrapper .icon-close {
+  width: 78rpx;
+  height: 78rpx;
+  position: absolute;
+  top: 12rpx;
+  right: 12rpx;
+  z-index: 666;
+}
+.getuser-btn {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 6;
+  background-color: transparent !important;
+}
+.fix-redbags {
+  position: fixed;
+  width: 160rpx;
+  height: 160rpx;
+  right: 30rpx;
+  top: 318rpx;
+}
+.fix-redbags image {
+  height: 100%;
+}
+.success-wrapper {
+  width: 600rpx;
+  height: 750rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  text-align: center;
+  position: relative;
+  padding: 65rpx 0;
+}
+.success-wrapper .icon-close {
+  position: absolute;
+  width: 32rpx;
+  height: 30rpx;
+  right: 30rpx;
+  top: 30rpx;
+}
+.success-wrapper .success-award-info {
+  font-size: 30rpx;
+  color: #000;
+  line-height: 50rpx;
+}
+.success-wrapper .success-award-info text {
+  font-size: 40rpx;
+  color: #fb5d2b;
+}
+.success-wrapper .sucess-image {
+  width: 496rpx;
+  height: 411rpx;
+  display: inline-block;
+  margin: 0 auto 20rpx;
+}
+.success-wrapper .success-btn {
+  width: 300rpx;
+  height: 90rpx;
+  display: inline-block;
+}
+

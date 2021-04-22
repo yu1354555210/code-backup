@@ -1,0 +1,1 @@
+<view><view class="no-data"><image src="../../static/no-data.png" mode="aspectFill"></image><text class="no-data-text">{{title}}</text><navigator class="no-data-btn" url="../../pages/index/index"><image src="../../static/no-data-btn.png" mode="aspectFill"></image></navigator></view></view>

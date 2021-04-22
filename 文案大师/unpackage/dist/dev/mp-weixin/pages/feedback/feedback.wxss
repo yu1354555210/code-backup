@@ -1,0 +1,68 @@
+.content {
+  padding: 41rpx;
+}
+.content .feedback-title {
+  font-size: 28rpx;
+  color: #313331;
+  margin-bottom: 24rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.content .feedback-title::after {
+  content: '*';
+  font-size: 24rpx;
+  color: #fe5116;
+  margin-left: 10rpx;
+}
+.content .textarea {
+  position: relative;
+  margin-bottom: 40rpx;
+}
+.content .textarea .u-input__textarea {
+  font-size: 24rpx;
+  color: #99a3a4;
+  background-color: #fff;
+  -webkit-border-radius: 42rpx;
+          border-radius: 42rpx;
+  padding: 32rpx;
+  font-size: 24rpx;
+}
+.content .textarea .total-num {
+  position: absolute;
+  right: 26rpx;
+  bottom: 23rpx;
+  font-size: 24rpx;
+  color: #99a3a4;
+}
+.content .u-list-item {
+  background-color: #fff !important;
+  overflow: visible !important;
+  border: 1rpx dashed #99a3a4 !important;
+}
+.content .u-list-item .u-add-tips {
+  margin-top: 0;
+}
+.content .u-list-item .u-delete-icon {
+  width: 32rpx;
+  height: 32rpx;
+  top: -10rpx;
+  right: -10rpx;
+}
+.content .u-list-item .u-delete-icon .uicon-close {
+  font-size: 18rpx !important;
+}
+.content .customer {
+  text-align: center;
+  font-size: 24rpx;
+  color: #4a4c4c;
+}
+.content .customer text {
+  text-decoration: underline;
+  color: #00a6ac;
+  margin-left: 10rpx;
+}
+

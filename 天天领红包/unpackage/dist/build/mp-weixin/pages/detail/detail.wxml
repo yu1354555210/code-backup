@@ -1,0 +1,1 @@
+<view><view class="content"><view class="title">{{title}}</view><view class="other">{{ctime}}</view><rich-text nodes="{{$root.f0}}"></rich-text><view class="ad-box"><ad unit-id="adunit-49338f1bcd60024d"></ad></view></view></view>

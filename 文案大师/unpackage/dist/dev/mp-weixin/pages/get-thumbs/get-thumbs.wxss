@@ -1,0 +1,61 @@
+.content {
+  padding: 0 24rpx;
+}
+.thumbs-item {
+  padding: 30rpx 0;
+  border-bottom: 2rpx solid #dadcdb;
+}
+.thumbs-item:last-child {
+  border-bottom: none;
+}
+.thumbs-item .thumbs-title {
+  font-size: 24rpx;
+  color: #ff490b;
+  padding-left: 80rpx;
+  margin-bottom: 25rpx;
+}
+.thumbs-item .thumbs-info {
+  font-size: 24rpx;
+  color: #4a4c4c;
+  padding-left: 24rpx;
+  margin: 15rpx 0;
+}
+.thumbs-item .thumbs-content {
+  min-height: 100rpx;
+  background: #fff;
+  -webkit-border-radius: 42rpx;
+          border-radius: 42rpx;
+  padding: 20rpx 29rpx;
+}
+.thumbs-item .thumbs-content .thumbs-content-tit {
+  font-size: 26rpx;
+  color: #313331;
+}
+.thumbs-item .thumbs-content .thumbs-content-text {
+  font-size: 24rpx;
+  color: #4a4c4c;
+}
+.thumbs-item .thumbs-top {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  margin-bottom: 10rpx;
+}
+.thumbs-item .thumbs-top>text {
+  font-size: 28rpx;
+  color: #999;
+}
+.thumbs-item .thumbs-top .utag {
+  margin-left: 20rpx;
+}
+.thumbs-item .thumbs-top .work-avatar {
+  width: 58rpx;
+  height: 58rpx;
+  margin-right: 20rpx;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+}
+

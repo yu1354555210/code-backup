@@ -1,0 +1,140 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "免费拿"
+			}
+		},
+		{
+			"path": "pages/mine/index",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		},
+		{
+			"path": "pages/detail/index",
+			"style": {
+				"navigationBarTitleText": "砍一刀",
+				"navigationBarBackgroundColor": "#f96a2a",
+				"backgroundColor": "#f96a2a"
+			}
+		},
+		{
+			"path": "pages/invite/index",
+			"style": {
+				"navigationBarTitleText": "砍一刀",
+				"navigationBarBackgroundColor": "#f96a2a",
+				"backgroundColor": "#f96a2a"
+			}
+		}
+	    ,{
+            "path" : "pages/lottery/index",
+            "style" : {
+				"navigationBarTitleText": "抽奖红包",
+				"navigationBarBackgroundColor": "#fd572b",
+				"backgroundColor": "#fd572b"
+			}
+        }
+        ,{
+            "path" : "pages/redbags/index",
+            "style" : {
+				"navigationBarTextStyle": "black",
+				"navigationBarTitleText": "我的红包",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"backgroundColor": "#FFFFFF"
+			}
+        },{
+            "path" : "pages/awards/index",
+            "style" : {
+				"navigationBarTextStyle": "black",
+				"navigationBarTitleText": "我的奖品",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"backgroundColor": "#FFFFFF"
+			}
+        },{
+            "path" : "pages/cash/index",
+            "style" : {
+				"navigationBarTextStyle": "black",
+				"navigationBarTitleText": "立即提现",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"backgroundColor": "#FFFFFF"
+			}
+        },{
+            "path" : "pages/question/index",
+            "style" : {
+				"navigationBarTextStyle": "black",
+				"navigationBarTitleText": "常见问题",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"backgroundColor": "#FFFFFF"
+			}
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#2d2793",
+		"backgroundColor": "#2d2793"
+	},
+	"tabBar": {
+		"color": "#FFFFFF",
+		"selectedColor": "#FFFFFF",
+		"borderStyle": "black",
+		"backgroundColor": "#000000",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"iconPath": "static/icon-tabbar1.png",
+			"selectedIconPath": "static/icon-tabbar1-cur.png",
+			"text": "免费拿"
+		}, {
+			"pagePath": "pages/mine/index",
+			"iconPath": "static/icon-tabbar2.png",
+			"selectedIconPath": "static/icon-tabbar2-cur.png",
+			"text": "我的"
+		}]
+	},
+	"condition": { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式（list 的索引项）
+		"list": [{
+				"name": "detail", //模式名称
+				"path": "pages/detail/index", //启动页面，必选
+				"query": "" //启动参数，在页面的onLoad函数里面得到。
+			},
+			{
+				"name": "invite", //模式名称
+				"path": "pages/invite/index", //启动页面，必选
+				"query": "bargain_id=52" //启动参数，在页面的onLoad函数里面得到。
+			},
+			{
+				"name": "lottery", //模式名称
+				"path": "pages/lottery/index", //启动页面，必选
+				"query": "" //启动参数，在页面的onLoad函数里面得到。
+			},
+			{
+				"name": "mine", //模式名称
+				"path": "pages/mine/index", //启动页面，必选
+				"query": "" //启动参数，在页面的onLoad函数里面得到。
+			},
+			{
+				"name": "redbags", //模式名称
+				"path": "pages/redbags/index", //启动页面，必选
+				"query": "" //启动参数，在页面的onLoad函数里面得到。
+			},
+			{
+				"name": "awards", //模式名称
+				"path": "pages/awards/index", //启动页面，必选
+				"query": "" //启动参数，在页面的onLoad函数里面得到。
+			},
+			{
+				"name": "cash", //模式名称
+				"path": "pages/cash/index", //启动页面，必选
+				"query": "" //启动参数，在页面的onLoad函数里面得到。
+			},
+			{
+				"name": "question", //模式名称
+				"path": "pages/question/index", //启动页面，必选
+				"query": "" //启动参数，在页面的onLoad函数里面得到。
+			}
+		]
+	}
+}

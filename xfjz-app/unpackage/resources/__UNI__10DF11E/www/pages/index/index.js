@@ -1,0 +1,2 @@
+setCssToHead([".",[1],"text-blue { color: #64abfe; }\n.",[1],"cuIcon-index { width: ",[0,88]," !important; height: ",[0,88]," !important; top: ",[0,-42]," !important; }\n.",[1],"cuIcon-index wx-image { width: 100%; height: 100%; }\n",],undefined,{path:"./pages/index/index.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/index/index.wxml') } }));

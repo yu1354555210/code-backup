@@ -1,0 +1,24 @@
+.login-bg {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+.logo {
+  display: block;
+  width: 181rpx;
+  height: 181rpx;
+  margin: 260rpx auto 470rpx;
+}
+.login-btn {
+  margin: 0 auto;
+  width: 272rpx;
+  height: 84rpx;
+  display: block;
+  -webkit-border-radius: 42rpx;
+          border-radius: 42rpx;
+}
+.login-btn image {
+  width: 100%;
+}
+

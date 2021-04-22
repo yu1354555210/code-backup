@@ -1,0 +1,415 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<link rel="stylesheet" type="text/css" href="css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="layer/theme/default/layer.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="css/new_style.css" />
+		<style type="text/css">
+			pre {
+				white-space: pre-wrap;
+				font-size: 0.65rem;
+			}
+			
+			.aui-dialog-body input {
+				width: 100%;
+				box-sizing: border-box !important;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="aui-content aui-margin-b-15">
+			<ul class="aui-list aui-media-list" id="giftlist">
+			</ul>
+		</div>
+		<script type="text/javascript" src="js/api.js"></script>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="layer/mobile/layer.js"></script>
+		<script type="text/javascript" src="layer/layer.js"></script>
+		<script type="text/javascript" src="js/fn.js"></script>
+		<script src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+		<script>
+			$(function() {
+				$(".aui-content").height($(window).height());
+				FastClick.attach(document.body);
+			});
+
+			var btnid = parent.prentId;
+			if(save('g', 'tokens') == null) window.location.href = './login.html';
+			loadData("gift_detail", "index.php?g=lucky&m=api&a=api", {
+				token: token,
+				gift_id: btnid
+			}, function(e) {
+				var type = e.data.type;
+				var listid = btnid;
+				$("#giftlist").append(createIndex(e));
+				var flag = true;
+				var coins = e.data.coins;
+				if(type == 1) {
+					$('#go').on('click', function(index) {
+						layer.closeAll(),
+							loadData('info', 'index.php?g=lucky&m=api&a=api', {
+								token: window.localStorage.getItem('tokens')
+							}, function(e) {
+								if(e.code != 1) {
+									parent.layer.msg('获取用户信息失败', {
+										time: 1000
+									})
+								} else if(e.data.lucky_status == 1) {
+									parent.layer.msg('用户已被冻结，请联系QQ客服：2780575722', {
+										time: 1000
+									});
+								} else {
+									if(e.data.lucky_gold == null || e.data.lucky_gold == "0") e.data.lucky_gold = 0;
+									$("#beantext").text(e.data.lucky_gold);
+									window.localStorage.setItem('gold', e.data.lucky_gold);
+									if(parseInt(e.data.lucky_gold) > 0) {
+										layer1.open({
+											content: '<div class="aui-dialog-header" style="padding:0 !important">请填写要充值的QQ号</div><div class="aui-dialog-body"><input type="number" placeholder="" id="text" class="qq_num"></div><p class="wran_info">请确认填写内容准确性，一旦确定无法更改</p>',
+											btn: ['开始抽奖', '关闭'],
+											yes: function() {
+												var aaNum = $(".qq_num").val();
+												if(flag == true) {
+													flag = false;
+													if(aaNum == "") {
+														parent.layer.msg('QQ号码不能为空', {
+															time: 1000
+														})
+														flag = true;
+														return
+													} else {
+														loadData("gift_draw", "index.php?g=lucky&m=api&a=api", {
+															token: token,
+															gift_id: listid,
+															kvalue: $("#text").val(),
+														}, function(e) {
+															flag = true;
+															if(e.code == 1) {
+																layer1.open({
+																	content: '抽中啦，奖品预计24小时内到账，发放状态请到<span class="aui-text-info" id="mygift">我的奖品</span>中查看',
+																	btn: ['关闭'],
+																	success: function(layero, index) {
+
+																		$('#mygift').on('click', function() {
+																			parent.layer.open({
+																				type: 2,
+																				title: '<img src="image/gift.png" class="bean">我的奖品',
+																				maxmin: true,
+																				shadeClose: true, //点击遮罩关闭层
+																				area: ['90%', '70%'],
+																				content: 'giftdetail.html'
+																			});
+																		});
+																	},
+																	end: function() {
+																		parent.location.reload();
+																	}
+
+																});
+
+															} else if(e.code == 0) {
+																layer1.open({
+																	content: e.msg,
+																	btn: ['关闭'],
+																});
+															} else if(e.code == -3) {
+																parent.layer.msg("库存不足，请稍后再试", {
+																	time: 1000
+																})
+															} else {
+																parent.layer.msg(e.msg, {
+																	time: 1000
+																})
+															}
+														});
+													}
+												}
+
+											}
+										});
+
+									} else {
+										parent.layer.msg('金豆不足无法抽奖', {
+											time: 1000
+										})
+									}
+								}
+							});
+					});
+				} else if(type == 2) {
+					$('#go').on('click', function(index) {
+						layer.closeAll(),
+							loadData('info', 'index.php?g=lucky&m=api&a=api', {
+								token: window.localStorage.getItem('tokens')
+							}, function(e) {
+								if(e.code != 1) {
+									parent.layer.msg('获取用户信息失败', {
+										time: 1000
+									})
+								} else if(e.data.lucky_status == 1) {
+									parent.layer.msg('用户已被冻结，请联系QQ客服：2780575722', {
+										time: 1000
+									});
+								} else {
+									if(e.data.lucky_gold == null || e.data.lucky_gold == "0") e.data.lucky_gold = 0;
+									$("#beantext").text(e.data.lucky_gold);
+									window.localStorage.setItem('gold', e.data.lucky_gold);
+									if(parseInt(e.data.lucky_gold) > 0) {
+										layer1.open({
+											content: '<div class="aui-dialog-header" style="padding:0 !important">请填写要充值的手机号</div><div class="aui-dialog-body"><input type="number"  class="phone_num" placeholder="" id="text"></div><p class="wran_info">请确认填写内容准确性，一旦确定无法更改</p>',
+											btn: ['开始抽奖', '关闭'],
+											yes: function() {
+												var reg = /^1[3578][01379]\d{8}|1[34578][01256]\d{8}|(134[012345678]\d{7}|1[34578][012356789]\d{8})$/g; //判断手机号码是否为中国电信，中国联通，中国移动中的一种
+												var phone = $(".phone_num").val();
+												if(flag == true) {
+													flag = false;
+													if(!reg.test(phone)) {
+														parent.layer.msg('请填写正确的手机号码', {
+															time: 1000
+														})
+														flag = true;
+														return
+													} else {
+														loadData("gift_draw", "index.php?g=lucky&m=api&a=api", {
+															token: token,
+															gift_id: listid,
+															kvalue: $("#text").val(),
+														}, function(e) {
+															flag = true;
+															if(e.code == 1) {
+
+																layer1.open({
+																	content: '抽中啦，奖品预计24小时内到账，发放状态请到<span class="aui-text-info" id="mygift">我的奖品</span>中查看',
+																	btn: ['关闭'],
+																	success: function(layero, index) {
+
+																		$('#mygift').on('click', function() {
+																			parent.layer.open({
+																				type: 2,
+																				title: '我的奖品',
+																				maxmin: true,
+																				shadeClose: true, //点击遮罩关闭层
+																				area: ['90%', '70%'],
+																				content: 'giftdetail.html'
+																			});
+																		});
+
+																	},
+																	end: function() {
+																		parent.location.reload();
+																	}
+																});
+															} else if(e.code == 0) {
+																layer1.open({
+																	content: e.msg,
+																	btn: ['关闭'],
+																});
+															} else if(e.code == -3) {
+																parent.layer.msg("库存不足，请稍后再试", {
+																	time: 1000
+																})
+															} else {
+																parent.layer.msg(e.msg, {
+																	time: 1000
+																})
+															}
+
+														});
+													}
+												}
+
+											}
+										});
+									} else {
+										parent.layer.msg('金豆不足无法抽奖', {
+											time: 1000
+										})
+									}
+								}
+							});
+					});
+				} else if(type == 3) {
+					$('#go').on('click', function(index) {
+						layer.closeAll(),
+							loadData('info', 'index.php?g=lucky&m=api&a=api', {
+								token: window.localStorage.getItem('tokens')
+							}, function(e) {
+								if(e.code != 1) {
+									parent.layer.msg('获取用户信息失败', {
+										time: 1000
+									})
+								} else if(e.data.lucky_status == 1) {
+									parent.layer.msg('用户已被冻结，请联系QQ客服：2780575722', {
+										time: 1000
+									});
+								} else {
+									if(e.data.lucky_gold == null || e.data.lucky_gold == "0") e.data.lucky_gold = 0;
+									$("#beantext").text(e.data.lucky_gold);
+									window.localStorage.setItem('gold', e.data.lucky_gold);
+									if(parseInt(e.data.lucky_gold) > 0) {
+										if(flag == true) {
+											flag = false;
+											loadData("gift_draw", "index.php?g=lucky&m=api&a=api", {
+												token: token,
+												gift_id: listid,
+												kvalue: "",
+											}, function(e) {
+												flag = true;
+												if(e.code == 1) {
+													layer1.open({
+														content: '恭喜你，抽中啦JD E卡，24小时内发放，卡密请到<span class="aui-text-info" id="mygift">我的奖品</span>中查看',
+														btn: ['关闭'],
+														success: function(layero, index) {
+
+															$('#mygift').on('click', function() {
+																parent.layer.open({
+																	type: 2,
+																	title: '我的奖品',
+																	maxmin: true,
+																	shadeClose: true, //点击遮罩关闭层
+																	area: ['90%', '70%'],
+																	content: 'giftdetail.html'
+																});
+															});
+
+														},
+														end: function() {
+															parent.location.reload();
+														}
+													});
+
+												} else if(e.code == 0) {
+													layer1.open({
+														content: e.msg,
+														btn: ['关闭'],
+													});
+												} else if(e.code == -1) {
+													parent.layer.msg("网络异常请重试", {
+														time: 1000
+													})
+												} else if(e.code == -3) {
+													parent.layer.msg("库存不足，请稍后再试", {
+														time: 1000
+													})
+												} else if(e.code != 0 && e.code != 1 && e.code != -1) {
+													parent.layer.msg(e.msg, {
+														time: 1000
+													})
+												}
+											});
+										}
+									} else {
+										flag = true;
+										parent.layer.msg('金豆不足无法抽奖', {
+											time: 1000
+										})
+									}
+								}
+							});
+					});
+				} else if(type == 4) {
+					$('#go').on('click', function(index) {
+						layer.closeAll(),
+							loadData('info', 'index.php?g=lucky&m=api&a=api', {
+								token: window.localStorage.getItem('tokens')
+							}, function(e) {
+								if(e.code != 1) {
+									parent.layer.msg('获取用户信息失败', {
+										time: 1000
+									})
+								} else if(e.data.lucky_status == 1) {
+									parent.layer.msg('用户已被冻结，请联系QQ客服：2780575722', {
+										time: 1000
+									});
+								} else {
+									if(e.data.lucky_gold == null || e.data.lucky_gold == "0") e.data.lucky_gold = 0;
+									$("#beantext").text(e.data.lucky_gold);
+									window.localStorage.setItem('gold', e.data.lucky_gold);
+									if(parseInt(e.data.lucky_gold) > 0) {
+										if(flag == true) {
+											flag = false;
+											loadData("gift_draw", "index.php?g=lucky&m=api&a=api", {
+												token: token,
+												gift_id: listid,
+												kvalue: "",
+											}, function(e) {
+												flag = true;
+												if(e.code == 1) {
+													layer1.open({
+														content: '恭喜你，抽中了'+coins+'娃娃币，娃娃币已经发放到您的账号中，快去看看吧',
+														btn: ['关闭'],
+														success: function(layero, index) {
+
+														},
+														end: function() {
+															parent.location.reload();
+														}
+													});
+
+												} else if(e.code == 0) {
+													layer1.open({
+														content: e.msg,
+														btn: ['关闭'],
+													});
+												} else if(e.code == -1) {
+													parent.layer.msg("网络异常请重试", {
+														time: 1000
+													})
+												} else if(e.code == -3) {
+													parent.layer.msg("库存不足，请稍后再试", {
+														time: 1000
+													})
+												} else if(e.code != 0 && e.code != 1 && e.code != -1) {
+													parent.layer.msg(e.msg, {
+														time: 1000
+													})
+												}
+											});
+										}
+									} else {
+										flag = true;
+										parent.layer.msg('金豆不足无法抽奖', {
+											time: 1000
+										})
+									}
+								}
+							});
+					});
+				}
+
+			});
+
+			function createIndex(e) {
+				var type = e.data.type;
+				var listid = e.data.id;
+				var str = e.data.img;
+				var arr = str.split(',');
+				var tmp = '';
+				for(var i = 0; i < arr.length; i++) {
+					tmp += '<img src="' + arr[i] + '">';
+				}
+
+				var html = '';
+				if(e.data == "") {
+					html += '<img src="./image/no.png" style="width:100%">';
+				} else {
+					html += '<div class="aui-content aui-margin-b-15 award_detail_con"><ul class="aui-list aui-media-list" style="border: none;background-color:#f4f4f4;background-size: 100% 0px;"><li class="aui-list-item" id="lottery"><div class="lottery_flex"><div class="aui-list-item-media"><img src="' + e.data.icon + '"></div>';
+					html += '<div class="aui-list-item-inner"><div class="aui-list-item-text"><div class="aui-list-item-title">' + e.data.title + '</div><div class="aui-list-item-right"></div></div><div class="aui-list-item-text"><span><img src="image/bean.png" class="bean"><i class="tit">' + e.data.golds + '</i></span><div class="aui-list-item-right" id="next"></div></div></div><button class="button" id="go">立即抽奖</button></div></li></ul></div>';
+					// html += '<section class="aui-content layui-text"><div class="aui-card-list"><div class="aui-card-list-content card_img_con">' + tmp + '</div><div class="aui-card-list-footer"><pre>' + e.data.content + '</pre></div></div></section>';
+					html += '<section class="aui-content layui-text"><div class="aui-card-list"><div class="aui-card-list-content card_img_con"></div><div class="aui-card-list-footer"><pre>' + e.data.content + '</pre></div></div></section>';
+
+				}
+				return html;
+			}
+		</script>
+		<div style="display:none">
+			<script src="https://s22.cnzz.com/z_stat.php?id=1273592771&web_id=1273592771" language="JavaScript"></script>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/api.js"></script>
+
+</html>

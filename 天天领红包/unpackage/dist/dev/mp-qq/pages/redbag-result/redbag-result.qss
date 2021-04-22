@@ -1,0 +1,124 @@
+.redbag-person-list {
+  border-top: 15rpx solid #eee;
+  margin-top: 410rpx;
+  padding: 0 20rpx;
+}
+.redbag-person-list .redbag-person-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  padding: 40rpx 0;
+  position: relative;
+}
+.redbag-person-list .redbag-person-item::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 598rpx;
+  height: 1rpx;
+  background: #eee;
+}
+.redbag-person-list .redbag-person-item .item-left {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  width: 60%;
+}
+.redbag-person-list .redbag-person-item .item-left image {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 90rpx;
+          flex: 0 0 90rpx;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 10rpx;
+  margin-right: 20rpx;
+}
+.redbag-person-list .redbag-person-item .item-left .user {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.redbag-person-list .redbag-person-item .item-left .user .username {
+  font-size: 28rpx;
+  color: #333;
+}
+.redbag-person-list .redbag-person-item .item-left .user .time {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 5rpx;
+}
+.redbag-person-list .redbag-person-item .item-right {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  text-align: right;
+}
+.redbag-person-list .redbag-person-item .item-right .price {
+  font-size: 34rpx;
+  color: #333;
+}
+.redbag-person-list .redbag-person-item .item-right .best-person {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.redbag-person-list .redbag-person-item .item-right .best-person text {
+  font-size: 28rpx;
+  color: #fcc800;
+}
+.redbag-person-list .redbag-person-item .item-right .best-person image {
+  width: 39rpx;
+  height: 27rpx;
+  margin-right: 12rpx;
+}
+.redbag-num-box {
+  z-index: 666;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 372rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #fef3d8;
+  background-color: #fff;
+  box-shadow: 0 0 30rpx 10rpx #fff;
+}
+.redbag-num-box .redbag-num {
+  margin-top: 160rpx;
+}
+.redbag-num-box .redbag-num text {
+  font-size: 150rpx;
+  font-weight: bold;
+  line-height: 80rpx;
+}
+.redbag-num-box .redbag-num text+text {
+  margin-left: 10rpx;
+  font-size: 30rpx;
+}
+

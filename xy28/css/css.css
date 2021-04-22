@@ -1,0 +1,12 @@
+body{
+	background-color: #fff;
+}
+
+.diamond {
+    display: inline;
+    vertical-align: middle;
+    width: 22px;
+    margin: 0 5px;
+}
+
+

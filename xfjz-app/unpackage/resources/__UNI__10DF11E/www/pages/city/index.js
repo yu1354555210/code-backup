@@ -1,0 +1,2 @@
+setCssToHead([".",[1],"container{ padding: ",[0,30]," 0; }\n",],undefined,{path:"./pages/city/index.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/city/index.wxml') } }));

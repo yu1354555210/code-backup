@@ -1,0 +1,1 @@
+npm run build && svn ci -m 1 && copy D:\zhuawawah5\dist\ D:\h5jdk\wawalaile\dist\ /y && svn ci -m 1 D:\h5jdk\wawalaile\

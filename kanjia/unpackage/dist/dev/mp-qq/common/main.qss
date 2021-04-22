@@ -1,0 +1,106 @@
+@-webkit-keyframes pulse {
+0% {
+		-webkit-transform: scale(1);
+		        transform: scale(1);
+}
+50% {
+		-webkit-transform: scale(1.05);
+		        transform: scale(1.05);
+}
+100% {
+		-webkit-transform: scale(1);
+		        transform: scale(1);
+}
+}
+@keyframes pulse {
+0% {
+		-webkit-transform: scale(1);
+		        transform: scale(1);
+}
+50% {
+		-webkit-transform: scale(1.05);
+		        transform: scale(1.05);
+}
+100% {
+		-webkit-transform: scale(1);
+		        transform: scale(1);
+}
+}
+.pulse {
+	-webkit-animation-name: pulse;
+	        animation-name: pulse;
+	-webkit-animation-duration: 0.8s;
+	        animation-duration: 0.8s;
+	-webkit-animation-delay: .2s;
+	        animation-delay: .2s;
+	-webkit-animation-timing-function: ease;
+	        animation-timing-function: ease;
+	-webkit-animation-fill-mode: both;
+	        animation-fill-mode: both;
+	-webkit-animation-iteration-count: infinite;
+	        animation-iteration-count: infinite;
+}
+@-webkit-keyframes swing {
+10% {
+		-webkit-transform: rotate(15deg);
+		        transform: rotate(15deg);
+}
+20% {
+		-webkit-transform: rotate(-10deg);
+		        transform: rotate(-10deg);
+}
+30% {
+		-webkit-transform: rotate(5deg);
+		        transform: rotate(5deg);
+}
+40% {
+		-webkit-transform: rotate(-5deg);
+		        transform: rotate(-5deg);
+}
+50%,
+	100% {
+		-webkit-transform: rotate(0deg);
+		        transform: rotate(0deg);
+}
+}
+@keyframes swing {
+10% {
+		-webkit-transform: rotate(15deg);
+		        transform: rotate(15deg);
+}
+20% {
+		-webkit-transform: rotate(-10deg);
+		        transform: rotate(-10deg);
+}
+30% {
+		-webkit-transform: rotate(5deg);
+		        transform: rotate(5deg);
+}
+40% {
+		-webkit-transform: rotate(-5deg);
+		        transform: rotate(-5deg);
+}
+50%,
+	100% {
+		-webkit-transform: rotate(0deg);
+		        transform: rotate(0deg);
+}
+}
+.swing {
+	-webkit-transform-origin: bottom center;
+	        transform-origin: bottom center;
+	-webkit-animation: swing 2s .15s linear infinite;
+	        animation: swing 2s .15s linear infinite;
+	width: 100%;
+	height: 100%;
+}
+
+/*每个页面公共css */
+view,image,text {
+	box-sizing: border-box;
+}
+image {
+	width: 100%;
+	max-width: 100%;
+}
+

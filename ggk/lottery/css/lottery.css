@@ -1,0 +1,211 @@
+/* ============================================================
+   flex：定义布局为盒模型
+   flex-v：盒模型垂直布局
+   flex-1：子元素占据剩余的空间
+   flex-align-center：子元素垂直居中
+   flex-pack-center：子元素水平居中
+   flex-pack-justify：子元素两端对齐
+   兼容性：ios 4+、android 2.3+、winphone8+
+   ============================================================ */
+.flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.flex-v {
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.flex-1 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+.flex-align-center {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.flex-pack-center {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.flex-pack-justify {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.bgsize {
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+}
+body {
+  background-color: #f6f6f6;
+  height: auto;
+}
+.wrapper {
+  background-image: url(../img/bg.jpg);
+  background-repeat: no-repeat;
+  background-attachment: local;
+  -webkit-background-size: 7.5rem 8.15rem;
+  background-size: 7.5rem 8.15rem;
+}
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+  .wrapper {
+    background-position-y: top;
+  }
+}
+@media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) {
+  .wrapper {
+    background-position-y: top;
+  }
+}
+@media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
+  .wrapper {
+    background-position-y: top;
+  }
+}
+.lottery-box {
+  padding: 2.3rem 0 0;
+  margin: 0 auto;
+}
+.lottery-box .lottery-bg {
+  overflow: hidden;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 6.5rem;
+  height: 5.36rem;
+  margin: 0 auto;
+}
+.lottery-box .lottery-bg.light1 {
+  background-image: url(../img/light1.png);
+}
+.lottery-box .lottery-bg.light2 {
+  background-image: url(../img/light2.png);
+}
+.lottery-box .lottery-bg .lottery {
+  width: 5.7rem;
+  margin: 0.42rem auto 0;
+}
+.lottery-box .lottery-group {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  height: 1.54rem;
+}
+.lottery-box .lottery-group .lottery-unit {
+  width: 1.83rem;
+  text-align: center;
+  position: relative;
+  background: url(../img/item-bg.png) no-repeat;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  font-size: 0.24rem;
+  color: #b93e00;
+}
+.lottery-box .lottery-group .lottery-unit img {
+  display: block;
+  width: 100%;
+  height: 1.42rem;
+}
+.lottery-box .lottery-group .lottery-unit span {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0.25rem;
+  text-align: center;
+  color: #b93e00;
+  font-size: 0.24rem;
+}
+.lottery-box .lottery-group .lottery-unit.bgn {
+  background: none;
+}
+.lottery-box .lottery-group .lottery-unit.cjbtn {
+  background-image: url(../img/cj-btn.png);
+}
+.lottery-box .lottery-group .lottery-unit.cjbtn.cur {
+  background-image: url(../img/cj-btn-cur.png);
+}
+.lottery-box .lottery-group .lottery-unit.cjbtn a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 66;
+}
+.lottery-box .lottery-group .lottery-unit.active {
+  background-image: url(../img/item-bg-cur.png);
+}
+.mine-box {
+  background-image: url(../img/mine-bg.png);
+  background-size: 100% 100%;
+  width: 6.77rem;
+  height: 0.76rem;
+  margin: 0.2rem auto 0.65rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0.1rem;
+}
+.mine-box li {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-align: center;
+  color: #fee083;
+}
+.mine-box li .this-icon {
+  width: 0.22rem;
+  height: 0.22rem;
+}
+.mine-box li span {
+  color: #fff;
+  font-size: 0.22rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+.icon-money {
+  background-image: url(../img/icon-money.png);
+}
+.icon-coin {
+  background-image: url(../img/icon-coin.png);
+}
+.rule-box {
+  padding: 0 0.45rem 0.5rem 0.48rem;
+}
+.rule-box .rule-title {
+  background-image: url(../img/rule-title.png);
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  width: 2.63rem;
+  height: 0.34rem;
+  margin: 0 auto 0.3rem;
+}
+.rule-box li {
+  font-size: 0.26rem;
+  color: #646465;
+  margin-bottom: 0.24rem;
+}

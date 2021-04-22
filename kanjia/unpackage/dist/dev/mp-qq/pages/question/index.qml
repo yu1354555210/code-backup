@@ -1,0 +1,1 @@
+<view class="content"><view class="item item-fl"><image src="../../static/default-avatar.png" mode="aspectFill"></image><view class="item-info">我是您的贴心小卫士请问最贵的你有什么要求？请问有什么问题？</view></view><view class="item item-fr"><image src="../../static/default-avatar.png" mode="aspectFill"></image><view class="item-info">谢谢你！</view></view></view>

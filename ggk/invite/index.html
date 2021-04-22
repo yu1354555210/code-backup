@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, width=device-width, viewport-fit=cover" />
+		<meta name="format-detection" content="telephone=no">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Expires" content="0">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Cache-control" content="no-cache">
+		<meta http-equiv="Cache" content="no-cache">
+		<!--[if !IE]>
+    		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    	<!--<![endif]-->
+		<title>邀请好友</title>
+		<link rel="stylesheet" type="text/css" href="../public/css/reset.css?a=aaa" />
+		<link rel="stylesheet" type="text/css" href="../public/css/dialog.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css?v=1.1aa3x22333" />
+		<script src="../public/js/fontrem.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://js.cdn.aliyun.dcloud.net.cn/dev/uni-app/uni.webview.1.5.2.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script type="text/javascript">
+			document.write('<link rel="stylesheet" type="text/css" href="css/style.css?v='+new Date().getTime()+'">'); 
+		</script>-->
+	</head>
+
+	<body class="invite-body">
+		<div class="safe-top-div"></div>
+		<div class="public-header">
+			<div class="close-arrow"></div>
+			<h1 class="public-header-title">邀请好友</h1>
+		</div>
+		<div class="wrapper bg has-tabar has-header">
+			<div class="invite-top-btn">
+				<div class="yq-rule-btn"></div>
+				<div class="invite-code-btn" style="display: none;"></div>
+			</div>
+			<div class="yq-code">
+				<div class="yq-code-text">邀请码:<span id="copyVal"></span></div>
+				<div class="yq-code-btn"></div>
+			</div>
+			<section class="section section1">
+				<div class="title title1"><img src="img/title1.png" /></div>
+				<div class="total-box">
+					<div class="total-item" id="inviteRecord">
+						<i class="icon-user"></i> 已邀请好友
+						<span id="inviteNum">0</span>人
+					</div>
+					<div class="total-item" id="incomeRecord">
+						<i class="icon-coin"></i> 收入
+						<span id="inviteMoney">0</span>元
+					</div>
+				</div>
+				<div class="tips">首次邀请好友获得 <span>3元</span> 奖励</div>
+				<div class="lq-btn yq-btn"></div>
+			</section>
+			<section class="section section2">
+				<div class="title"><img src="img/title2.png" /></div>
+				<div class="item-list flex-pack-justify">
+					<div class="item item-close">
+						<div class="item-hb">
+							<div class="item-hb-top"><span>3</span>元/位</div>
+							<div class="item-hb-bottom">邀请<span>1</span>位</div>
+						</div>
+						<div class="item-tag">合计3元</div>
+						<div class="cur-tips" style="display: none;"></div>
+					</div>
+					<div class="item item-close">
+						<div class="item-hb">
+							<div class="item-hb-top"><span>4</span>元/位</div>
+							<div class="item-hb-bottom">邀请<span>2-3</span>位</div>
+						</div>
+						<div class="item-tag">合计8元</div>
+						<div class="cur-tips"></div>
+					</div>
+					<div class="item item-close">
+						<div class="item-hb">
+							<div class="item-hb-top"><span>5</span>元/位</div>
+							<div class="item-hb-bottom">邀请<span>4-20</span>位</div>
+						</div>
+						<div class="item-tag">合计75元</div>
+						<div class="cur-tips"></div>
+					</div>
+				</div>
+				<div class="item-list item-list-second flex-pack-center">
+					<div class="item item-close">
+						<div class="item-hb">
+							<div class="item-hb-top"><span>6</span>元/位</div>
+							<div class="item-hb-bottom">邀请<span>21-150</span>位</div>
+						</div>
+						<div class="item-tag">合计780元</div>
+						<div class="cur-tips"></div>
+					</div>
+					<div class="item item-close">
+						<div class="item-hb">
+							<div class="item-hb-top"><span>7</span>元/位</div>
+							<div class="item-hb-bottom">邀请<span>151-320</span>位</div>
+						</div>
+						<div class="item-tag">合计1190元</div>
+						<div class="cur-tips"></div>
+					</div>
+				</div>
+			</section>
+			<section class="section section3">
+				<div class="title"><img src="img/title3.png" /></div>
+				<div class="step"><img src="img/step.png" /></div>
+				<dl class="rule">
+					<dt><img src="img/tips-title.png"/></dt>
+					<dd>
+						<p>1.邀请家人、朋友、同学、同事等熟人成功率较高</p>
+					</dd>
+					<dd>
+						<p>2.分享到微信或QQ群中成功率提高300%</p>
+					</dd>
+					<dd>
+						<p>3.和好友多交流，可促进好友完成任务，帮你拿到奖励</p>
+					</dd>
+				</dl>
+			</section>
+			<div class="onekey-btn invite-btn yq-btn"></div>
+		</div>
+		<!--底部导航-->
+		<div class="tabbar">
+			<a href="javascript:;" id="tabbarGgk">
+				<img src="../public/img/tabbar-card.png" />
+				<p>刮刮卡</p>
+			</a>
+			<a id="tabbarLottery" href="javascript:;">
+				<img src="../public/img/tabbar-gift.png" />
+				<p>抽奖</p>
+			</a>
+			<a id="tabbarInvite" href="javascript:;" class="tabbar-cur">
+				<img src="../public/img/tabbar-invite-cur.png" />
+				<p>邀请</p>
+			</a>
+			<a id="tabbarCash" href="javascript:;">
+				<img src="../public/img/tabbar-cash.png" />
+				<p>提现</p>
+			</a>
+		</div>
+		<div class="safe-bottom-div"></div>
+		<!--填写邀请码-->
+		<div class="dialog-container dialog-public" id="dialogInvite" style="display: none;">
+			<div class="dialog-wrapper">
+				<div class="dialog-close"></div>
+				<div class="dialog-top-img dialog-top-friend">
+					<img src="img/popup-title1.png" />
+				</div>
+				<div class="dialog-input">
+					<input type="text" name="" id="codeVal" value="" placeholder="请输入邀请码" />
+					<p>每个用户只能输入一次邀请码</p>
+				</div>
+				<div class="dialog-btn" id="postInviteCode">确定</div>
+				<!--<div class="dialog-btn dialog-cur-btn">确定</div>-->
+			</div>
+		</div>
+
+		<!--未绑定手机提示-->
+		<div class="dialog-container dialog-public" id="dialogBindPhone" style="display: none;">
+			<div class="dialog-wrapper">
+				<div class="dialog-close"></div>
+				<div class="dialog-top-img dialog-top-friend">
+					<img src="img/popup-title1.png" />
+				</div>
+				<div class="dialog-text">
+					请先绑定手机，再填写好友的邀请码
+				</div>
+				<div class="dialog-btn" id="goBindPhone">去绑定</div>
+			</div>
+		</div>
+
+		<!--奖励说明-->
+		<div class="dialog-container dialog-public" id="dialogExplain" style="display: none;">
+			<div class="dialog-wrapper">
+				<div class="dialog-close"></div>
+				<div class="dialog-top-img dialog-top-title">奖励说明</div>
+				<dl class="dialog-rule">
+					<dd>
+						<p>1、好友填写你的邀请码则算邀请成功</p>
+					</dd>
+					<dd>
+						<p>2、邀请奖励分3天发放，依次为：<span id="stage">第1天1元，第2天2元，第3天3元，七日内有效；</span></p>
+					</dd>
+					<dd>
+						<p>3、好友刮满当天10张刮刮卡奖励自动发放</p>
+					</dd>
+				</dl>
+				<div class="dialog-btn invite-btn">立即邀请好友</div>
+			</div>
+		</div>
+
+		<!--邀请规则-->
+		<div class="dialog-container dialog-public" id="dialogRule" style="display: none;">
+			<div class="dialog-wrapper">
+				<div class="dialog-close"></div>
+				<div class="dialog-top-img dialog-top-title">邀请规则</div>
+				<dl class="dialog-rule">
+					<dd>
+						<p>1.邀请的好友越多，奖励越高，最多可达到7元每位</p>
+					</dd>
+					<dd>
+						<p>2.奖励分三天发放</p>
+					</dd>
+					<dd>
+						<p>3.新用户24小时内可以被邀请，超过24小时则无法再被邀请</p>
+					</dd>
+				</dl>
+			</div>
+		</div>
+
+		<!--邀请弹窗-->
+		<div class="dialog-container dialog-public" id="dialogShare" style="display: none;">
+			<div class="dialog-wrapper dialog-share">
+				<div class="dialog-share-title"></div>
+				<ul>
+					<li class="dialog-wechat">
+						<img src="img/invite-popup-icon1.png" />
+						<p>微信邀请</p>
+					</li>
+					<li class="dialog-wechat">
+						<img src="img/invite-popup-icon2.png" />
+						<p>微信群邀请</p>
+					</li>
+					<li class="dialog-wechat">
+						<img src="img/invite-popup-icon3.png" />
+						<p>朋友圈邀请</p>
+					</li>
+					<li class="face-qrcode">
+						<img src="img/invite-popup-icon4.png" />
+						<p>面对面邀请</p>
+					</li>
+				</ul>
+				<div class="dialog-invite-close"></div>
+			</div>
+		</div>
+
+		<!--口令弹窗-->
+		<div class="dialog-container dialog-public" id="dialogWord" style="display: none;">
+			<div class="dialog-wrapper dialog-word">
+				<div class="dialog-invite-close"></div>
+				<h2>你的口令已生成</h2>
+				<h3>已帮你自动复制，选择好友粘贴给他吧~</h3>
+				<div class="dialog-invite-word">
+					<p></p>
+				</div>
+				<div class="dialog-invite-btn"></div>
+			</div>
+		</div>
+		
+		<!--退出弹窗-->
+		<div class="dialog-container dialog-public" id="closeWebviewDialog" style="display: none;">
+			<div class="dialog-wrapper dialog-exit dialog-close-webview">
+				<dl>
+					<dt>是否关闭并退出</dt>
+				</dl>
+				<div class="dialog-btn-box">
+					<button class="dialog-btn dialog-cancel-btn">取消</button>
+					<button class="dialog-btn" id="closeWebviewBtn">关闭</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="notice" style="display:none;" id="noticeDiv">验证失败</div>
+		<script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script>
+		<script src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+		<script src="https://cdn.bootcss.com/vConsole/3.3.2/vconsole.min.js"></script>
+		<script src="../public/js/webview.js?v=as1111" type="text/javascript" charset="utf-8"></script>
+		<script src="../public/js/config.js?v=1.112s3" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+
+				FastClick.attach(document.body);
+
+				var token = window.localStorage.getItem('token');
+				var package_name = localStorage.getItem('package_name');
+				// var token = '0df28be828330ee4d39460dc956d0e87';
+				// var package_name = localStorage.setItem('package_name', 'com.XFJZ.JZ');
+
+				// var vConsole = new VConsole();
+				// console.log('VConsole is cool');
+				
+				//兼容性修复
+		        if(!judgeBigScreen()){
+		        	$(".invite-top-btn").css("padding-top",'0.5rem');
+		        }else{
+		        	// $(".wrapper").css('height','100vh');
+		        	
+		        }
+
+				$(".dialog-container,.dialog-close,.dialog-invite-close").click(function() {
+					$(".dialog-container").fadeOut('fast');
+				});
+
+				$(".dialog-wrapper").click(function(e) {
+					e.stopPropagation();
+				});
+
+				$(".yq-rule-btn").click(function() {
+					$("#dialogRule").fadeIn('fast');
+				});
+
+				$(".invite-code-btn").click(function() {
+					$("#dialogInvite").fadeIn('fast');
+				});
+
+				$(".invite-btn").click(function() {
+					$(this).parents('.dialog-container').fadeOut('fast');
+					$("#dialogShare").fadeIn('fast');
+				});
+
+				$(".dialog-wechat").click(function() {
+					$(this).parents('.dialog-container').fadeOut('fast');
+					$("#dialogWord").fadeIn('fast');
+				});
+
+				$("#inviteRecord").click(function() {
+					window.location.href = "invite-record.html?v="+Math.random();
+				});
+				
+				$("#incomeRecord").click(function() {
+					window.location.href = "income-record.html?v="+Math.random();
+				});
+
+				$(".item").each(function(i) {
+					var stage = $("#stage");
+					$(this).click(function() {
+						switch(i) {
+							case 0:
+								stage.text("第1天1元，第2天1元，第3天1元")
+								break;
+							case 1:
+								stage.text("第1天1元，第2天1元，第3天2元")
+								break;
+							case 2:
+								stage.text("第1天1元，第2天2元，第3天2元")
+								break;
+							case 3:
+								stage.text("第1天1元，第2天2元，第3天3元")
+								break;
+							case 4:
+								stage.text("第1天1元，第2天2元，第3天4元")
+								break;
+							default:
+								break;
+						}
+						$("#dialogExplain").fadeIn('fast');
+					});
+				});
+
+				$(".lq-btn").click(function() {
+					var stage = $("#stage");
+					stage.text("第1天1元，第2天1元，第3天1元")
+					$("#dialogExplain").fadeIn('fast');
+				});
+				
+				//去微信粘贴
+				$(".dialog-invite-btn").click(function(){
+					var data = $(".onekey-btn").attr('data-clipboard-text');
+					console.log(data)
+					jumpWechat(data);
+				});
+				
+				//面对面邀请
+				$(".face-qrcode").click(function(){
+					jumpUrl('https://bx.qianr.com/invite/qrcode.html?v='+ Math.random());
+				});
+
+				//兑换邀请码
+				$("#postInviteCode").click(function() {
+					var _this = $(this);
+					if($(this).hasClass('dialog-cur-btn')) return;
+					$.ajax({
+						type: "post",
+						url: apiUrl + "/api/hinvitation/api",
+						data: {
+							token: token,
+							api_name: 'convert_code',
+							package_name: localStorage.getItem('package_name'),
+							code: $.trim($("#codeVal").val())
+						},
+						dataType: 'json',
+						success: function(res) {
+							if(res.code == 1) {
+								showNotice(res.msg);
+								_this.addClass('dialog-cur-btn');
+								setTimeout(function() {
+									$("#inviteNum").text(res.invite_num);
+									$("#dialogInvite").fadeOut('fast');
+									$(".invite-code-btn").hide();
+								}, 300);
+							} else if(res.code == -2){
+								$("#dialogInvite").hide();
+								$("#dialogBindPhone").show();
+							} else {
+								showNotice(res.msg);
+								return;
+							}
+						},
+						error: function(err) {
+							console.log(err)
+						}
+					});
+				});
+
+				var clipboard = new ClipboardJS('.yq-code-btn');
+				clipboard.on('success', function(e) {
+					showNotice('复制成功');
+				});
+				clipboard.on('error', function(e) {
+					console.log(e)
+					showNotice('复制失败,请长按复制');
+				});
+				var kf_clipboard = new ClipboardJS('.yq-btn,.item');
+				kf_clipboard.on('success', function(e) {
+					// showNotice('复制成功');
+				});
+				kf_clipboard.on('error', function(e) {
+					console.log(e)
+					showNotice('复制失败,请长按复制');
+				});
+
+				setTimeout(function() {
+
+					$.ajax({
+						type: "post",
+						url: apiUrl + "/api/hinvitation/api",
+						data: {
+							token: token,
+							api_name: 'invite_index'
+						},
+						dataType: 'json',
+						success: function(res) {
+							if(res.code == 1) {
+								var data = res.data;
+								$("#copyVal").text(data.invite_code);
+								$(".yq-code-btn").attr('data-clipboard-text', data.invite_code);
+								$("#inviteNum").text(data.invite_num);
+								$("#inviteMoney").text(data.invite_money / 100);
+								var section = data.invite_section;
+								$(".item").each(function(i) {
+									var index = i + 1;
+									if(section == index) {
+										$(this).addClass('item-open').removeClass('item-close').find('.cur-tips').show();
+									}
+									if(section > i) {
+										$(".item").eq(i).addClass('item-open').removeClass('item-close');
+									}
+								});
+							}
+						},
+						error: function(err) {
+							console.log(err)
+						}
+					});
+					$.ajax({
+						type: "post",
+						url: apiUrl + "/api/hinvitation/api",
+						data: {
+							token: token,
+							api_name: 'show_invite_btn'
+						},
+						dataType: 'json',
+						success: function(res) {
+							if(res.code == 1) {
+								var data = res.data;
+								if(data.is_show_btn == 1) {
+									$(".invite-code-btn").show();
+									getCode();
+								}else{
+									$(".invite-code-btn").hide();
+								}
+							}
+						},
+						error: function(err) {
+							console.log(err)
+						}
+					});
+					$.ajax({
+						type: "post",
+						url: apiUrl + "/api/hinvitation/api",
+						data: {
+							token: token,
+							package_name: localStorage.getItem('package_name'),
+							api_name: 'one_click_invitation'
+						},
+						dataType: 'json',
+						success: function(res) {
+							if(res.code == 1) {
+								var data = res.data;
+								$(".dialog-invite-word p").html(data.password_key);
+								$(".invite-btn,.lq-btn,.item").attr('data-clipboard-text', data.password_key);
+							}
+						},
+						error: function(err) {
+							console.log(err)
+						}
+					});
+				}, 50);
+				
+				function getCode(){
+					$.ajax({
+						type: "post",
+						url: apiUrl + "/api/hinvitation/api",
+						data: {
+							token: token,
+							api_name: 'input_invite_code'
+						},
+						dataType: 'json',
+						success: function(res) {
+							var data = res.data;
+							if(data.status == 1) {
+								$("#codeVal").val(data.code).attr('readonly',true);
+								$("#postInviteCode").addClass('dialog-cur-btn');
+							}
+						},
+						error: function(err) {
+							console.log(err)
+						}
+					});
+				}
+
+			})
+		</script>
+	</body>
+
+</html>

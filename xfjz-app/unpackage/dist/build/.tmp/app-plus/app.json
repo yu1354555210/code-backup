@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/index/start",
+    "pages/index/index",
+    "pages/index/guide",
+    "pages/home/index",
+    "pages/classify/index",
+    "pages/mine/index",
+    "pages/perfect/index",
+    "pages/nav-list/index",
+    "pages/detail/index",
+    "pages/login/index",
+    "pages/message/index",
+    "pages/setting/index",
+    "pages/city/index",
+    "pages/HM-search/HM-search",
+    "pages/webview/index"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "nvueCompiler": "uni-app",
+  "renderer": "auto",
+  "splashscreen": {
+    "alwaysShowBeforeRender": true,
+    "autoclose": false
+  },
+  "appname": "多彩兼职",
+  "compilerVersion": "2.5.1",
+  "usingComponents": {
+    "home": "/pages/home/index",
+    "classify": "/pages/classify/index",
+    "mine": "/pages/mine/index",
+    "no-data": "/components/no-data",
+    "cu-custom": "/colorui/components/cu-custom"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "免费拿",
+  "usingComponents": {
+    "uni-popup": "/components/uni-popup/uni-popup",
+    "notice": "/components/notice/index",
+    "down-time": "/components/downTime/index"
+  }
+}

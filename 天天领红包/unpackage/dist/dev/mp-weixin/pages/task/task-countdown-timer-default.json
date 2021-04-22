@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "task-countdown-timer-default": "/pages/task/task-countdown-timer-default",
+    "countdown-timer": "/components/countdown-timer/countdown-timer",
+    "v-dialog": "/components/vDialog"
+  }
+}

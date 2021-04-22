@@ -1,0 +1,13 @@
+.text-blue {
+  color: #64abfe;
+}
+.cuIcon-index {
+  width: 88rpx !important;
+  height: 88rpx !important;
+  top: -42rpx !important;
+}
+.cuIcon-index image {
+  width: 100%;
+  height: 100%;
+}
+

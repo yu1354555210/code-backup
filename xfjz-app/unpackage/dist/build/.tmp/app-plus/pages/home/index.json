@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "cates-item": "/components/cates-item",
+    "jobs-item": "/components/jobs-item"
+  }
+}

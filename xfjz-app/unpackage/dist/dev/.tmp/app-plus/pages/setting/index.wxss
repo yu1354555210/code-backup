@@ -1,0 +1,62 @@
+.message-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  padding: 30rpx 0;
+}
+.message-item .message-image {
+  margin-right: 20rpx;
+}
+.message-item .message-image image {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+}
+.message-item .message-info {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.message-item .message-info .message-title {
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.message-item .message-info .message-time {
+  line-height: 40rpx;
+  color: #a4a4a7;
+  font-size: 20rpx;
+}
+.message-item .message-info .message-desc {
+  font-size: 24rpx;
+  color: #999999;
+}
+.logout {
+  height: 88rpx;
+  background: #ffffff;
+  box-shadow: 0px 3rpx 7rpx 0px rgba(104, 154, 255, 0.35);
+  border-radius: 44rpx;
+  font-size: 30rpx;
+  color: #6a95fe;
+  margin-top: 20%;
+  text-align: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+

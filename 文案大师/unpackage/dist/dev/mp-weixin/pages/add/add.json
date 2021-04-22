@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "发文案",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "u-input": "/uview-ui/components/u-input/u-input",
+    "u-button": "/uview-ui/components/u-button/u-button",
+    "u-popup": "/uview-ui/components/u-popup/u-popup",
+    "u-checkbox-group": "/uview-ui/components/u-checkbox-group/u-checkbox-group",
+    "u-checkbox": "/uview-ui/components/u-checkbox/u-checkbox",
+    "u-tabbar": "/uview-ui/components/u-tabbar/u-tabbar"
+  }
+}

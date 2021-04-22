@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "抽奖红包",
+  "navigationBarBackgroundColor": "#fd572b",
+  "backgroundColor": "#fd572b",
+  "usingComponents": {
+    "uni-popup": "/components/uni-popup/uni-popup",
+    "notice": "/components/notice/index",
+    "lottery": "/components/luckdraw/luckdraw"
+  }
+}

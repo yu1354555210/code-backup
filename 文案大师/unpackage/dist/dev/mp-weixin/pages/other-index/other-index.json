@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "u-avatar": "/uview-ui/components/u-avatar/u-avatar",
+    "u-tag": "/uview-ui/components/u-tag/u-tag",
+    "me-tabs": "/components/me-tabs/me-tabs",
+    "good-list": "/components/good-list/good-list"
+  }
+}

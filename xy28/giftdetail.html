@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<link rel="stylesheet" type="text/css" href="css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="layer/theme/default/layer.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="css/new_style.css" />
+	</head>
+
+	<body>
+		<div class="aui-content aui-margin-b-15">
+			<ul class="aui-list aui-media-list" id="giftlist">
+			</ul>
+		</div>
+		<script src="js/jquery.js"></script>
+		<script src="layer/layer.js"></script>
+		<script type="text/javascript" src="js/fn.js"></script>
+		<script src="https://cdn.bootcss.com/clipboard.js/2.0.1/clipboard.min.js"></script>
+		<script src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+		<script>
+			$(function() {
+				$(".aui-content").height($(window).height());
+				FastClick.attach(document.body);
+			});
+			if(save('g', 'tokens') == null) window.location.href = './login.html';
+			loadData("my_gift", "index.php?g=lucky&m=api&a=api", {
+				token: token,
+				page: 1,
+				pagesize: 100,
+			}, function(e) {
+				$("#giftlist").append(createIndex(e));
+			});
+
+			function createIndex(e) {
+				var html = '';
+				if(e.data == "") {
+					html += '<img src="./image/no.png" class="no_data_icon">';
+					html += '<p class="no_data_text">暂无任何奖品</p>';
+				} else {
+					$.each(e.data, function(key, val) {
+						html += '<li class="aui-list-item"><div class="aui-media-list-item-inner"><div class="aui-list-item-media"><img src="' + val.icon + '"></div>';
+						html += '<div class="aui-list-item-inner"><div class="aui-list-item-text"><div class="aui-list-item-title gift_text">' + val.title + '</div><div class="aui-list-item-right"></div></div>';
+						if(val.type == "3") {
+							if(val.kvalue == "") {
+								html += '<div class="aui-list-item-text" style="font-size:0.5rem;">卡密:发放后卡密在此显示';
+							} else {
+								html += '<div class="aui-list-item-text" style="font-size:0.5rem;">卡密:' + val.kvalue + '<div class="aui-btn aui-btn-success aui-btn-outlined aui-btn-sm copy_btn" data-clipboard-text="' + val.kvalue + '">复制</div>';
+							}
+						} else if(val.type == "2") {
+							html += '<div class="aui-list-item-text" style="font-size:0.5rem;">充值手机号:' + val.kvalue;
+						} else if(val.type == "4") {
+							html += '<div class="aui-list-item-text" style="font-size:0.5rem;">已发放到您的账户中';
+						} else {
+							html += '<div class="aui-list-item-text" style="font-size:0.5rem;">充值QQ号:' + val.kvalue;
+						}
+						if(val.status == 0) {
+							html += '<div class="aui-list-item-right" style="margin-top:-0.8rem;"><div class="aui-text-orange">未发放</div></div></div></div></div></li>';
+						} else {
+							html += '<div class="aui-list-item-right" style="margin-top:-0.8rem;"><div class="aui-text-orange">已发放</div></div></div></div></div></li>';
+						}
+
+					});
+
+				}
+				return html;
+			}
+
+			var clipboard = new ClipboardJS('.copy_btn');
+			clipboard.on('success', function(e) {
+				layer.msg('复制成功', {
+					time: 1000
+				});
+			});
+
+			clipboard.on('error', function(e) {
+				layer.msg('复制失败,请手动复制', {
+					time: 1000
+				});
+			});
+		</script>
+		<div style="display:none">
+			<script src="https://s22.cnzz.com/z_stat.php?id=1273592771&web_id=1273592771" language="JavaScript"></script>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/api.js"></script>
+
+</html>

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "收入明细",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "v-list": "/components/vList"
+  }
+}

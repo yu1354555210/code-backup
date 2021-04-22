@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, width=device-width" />
+		<meta name="format-detection" content="telephone=no">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Expires" content="0">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Cache-control" content="no-cache">
+		<meta http-equiv="Cache" content="no-cache">
+		<!--[if !IE]>
+    		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    	<!--<![endif]-->
+		<title>金币抽奖</title>
+		<link rel="stylesheet" type="text/css" href="../public/css/reset.css?v=1" />
+		<link rel="stylesheet" type="text/css" href="../public/css/dialog.css" />
+		<link rel="stylesheet" type="text/css" href="css/lottery.css?v=22123" />
+		<script src="../public/js/fontrem.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://js.cdn.aliyun.dcloud.net.cn/dev/uni-app/uni.webview.1.5.2.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<!--<div class="safe-top-div"></div>-->
+		<div class="public-header">
+			<div class="close-arrow"></div>
+			<h1 class="public-header-title">幸运大抽奖</h1>
+		</div>
+		<div class="wrapper has-tabar has-header">
+			<div class="lottery-box">
+				<div class="lottery-bg light1" id="light">
+					<ul id="lottery" class="lottery">
+						<li class="lottery-group">
+							<div class="lottery-unit" id="lotteryIndex0"></div>
+							<div class="lottery-unit" id="lotteryIndex1"></div>
+							<div class="lottery-unit" id="lotteryIndex2"></div>
+						</li>
+						<li class="lottery-group">
+							<div class="lottery-unit" id="lotteryIndex7"></div>
+							<div class="lottery-unit cjbtn">
+								<a href="javascript:;"></a>
+								<span></span>
+							</div>
+							<div class="lottery-unit" id="lotteryIndex3"></div>
+						</li>
+						<li class="lottery-group">
+							<div class="lottery-unit" id="lotteryIndex6"></div>
+							<div class="lottery-unit" id="lotteryIndex5"></div>
+							<div class="lottery-unit" id="lotteryIndex4"></div>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<ul class="mine-box">
+				<li>
+					<div class="this-icon icon-money"></div>
+					<div class="dibVm">我的现金:</div>
+					<span id="money"></span>
+				</li>
+				<li>
+					<div class="this-icon icon-coin"></div>
+					<div class="dibVm">我的金币:</div>
+					<span id="coin"></span>
+				</li>
+			</ul>
+
+			<div class="rule-box">
+				<div class="rule-title"></div>
+				<ul>
+					<li>1、抽中现金红包将直接存入现金余额中，随时可提现；</li>
+					<li>2、抽中实物客服会在2个工作日内与您取得联系，请确认联系方式准确无误；</li>
+					<li>3、该活动最终解释权归官方所有；</li>
+				</ul>
+			</div>
+
+			<!--绑定手机弹窗-->
+			<div class="dialog-container dialog-public" id="phoneDialog" style="display: none;">
+				<div class="dialog-wrapper dialog-jgg dialog-phone">
+					<div class="dialog-close"></div>
+					<div class="dialog-info">
+						<p>为了确保您的账号安全</p>
+						<p>请先绑定手机</p>
+					</div>
+					<div class="dialog-btn-box dialog-jgg-box">
+						<button class="dialog-btn" id="goBindPhone">去绑定</button>
+					</div>
+				</div>
+			</div>
+
+			<!--抽中弹窗-->
+			<div class="dialog-container dialog-public" id="jggResultDialog" style="display: none;">
+				<div class="dialog-wrapper dialog-jgg dialog-jgg-result">
+					<div class="dialog-close"></div>
+					<div class="dialog-info">
+						<p></p>
+					</div>
+					<div class="dialog-btn-box dialog-jgg-box">
+						<button class="dialog-btn dialog-cancel">再抽一次</button>
+					</div>
+				</div>
+			</div>
+
+			<!--金币不足弹窗-->
+			<div class="dialog-container dialog-public" id="coinDialog" style="display: none;">
+				<div class="dialog-wrapper dialog-jgg dialog-tips">
+					<div class="dialog-close"></div>
+					<div class="dialog-info">
+						<p>金币不足</p>
+					</div>
+					<div class="dialog-btn-box dialog-jgg-box">
+						<button class="dialog-btn" id="toIndex">去赚金币</button>
+					</div>
+				</div>
+			</div>
+			
+			<!--剩余次数不足弹窗-->
+			<div class="dialog-container dialog-public" id="tipsDialog" style="display: none;">
+				<div class="dialog-wrapper dialog-jgg dialog-tips">
+					<div class="dialog-close"></div>
+					<div class="dialog-info">
+						<p></p>
+					</div>
+					<div class="dialog-btn-box dialog-jgg-box">
+						<button class="dialog-btn dialog-cancel">关闭</button>
+					</div>
+				</div>
+			</div>
+			
+			
+			<!--退出弹窗-->
+			<div class="dialog-container dialog-public" id="closeWebviewDialog" style="display: none;">
+				<div class="dialog-wrapper dialog-exit dialog-close-webview">
+					<dl>
+						<dt>是否关闭并退出</dt>
+					</dl>
+					<div class="dialog-btn-box">
+						<button class="dialog-btn dialog-cancel-btn dialog-cancel">取消</button>
+						<button class="dialog-btn" id="closeWebviewBtn">关闭</button>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<!--底部导航-->
+		<div class="tabbar">
+			<a href="javascript:;" id="tabbarGgk">
+				<img src="../public/img/tabbar-card.png"/>
+				<p>刮刮卡</p>
+			</a>
+			<a id="tabbarLottery" href="javascript:;" class="tabbar-cur">
+				<img src="../public/img/tabbar-gift-cur.png"/>
+				<p>抽奖</p>
+			</a>
+			<a id="tabbarInvite" href="javascript:;">
+				<img src="../public/img/tabbar-invite.png"/>
+				<p>邀请</p>
+			</a>
+			<a id="tabbarCash" href="javascript:;">
+				<img src="../public/img/tabbar-cash.png"/>
+				<p>提现</p>
+			</a>
+		</div>
+		<!--<div class="safe-bottom-div"></div>-->
+		<input type="hidden" name="cjCoin" id="cjCoin" value="" />
+		<input type="hidden" name="isTel" id="isTel" value="" />
+		<input type="hidden" name="isCan" id="isCan" value="" />
+		<input type="hidden" name="resultInfo" id="resultInfo" value="" />
+		<input type="hidden" name="syNum" id="syNum" value="" />
+		<input type="hidden" name="errorMsg" id="errorMsg" value="" />
+		<script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+		<script src="https://cdn.bootcss.com/vConsole/3.3.4/vconsole.min.js"></script>
+		<script src="../public/js/webview.js?v=10331" type="text/javascript" charset="utf-8"></script>
+		<script src="../public/js/config.js?v=1.as" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jgg.js?v=1.16" type="text/javascript" charset="utf-8"></script>
+		<script src="js/lottery.js?v=1.0" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+
+				// var vConsole = new VConsole();
+
+				FastClick.attach(document.body);
+				
+				//防止页面后退
+		        history.pushState(null, null, document.URL);
+		        window.addEventListener('popstate', function () {
+		            history.pushState(null, null, document.URL);
+		        });
+		        
+		        //兼容性修复
+		        if(!judgeBigScreen()){
+		        	// $(".wrapper").css("padding-top",'0.8rem');
+		        	// $(".lottery-box").css('padding-top', '1.5rem');
+		        }else{
+		        	$(".wrapper").css('height','calc(100vh - 2rem)');
+		        }
+		        
+		        jgg.init();
+
+				jgg.el.cjBtn.click(function() {
+					var isTel = jgg.el.isTel.val(); //是否绑定手机
+					var isCan = jgg.el.isCan.val(); //是否能抽奖
+					var syNum = jgg.el.syNum.val(); //剩余次数
+					var coin = Number(jgg.el.coin.text()); 
+					var cjCoin = Number(jgg.el.cjCoin.val()); //抽奖消耗金币
+					if(isTel == 0) {
+						$("#phoneDialog").fadeIn('fast');
+					} else if(isCan == 0) {
+						$("#coinDialog").fadeIn('fast');
+					} else if(syNum <= 0){
+						$("#tipsDialog").find('p').text($("#errorMsg").val()).parents('#tipsDialog').fadeIn('fast');
+					} else if(coin < cjCoin){
+						console.log('金币不足')
+						$("#coinDialog").fadeIn('fast');
+					}
+				});
+				
+				$("#toIndex").click(function() {
+					window.location.href = "../ggk/ggk-list.html";
+				});
+
+				lottery.lottery({
+					selector: '#lottery',
+					width: 3,
+					height: 3,
+					index: 7, // 初始位置
+					initSpeed: 300, // 初始转动速度
+					downMax: 200, // 减速上限
+					beforeRoll: function() { // 重写滚动前事件：beforeRoll
+						//每次点击位置归0
+						this.options.index = 7;
+						$(".lottery-unit").removeClass("active");
+						jgg.el.cjCoin.addClass('cur');
+					},
+					aim: function() { // 重写计算中奖号的方法：aim
+						var _this = this;
+						$.ajax({
+							type: "post",
+							url: apiUrl + "/api/wjzchoujiang/api",
+							dataType: 'json',
+							data: {
+								api_name: 'choujiang',
+								token: localStorage.getItem('token'),
+								package_name: localStorage.getItem('package_name')
+							},
+							success: function(res) {
+								var data = res.data;
+								if(res.code == 1) {
+									var result = Number(data.location);
+									_this.options.target = parseInt(result -1);
+									$("#resultInfo").val(data.info);
+									jgg.el.money.text((data.user_real_price / 100).toFixed(2));
+									jgg.el.coin.text(data.coin);
+								}else{
+									$("#resultInfo").val(res.msg);
+								}
+							},
+							error: function(err) {
+								console.log(err)
+							}
+						});
+
+					}
+				});
+
+				//闪灯效果
+				var num = 0;
+				$(".light1").attr("class", function() {
+					setInterval(function() {
+						num++;
+						if(num % 2 == 0) {
+							$('#light').addClass("light2");
+						} else {
+							$('#light').addClass("light1").removeClass('light2');
+						}
+					}, 500)
+				});
+			});
+		</script>
+	</body>
+
+</html>

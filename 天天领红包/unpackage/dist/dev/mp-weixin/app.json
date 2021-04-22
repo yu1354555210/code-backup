@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/mine/mine",
+    "pages/task/task",
+    "pages/redbag-result/redbag-result",
+    "pages/account-cash/account-cash",
+    "pages/income-list/income-list",
+    "pages/cash-list/cash-list",
+    "pages/review-list/review-list",
+    "pages/policy/policy",
+    "pages/agreement/agreement",
+    "pages/detail/detail"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#FF2511",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/image/tabbar-home.png",
+        "selectedIconPath": "static/image/tabbar-home-cur.png",
+        "text": "红包"
+      },
+      {
+        "pagePath": "pages/task/task",
+        "iconPath": "static/image/tabbar-task.png",
+        "selectedIconPath": "static/image/tabbar-task-cur.png",
+        "text": "任务"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "static/image/tabbar-mine.png",
+        "selectedIconPath": "static/image/tabbar-mine-cur.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {
+    "v-login-model": "/components/vLoginModel"
+  },
+  "sitemapLocation": "sitemap7.json"
+}

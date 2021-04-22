@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, width=device-width" />
+		<meta name="format-detection" content="telephone=no">
+		<meta name="renderer" content="webkit">
+		<title>灵宠西游</title>
+		<style type="text/css">
+			body,
+			html,
+			div,
+			img {
+				margin: 0;
+				padding: 0;
+			}
+			
+			* {
+				-webkit-tap-highlight-color: transparent;
+			}
+			
+			img {
+				max-width: 100%;
+				width: 100%;
+			}
+			
+			html,
+			body {
+				min-height: 100%;
+			}
+			
+			a {
+				text-decoration: none;
+				outline: none;
+			}
+			
+			.wrapper {
+				width: 7.5rem;
+				margin: 0 auto;
+				position: relative;
+				background: #24190e;
+				box-sizing: border-box;
+				font-size: 0;
+			}
+			
+			.btn {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+				display: block;
+				z-index: 666;
+			}
+			
+			#share_mask {
+				width: 100%;
+				height: 100%;
+				position: fixed;
+				left: 0;
+				top: 0;
+				text-align: center;
+				background-color: rgba(0, 0, 0, .5);
+				display: none;
+				z-index: 667;
+			}
+			
+			#share_mask img {
+				width: 5.53rem;
+				height: 5.85rem;
+				margin: 1.3rem auto 0;
+			}
+			
+			.top {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 1.3rem;
+				z-index: 3;
+			}
+			
+			.top a {
+				width: 100%;
+				height: 100%;
+				display: block;
+			}
+			
+			.android_wrapper .section {
+				position: absolute;
+				top: 1.3rem;
+				left: 0;
+			}
+			
+			.first_img {
+				/*margin-top: 1.3rem;*/
+			}
+			
+			.help-modal {
+				display: none;
+				position: fixed;
+				left: 0;
+				top: 0;
+				z-index: 999;
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, .8);
+			}
+			
+			.swiper-wp8-horizontal {
+				-ms-touch-action: pan-y
+			}
+			
+			.swiper-wp8-vertical {
+				-ms-touch-action: pan-x
+			}
+			
+			.open-box {
+				width: 100%;
+				height: 100%;
+				position: fixed;
+				left: 0;
+				top: 0;
+				background: rgba(0, 0, 0, .6);
+				z-index: 10;
+			}
+			
+			.box-con {
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				margin-left: -140px;
+				width: 280px;
+				background: #fff;
+				border-radius: 5px;
+				z-index: 11;
+			}
+			
+			.copy_popup {
+				position: fixed;
+				width: 6rem;
+				height: 7.5rem;
+				top: 50%;
+				left: 50%;
+				-webkit-transform: translate(-50%,-50%);
+				transform: translate(-50%,-50%);
+				z-index: 666;
+			}
+			
+			.copy_popup_close {
+				position: absolute;
+				top: 0.1rem;
+				right: 0.2rem;
+				width: 0.75rem;
+				height: 0.75rem;
+			}
+			
+			.copy_popup_btn {
+				width: 3.34rem;
+				height: 0.7rem;
+				/*background-color: #fff;*/
+				position: absolute;
+				bottom: 0.88rem;
+				left: 50%;
+				-webkit-transform: translateX(-50%);
+				transform: translateX(-50%);
+			}
+			
+			.copy_popup_code {
+				width: 2.35rem;
+				position: absolute;
+				left: 50%;
+				transform: translateX(-45%);
+				top: 5.04rem;
+				text-align: center;
+				font-size: 0.24rem;
+				color: #fff000;
+				height: 0.38rem;
+				line-height: 0.38rem;
+			}
+			
+			.copy_popup_btn img {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.tips {
+				height: 1.1rem;
+				line-height: 1.1rem;
+				background-color: rgba(0, 0, 0, 0.7);
+				text-align: center;
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				border-radius: 0.2rem;
+				z-index: 44444;
+				box-sizing: border-box;
+				margin-top: -0.55rem;
+				font-size: 0.3rem;
+				color: #fff;
+				display: blcok;
+				padding: 0 0.3rem;
+				transform: translateX(-50%);
+				-webkit-transform: translateX(-50%);
+			}
+		</style>
+		<script type="text/javascript">
+			adaptation(750);
+			//适配
+			function adaptation(size) {
+				if(document.documentElement.clientWidth > size) {
+					document.documentElement.style.fontSize = size / 7.5 + 'px';
+				} else {
+					document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
+				}
+			}
+			window.onresize = function() {
+				adaptation(750);
+			}
+
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?4475c371175893bc08dea65203b958ee";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</head>
+
+	<body>
+		<div class="wrapper" id="anWrap" style="display: none;">
+			<a href="javascript:;" class="btn"></a>
+			<div class="top">
+				<a href="javascript:;"><img src="http://hybrid-static.75757.com/tfimg/img/tulong/20-03-16/0.Top.png" /></a>
+			</div>
+			<img class="first_img" src="http://hybrid-static.75757.com/tfimg/img/tulong/20-03-16/1.gif" alt="" />
+			<img src="http://hybrid-static.75757.com/tfimg/img/tulong/20-03-16/2.png" alt="" />
+			<img src="http://hybrid-static.75757.com/tfimg/img/tulong/20-03-16/3.png" alt="" />
+			<img src="http://hybrid-static.75757.com/tfimg/img/tulong/20-03-16/4.png" alt="" />
+			<div id="share_mask"><img src="http://hybrid-static.75757.com/tfimg/img/tulong/9-20/share.png" /></div>
+		</div>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script>
+		<script type="text/javascript">
+			// 弹出提示框
+			function showNotice(msg) {
+				$('#noticeDiv').html(msg);
+				$('#noticeDiv').show();
+				$('#noticeDiv').delay(2000).fadeOut();
+			}
+			
+			var androidUrl = 'http://neza.oss-cn-beijing.aliyuncs.com/ch/%E7%81%B5%E5%AE%A0%E8%A5%BF%E6%B8%B82111_release_1.0_03161315.apk';
+			var iosUrl = 'http://h5.binglue.com/game/index3?ch_id=2115&plat=h5';
+			var u = navigator.userAgent,
+				app = navigator.appVersion;
+			var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+			var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+			var Hurl = document.getElementsByTagName('a');
+			var shareMask = document.getElementById("share_mask");
+			var is_weixin = (function() {
+				return navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1
+			})();
+			
+			
+			if(isIOS) {
+				window.location.href = iosUrl;
+				for(var i = 0; i < Hurl.length; i++) {
+					Hurl[i].setAttribute('href', iosUrl);
+				}
+			}
+			
+			if(isAndroid) {
+				document.getElementById("anWrap").style.display = "block";
+				//这个是安卓操作系统
+				if(is_weixin) {
+					for(var i = 0; i < Hurl.length; i++) {
+						Hurl[i].onclick = function() {
+							shareMask.style.display = "block";
+							return false;
+						}
+						shareMask.onclick = function() {
+							shareMask.style.display = "none";
+						}
+					}
+				}else{
+					for(var i = 0; i < Hurl.length; i++) {
+						Hurl[i].setAttribute('href', androidUrl);
+					}
+				}
+				
+				$(".btn").click(function() {
+					_czc.push(["_trackEvent", "安卓正文", "下载"]);
+				})
+
+			}
+
+		</script>
+		<div style="display: none;">
+			<script type="text/javascript">
+				var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+				document.write(unescape("%3Cspan id='cnzz_stat_icon_1276558798'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1276558798' type='text/javascript'%3E%3C/script%3E"));
+			</script>
+		</div>
+	</body>
+
+</html>

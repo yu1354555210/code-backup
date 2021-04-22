@@ -1,0 +1,402 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<link rel="stylesheet" type="text/css" href="css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="layer/theme/default/layer.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="css/new_style.css" media="all" />
+	</head>
+
+	<body>
+		<section class="aui-content layui-text">
+			<ul class="aui-list">
+				<li class="aui-list-header new_auto_header">
+					<span>投注总额：<span class="aui-text-danger" id="choseMoney">0</span></span>
+					<span>金豆余额：<span class="aui-text-danger" id="lastMoney">0</span></span>
+				</li>
+			</ul>
+		</section>
+		<section class="aui-content layui-text">
+			<ul class="aui-list">
+				<li class="new_input_list">
+					<div class="new_input_item">
+						<span class="">开始期号</span>
+						<input type="number" id="start" placeholder="">
+					</div>
+					<div class="new_input_item">
+						<span>投注期数(最多500期)</span>
+						<input type="number" id="begNum" placeholder="">
+					</div>
+				</li>
+			</ul>
+		</section>
+		<section class="aui-grid layui-text" id="items"></section>
+		<section class="aui-content layui-text">
+			<ul class="aui-list">
+				<li class="aui-list-header new_auto_header new_top_bor">
+					<span class="new_th new_th1">号码</span>
+					<span class="new_th new_th2">赔率</span>
+					<span class="new_th new_th3">投注金豆</span>
+					<span class="new_th new_th4">投注倍数</span>
+				</li>
+			</ul>
+		</section>
+		<div class="code_box code_skin0 run">
+			<section class="aui-content layui-text">
+				<ul class="aui-list" id="lists"></ul>
+			</section>
+		</div>
+		<div class="sub_footer"><button class="sub_btn"id="new">立即投注</button>
+
+		</div>
+		<div style="display:none">
+			<script src="https://s22.cnzz.com/z_stat.php?id=1273592771&web_id=1273592771" language="JavaScript"></script>
+		</div>
+	</body>
+
+	<script src="js/jquery.js"></script>
+	<script src="layer/layer.js"></script>
+	<script type="text/javascript" src="js/api.js"></script>
+	<script type="text/javascript" src="js/fn.js"></script>
+	<script type="text/javascript">
+
+		if(save('g', 'tokens') == null) window.location.href = './login.html';
+		createSelect();
+		$("#lastMoney").text(save('g', 'gold'));
+		//项目按钮绑定点击事件
+		$.each(items, function(key, val) {
+			$("#items_" + key).click(function(e) {
+				save('r', 'beg');
+				var id = this.id.split('items_');
+				if(id[1] == 9) id[1] = parseInt(Math.random() * 8);
+				selectItem(this.id, beg[id[1]], btnTips, choseBeg, table, function(e, data) {
+					btnTips = e;
+				});
+			});
+
+		});
+		//立即投注
+		$('#new').on('click', function() {
+
+			if(parseInt($("#choseMoney").text()) > parseInt($("#lastMoney").text())) {
+				parent.layer.msg('金豆不足', {
+					shade: 0.3
+				})
+			} else if(parseInt($("#choseMoney").text()) == 0) {
+				parent.layer.msg('请选择投注', {
+					shade: 0.3
+				})
+			} else {
+				var temp_beg = JSON.parse(save('g', 'beg'));
+				var sendStr = '';
+				$.each(temp_beg, function(key, val) {
+					var temps_val = val.split(':');
+					if(parseInt(temps_val[1]) > 0) {
+						var newStr = val.replace('|', ':');
+						sendStr += newStr + ',';
+					}
+				});
+				sendStr = sendStr.substring(0, sendStr.lastIndexOf(','));
+
+				loadData("auto_cathectic", "index.php?g=lucky&m=api&a=api", {
+					nums: $("#begNum").val(),
+					start_expect: $("#start").val(),
+					token: token,
+					cathectic: sendStr
+				}, function(e) {
+					if(e.code == "1") {
+						getGold();
+						parent.layer.closeAll();
+						save('s', 'auto', true);
+						parent.layer.msg(e.msg, {
+							shade: 0.3
+						});
+						parent.reloadFun();
+					} else {
+						parent.layer.msg(e.msg, {
+							shade: 0.3
+						});
+					}
+				});
+			}
+		});
+		//同上期
+		$("#copys").on('click', function() {
+			loadData('user_last', 'index.php?g=lucky&m=api&a=api', {
+				token: token
+			}, function(e) {
+				if(e.data != '') {
+					defaultLoad(beg[0], false)
+					var temps_local = JSON.parse(save('g', 'beg'));
+					var tempArr = e.data.split(',');
+					var sum = 0;
+					$.each(tempArr, function(key, val) {
+						var temp_val_s = val.split(':');
+						$("#i_" + temp_val_s[0]).val(temp_val_s[1]);
+						temps_local[temp_val_s[0]] = temp_val_s[0] + ':' + temp_val_s[1];
+						$("#q_" + temp_val_s[0]).attr('class', 'qiusum');
+						sum += parseInt(temp_val_s[1]);
+					});
+					$("#choseMoney").text(sum);
+					$.each(tempArr, function(keys, vals) {
+						var temp_val_l = vals.split(':');
+						$("#odds_" + temp_val_l[0]).text((sum / parseInt(temp_val_l[1])).toFixed(2));
+					});
+					save('s', 'beg', temps_local);
+				} else {
+					parent.layer.msg('您还没有任何投注记录', {
+						shade: 0.3
+					})
+				}
+			});
+		});
+		//清除
+		$("#clear").on('click', function() {
+			$("#lists").empty();
+			var temps_new_beg = beg[0];
+			var arr = new Array();
+			$.each(temps_new_beg, function(key, val) {
+				arr[key] = val + ":0";
+				var html = '';
+				html += '<li class="aui-list-item"><div class="aui-list-item-inner"><div class="aui-list-item-title">';
+				html += '<div class="qiu1" id="q_' + key + '">' + val + '</div></div>';
+				html += '<span style="width: 20%;font-size: 0.6rem;text-align:center;" id="odds_' + key + '">0</span>';
+				html += '<span style="width: 35%"><div class="">';
+				html += ' <input type="number" name="number" value="0" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,\'\')}else{this.value=this.value.replace(/\\D/g,\'\')}" class="new_list_input" placeholder="" id="i_' + key + '" onclick="userInput(' + key + ',' + val + ')"></div></span>';
+				html += '<span class="flex-1 flex flex-pack-justify">';
+				$.each(mult, function(keya, vala) {
+					html += ' <div class="bs_sm_btn" id="mul_' + keya + '" onclick="multipleBeg(' + "\'multi_key\'" + ',' + vala + ',' + key + ')" >' + vala + '倍</div>';
+				});
+				html += '</span></div></li>';
+				$("#lists").append(html);
+			});
+			save('s', 'beg', arr);
+			$("#choseMoney").text(0);
+			$.each(items, function(keya, vala) {
+				$("#items_" + keya).attr('class', 'tz_btn')
+			});
+		});
+		//期数总额变更
+		// $("#begNum").bind('keyup', function(e) {
+			// var tips_num = parseInt($(this).val());
+			// var total_num = parseInt($("#choseMoney").text());
+			// if(tips_num > 0 && total_num > 0) {
+				// $("#choseMoney").text(total_num * tips_num);
+			// }
+		// });
+		//--------------------初始页面加载-----------------------//
+		function createSelect() {
+			$("#items").empty();
+			$("#start").val(save('g', 'nowBeg').replace(/\"/g, ""));
+			$("#begNum").val(1);
+			var html = '';
+			html += '  <div class="bs_flex_row flex_row"><div class="new_bs_fl"><div class="new_label">';
+
+			$.each(mult, function(key, val) {
+				html += '<div class="bs_btn" onclick="multipleBeg(' + "\'multi_all\'" + ',' + val + ',' + key + ')">' + val + '倍</div>';
+			});
+
+			html += '  </div>  </div>';
+			html += '<div class="new_bs_fr">'
+			html += '<span id="copys"><img src="image/same.png"><i>同上期</i></span>';
+			html += ' <span id="clear"><img src="image/clear.png"><i>清除</i></span>';
+			html += ' </div> </div></div>';
+			html += ' <div class="tz_flex_row flex_row"><div class="new_tz_box"> <div class="new_label">';
+			$.each(items, function(keya, vala) {
+				if(keya <= 4) html += '  <div class="tz_btn" id="items_' + keya + '">' + vala + '</div>';
+			});
+
+			html += ' </div></div></div>';
+			html += ' <div class="tz_flex_row flex_row"><div class="new_tz_box"> <div class="new_label">';
+			$.each(items, function(keyb, valb) {
+				if(keyb > 4) html += '  <div class="tz_btn aui-btn" id="items_' + keyb + '">' + valb + '</div>';
+			});
+			html += ' </div></div></div>';
+			$("#items").append(html);
+
+			defaultLoad(beg[0], true)
+		}
+		//--------------------项目选择器-----------------------//
+		function selectItem(str, beg, btn, choseBeg, table, fn) {
+			$("#lists").empty();
+			if(str == btn) {
+				$("#" + str).attr("class", "tz_btn cur");
+			} else {
+				$("#" + btn).attr("class", "tz_btn");
+				$("#" + str).attr("class", "tz_btn cur");
+				btn = str;
+			}
+			var arrayObj = new Array();
+			$.each(beg, function(key, val) {
+				var html = '';
+				html += '<li class="aui-list-item"><div class="aui-list-item-inner"><div class="aui-list-item-title">';
+				html += '<div class="qiusum" id="q_' + key + '">' + val + '</div></div>';
+				html += '<span style="width: 20%;font-size: 0.6rem;text-align:center;" id="odds_' + key + '"></span>';
+				html += '<span style="width: 35%"><div class="">';
+				html += ' <input type="number" name="number" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,\'\')}else{this.value=this.value.replace(/\\D/g,\'\')}" class="new_list_input" placeholder="" id="i_' + key + '" onclick="userInput(' + key + ',' + val + ')"></div></span>';
+				html += '<span class="flex-1 flex flex-pack-justify">';
+				$.each(mult, function(keya, vala) {
+					html += ' <div class="bs_sm_btn" id="mul_' + keya + '" onclick="multipleBeg(' + "\'multi_key\'" + ',' + vala + ',' + key + ')" >' + vala + '倍</div>';
+				});
+				html += '</span></div></li>';
+				$("#lists").append(html);
+				$("#i_" + key).val(table[val]);
+				arrayObj[key] = val + ':' + $("#i_" + key).val();
+			});
+			save('s', 'beg', arrayObj);
+			sumNum()
+			return fn(btn, beg);
+		}
+
+		//--------------------倍数计算-----------------------//
+		function multipleBeg(type, unit, key) {
+
+			var arrayObj = new Array();
+			var resNum = 0;
+			if(parseInt($("#choseMoney").text()) > 0) {
+				arrayObj = JSON.parse(save('g', 'beg'));
+				//所有翻倍
+				if(type == 'multi_all') {
+					$.each(arrayObj, function(key, val) {
+						var temp_str = val.split(':');
+						if(parseInt(temp_str[1]) >= 1) {
+							var temp_num = parseInt($("#i_" + key).val());
+							resNum = parseInt(temp_num * unit);
+							$("#i_" + key).val(resNum);
+							arrayObj[key] = temp_str[0] + ':' + resNum;
+							if(resNum < 1) {
+								$("#odds_" + key).text(0);
+								$("#q_" + key).attr('class', 'qiu1');
+							}
+						} else {
+							$("#i_" + key).val(0);
+							$("#odds_" + key).text(0);
+							$("#q_" + key).attr('class', 'qiu1');
+							arrayObj[key] = temp_str[0] + ':0';
+						}
+					});
+					save('s', 'beg', arrayObj);
+				}
+				//单注翻倍
+				if(type == 'multi_key') {
+					var keys = parseInt($("#i_" + key).val());
+					var temp_s = arrayObj[key].split(':')
+					if(keys >= 1) {
+						resNum = parseInt(keys * unit);
+						$("#i_" + key).val(resNum);
+						arrayObj[key] = temp_s[0] + ':' + resNum;
+						if(resNum < 1) {
+							$("#odds_" + key).text(0);
+							$("#q_" + key).attr('class', 'qiu1');
+						}
+					} else {
+						$("#i_" + key).val(0);
+						$("#odds_" + key).text(0);
+						$("#q_" + key).attr('class', 'qiu1');
+						arrayObj[key] = temp_s[0] + ':0';
+					}
+					save('s', 'beg', arrayObj);
+				}
+
+				sumNum()
+
+			} else {
+				$("#choseMoney").text(0);
+			}
+
+		}
+
+		//--------------------用户输入变更-----------------------//
+		function userInput(key, val) {
+			$("#i_" + key).bind('input propertychange', function(e) {
+				var arrayObj = JSON.parse(save('g', 'beg'));
+				var number = parseInt($(this).val());
+
+				if(number >= 1) {
+					$("#q_" + key).attr('class', 'qiusum');
+					$("#i_" + key).val(number);
+					arrayObj[key] = val + ':' + number;
+				} else {
+					$("#i_" + key).val(0);
+					$("#q_" + key).attr('class', 'qiu1');
+					arrayObj[key] = val + ':0';
+					$("#odds_" + key).text(0)
+				}
+				save('s', 'beg', arrayObj);
+				sumNum();
+			});
+
+		}
+
+		//--------------------数值计算-----------------------//
+		function sumNum() {
+			var arrayObj = JSON.parse(save('g', 'beg'));
+			var sum = 0;
+			//赔率计算
+			$.each(arrayObj, function(keys, vals) {
+				var temps = vals.split(':');
+				if(parseInt(temps[1]) > 0) {
+					sum += parseInt(temps[1])
+				}
+			});
+			// 总额计算
+			num = formatsum(sum);
+			$.each(arrayObj, function(k, v) {
+				var temps = v.split(':');
+				var numbers = 0;
+				if(parseInt(temps[1]) > 0) {
+					numbers = killerZero(sum / parseInt(temps[1]));
+				} else {
+					numbers = 0;
+				}
+
+				$("#odds_" + k).text(numbers);
+			});
+			$("#choseMoney").text(num);
+			return sum;
+		}
+		//--------------------初始加载弹窗数据-----------------------//
+		function defaultLoad(beg, type) {
+			$("#lists").empty();
+			$("#choseMoney").text(0);
+			$.each(items, function(key, val) {
+				$('#items_' + key).attr('class', 'tz_btn');
+			});
+			var arrayObj = new Array();
+			$.each(beg, function(key, val) {
+				var html = '';
+				html += '<li class="aui-list-item"><div class="aui-list-item-inner"><div class="aui-list-item-title">';
+				html += '<div class="qiu1" id="q_' + key + '">' + val + '</div></div>';
+				html += '<span style="width: 20%;font-size: 0.6rem;text-align:center;" id="odds_' + key + '">0</span>';
+				html += '<span style="width: 35%"><div class="">';
+				html += ' <input type="number" class="new_list_input" placeholder="" id="i_' + key + '" onclick="userInput(' + key + ',' + val + ')"></div></span>';
+				html += '<span class="flex-1 flex flex-pack-justify">';
+				$.each(mult, function(keya, vala) {
+					html += ' <div class="bs_sm_btn" id="mul_' + keya + '" onclick="multipleBeg(' + "\'multi_key\'" + ',' + vala + ',' + key + ')" >' + vala + '倍</div>';
+				});
+				html += '</span></div></li>';
+				$("#lists").append(html);
+				$("#i_" + key).val(0);
+				arrayObj[key] = val + ':' + $("#i_" + key).val();
+			});
+			save('s', 'beg', arrayObj);
+			var htmls = '<div style="background-color:#fff;"><button class="aui-btn aui-btn-danger aui-btn-outlined" style="width: 25%;margin: 0.2rem 36.5%;border-radius: 2.5rem;padding: 0 0.3rem" ' +
+				'id="newsItem " onclick="onclickSendBeg()" >立即投注' + '</button></div>';
+			$("#foot").after(htmls);
+		}
+
+		function formatsum(sum) {
+			return(sum).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		};
+	</script>
+	<script src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.js"></script>
+	<script>
+		window.onload = function() {
+			FastClick.attach(document.body)
+		}
+	</script>
+
+</html>

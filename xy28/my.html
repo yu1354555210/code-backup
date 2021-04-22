@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="css/new_style.css" />
+		<style type="text/css">
+			.text-white {
+				color: #ffffff !important;
+			}
+			
+			.aui-grid [class*=aui-col-] {
+				padding: 0.75rem 0;
+			}
+			
+			.footer {
+				width: 40%;
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+
+	<body class="bg_gray">
+		<section class="aui-content aui-grid index_my_content">
+			<div class="flex_row index_flex_box">
+				<div class="my_header_item">
+					<big class="aui-text-danger"><small id="today" class=""></small></big>
+					<div class="aui-gird-lable">今日</div>
+				</div>
+				<div class="my_header_item">
+					<big class="aui-text-danger"><small id="week" class=""></small></big>
+					<div class="aui-gird-lable">本周</div>
+				</div>
+				<div class="my_header_item">
+					<big class="aui-text-danger"><small id="year" class=""></small></big>
+					<div class="aui-gird-lable">今年</div>
+				</div>
+				<div class="my_header_item">
+					<big class="aui-text-danger"><small id="total" class=""></small></big>
+					<div class="aui-gird-lable">总盈亏</div>
+				</div>
+			</div>
+		</section>
+		<div class="aui-content index_my_main" id="srcoll">
+			<ul class="aui-list aui-list-in" id="cathectic">
+				<li class="aui-list-header">
+					<span style="width: 25%;">期号</span>
+					<span style="width: 25%">开奖时间</span>
+					<span style="width: 25%">开奖号码</span>
+					<span style="width: 25%">盈亏</span>
+				</li>
+			</ul>
+			<div class="load_more" style="display: none;">加载中...</div>
+		</div>
+
+		<footer class="aui-bar aui-bar-tab" id="footer">
+			<div class="aui-bar-tab-item" onclick="javascript:window.location.href='index.html'">
+				<i class="iconfont icon-home"></i>
+				<div class="aui-bar-tab-label">首页</div>
+			</div>
+			<div class="aui-bar-tab-item aui-active" onclick="javascript:window.location.href='my.html'">
+				<i class="iconfont icon-my"></i>
+				<div class="aui-bar-tab-label">我的投注</div>
+			</div>
+			<div class="aui-bar-tab-item" onclick="javascript:window.location.href='lottery.html'">
+				<i class="iconfont icon-gift"></i>
+				<div class="aui-bar-tab-label">金豆抽奖</div>
+			</div>
+			<div class="aui-bar-tab-item">
+				<i class="iconfont icon-trend" onclick="javascript:window.location.href='trend.html'"></i>
+				<div class="aui-bar-tab-label">开奖走势</div>
+			</div>
+			<div class="aui-bar-tab-item">
+				<i class="iconfont icon-text" onclick="javascript:window.location.href='rule.html'"></i>
+				<div class="aui-bar-tab-label">规则玩法</div>
+			</div>
+		</footer>
+		<div style="display:none">
+			<script src="https://s22.cnzz.com/z_stat.php?id=1273592771&web_id=1273592771" language="JavaScript"></script>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/api.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="layer/mobile/layer.js"></script>
+	<script type="text/javascript" src="layer/layer.js"></script>
+	<script type="text/javascript" src="js/fn.js"></script>
+	<script type="text/javascript">
+		if(save('g', 'tokens') == null) window.location.href = './login.html';
+
+		loadData("my_cathectic", "index.php?g=lucky&m=api&a=api", {
+			token: token,
+			page: 1,
+			pagesize: 20
+		}, function(e) {
+			$("#cathectic").append(createIndex(e));
+			var winH = $(window).height();
+			var scrH = $("#cathectic").height();
+			if(scrH > winH) {
+				$(".load_more").show();
+			}
+		});
+		var size = pagesize;
+		var pageFlag = true;
+		$(window).scroll(function() {
+			var scrollTop = $(this).scrollTop(); //滚动条距离顶部的高度  
+			var scrollHeight = $(document).height(); //当前页面的总高度  
+			var clientHeight = $(this).height(); //当前可视的页面高度  
+			if(scrollTop + clientHeight >= scrollHeight) { //距离顶部+当前高度 >=文档总高度 即代表滑动到底部   
+				if(!pageFlag) return;
+				page++;
+				pageFlag = false;
+				loadData('my_cathectic', 'index.php?g=lucky&m=api&a=api', {
+					token: window.localStorage.getItem('tokens'),
+					page: page,
+					pagesize: size
+				}, function(e) {
+					if(e.code == 1) {
+						if(e.data.list == "") {
+							$(".load_more").html("已加载全部数据").addClass("load_more_over");
+						} else {
+							pageFlag = true;
+							$("#cathectic").append(createIndex(e));
+						}
+					} else {
+						alert('加载数据错误');
+					}
+				});
+			}
+		});
+
+		function createIndex(e) {
+			if(e.data.today == null) {
+				$("#today").text(0);
+			} else if(e.data.today != null) {
+				if(e.data.today < 0) {
+					$("#today").addClass('aui-text-info');
+				}
+				$("#today").text(e.data.today);
+			}
+			if(e.data.week == null) {
+				$("#week").text(0);
+			} else if(e.data.week != null) {
+				if(e.data.week < 0) {
+					$("#week").addClass('aui-text-info');
+				}
+				$("#week").text(e.data.week);
+			}
+			if(e.data.year == null) {
+				$("#year").text(0);
+			} else if(e.data.year != null) {
+				if(e.data.year < 0) {
+					$("#year").addClass('aui-text-info');
+				}
+				$("#year").text(e.data.year);
+			}
+			if(e.data.total == null) {
+				$("#total").text(0);
+			} else if(e.data.total != null) {
+				if(e.data.total < 0) {
+					$("#total").addClass('aui-text-info');
+				}
+				$("#total").text(e.data.total);
+			}
+			var html = '';
+			$.each(e.data.list, function(key, val) {
+				var timestamp = val.end_time;
+				var newDate = new Date();
+				newDate.setTime(timestamp * 1000);
+				var hh = newDate.getHours(); //时
+				var ii = newDate.getMinutes();
+				var time = hh + ':';
+				if(ii < 10) time += '0';
+				time += ii
+				if(val.luck_number == -1) {
+					html += '<li class="index_item"><div class="aui-list-item-inner" style="font-size: 0.7rem;"><span style="width: 25%">' + val.expect + '期</span>';
+					html += '<span style="width: 25%">' + time + '</span>';
+					html += '<span style="width: 25%">开奖中</span>';
+					html += '<span style="width: 25%">...</span>';
+					html += '</div></li>'
+				} else if(val.luck_number != -1) {
+					html += '<li class="index_item"><div class="aui-list-item-inner" style="font-size: 0.7rem;"><span style="width: 25%">' + val.expect + '期</span>';
+					html += '<span style="width: 25%">' + time + '</span>';
+					html += '<span style="width: 25%"><div class="qiusum">' + val.luck_number + '</div></span>';
+					if(val.income < 0) {
+						html += '<span style="width: 25%" class="aui-text-info">' + val.income + '</span>';
+					} else if(val.income >= 0) {
+						html += '<span style="width: 25%" class="aui-text-danger">' + val.income + '</span>';
+					}
+					html += '</div></li>'
+				}
+
+			});
+			return html;
+		}
+	</script>
+
+</html>

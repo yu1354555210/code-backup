@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom",
+    "no-data": "/components/no-data",
+    "jobs-item": "/components/jobs-item"
+  }
+}

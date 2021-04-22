@@ -1,0 +1,1 @@
+<view data-event-opts="{{[['touchmove',[['',['$event']]]],['tap',[['setDialogStatus',[false]]]]]}}" class="{{['cu-modal',getDialogStatus?'show':'']}}" catchtouchmove="__e" bindtap="__e"><view data-event-opts="{{[['tap',[['',['$event']]]]]}}" class="dialog-wrapper" catchtap="__e"><slot></slot></view></view>
