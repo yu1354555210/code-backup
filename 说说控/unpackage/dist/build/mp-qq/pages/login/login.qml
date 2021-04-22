@@ -1,0 +1,1 @@
+<view><view class="login-box"><image class="login-bg" src="../../static/login-bg.png" mode="aspectFill"></image><button class="login-btn" open-type="getUserInfo" lang="zh_CN" data-event-opts="{{[['getuserinfo',[['appLoginQq',['$event']]]]]}}" bindgetuserinfo="__e"><image src="../../static/login-btn.png" mode="aspectFill"></image></button></view></view>

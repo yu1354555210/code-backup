@@ -1,0 +1,51 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/change-address/index",
+    "pages/my-address/index",
+    "pages/mine/index",
+    "pages/award/index",
+    "pages/award-finish/index",
+    "pages/detail/index",
+    "pages/finish/index",
+    "pages/agreement/index",
+    "pages/record/index",
+    "pages/all-award/index",
+    "pages/login/index"
+  ],
+  "subPackages": [],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "大奖天天抽",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#929292",
+    "selectedColor": "#929292",
+    "borderStyle": "black",
+    "backgroundColor": "#f8f8f8",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/images/tabbar-start.png",
+        "selectedIconPath": "static/images/tabbar-start-cur.png",
+        "text": "进行中"
+      },
+      {
+        "pagePath": "pages/finish/index",
+        "iconPath": "static/images/tabbar-end.png",
+        "selectedIconPath": "static/images/tabbar-end-cur.png",
+        "text": "已结束"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "iconPath": "static/images/tabbar-mine.png",
+        "selectedIconPath": "static/images/tabbar-mine-cur.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
+}

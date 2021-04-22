@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "全部抽奖",
+  "usingComponents": {
+    "mescroll-uni": "/components/mescroll-uni/mescroll-uni",
+    "pd-list": "/components/pd-list"
+  }
+}

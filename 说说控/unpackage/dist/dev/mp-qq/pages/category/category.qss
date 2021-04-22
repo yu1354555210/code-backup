@@ -1,0 +1,28 @@
+image {
+  width: 100%;
+  height: 100%;
+}
+.category-wrapper .title {
+  font-size: 30rpx;
+  font-weight: 400;
+  margin: 30rpx 0;
+  color: #8fa2a6;
+}
+.category-wrapper .category-list {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.category-wrapper .category-list .category-item {
+  width: 218rpx;
+  height: 120rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+  margin-bottom: 30rpx;
+}
+

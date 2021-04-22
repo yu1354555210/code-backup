@@ -1,0 +1,1 @@
+<view><view class="content"><view class="title">{{title}}</view><view class="other">{{ctime}}</view><rich-text nodes="{{html}}"></rich-text></view></view>

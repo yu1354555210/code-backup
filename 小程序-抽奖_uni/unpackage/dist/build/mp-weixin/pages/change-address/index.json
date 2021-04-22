@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "收货地址",
+  "usingComponents": {
+    "w-picker": "/components/w-picker/w-picker"
+  }
+}

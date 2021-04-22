@@ -1,0 +1,66 @@
+<script>
+import Vue from 'vue'
+export default {
+	onLaunch: function() {
+		uni.getSystemInfo({
+			success: function(e) {
+				// #ifndef MP
+				Vue.prototype.StatusBar = e.statusBarHeight;
+				if (e.platform == 'android') {
+					Vue.prototype.CustomBar = e.statusBarHeight + 50;
+				} else {
+					Vue.prototype.CustomBar = e.statusBarHeight + 45;
+				}
+				// #endif
+
+				// #ifdef MP-WEIXIN
+				Vue.prototype.StatusBar = e.statusBarHeight;
+				let custom = wx.getMenuButtonBoundingClientRect();
+				Vue.prototype.Custom = custom;
+				Vue.prototype.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
+				// #endif
+
+				// #ifdef MP-ALIPAY
+				Vue.prototype.StatusBar = e.statusBarHeight;
+				Vue.prototype.CustomBar = e.statusBarHeight + e.titleBarHeight;
+				// #endif
+			}
+		});
+	},
+	onShow: function() {
+		// if(this.$store.getters.getLoginStatus == false){
+		// 	setTimeout(()=>{
+		// 		uni.switchTab({
+		// 			url: '/pages/mine/mine'
+		// 		});
+		// 		uni.hideTabBar();	
+		// 		uni.hideLoading();
+		// 	},300)
+		// }
+	},
+	onHide: function() {
+		console.log('App Hide');
+	}
+};
+</script>
+
+<style>
+@import 'colorui/main.css';
+@import 'colorui/icon.css';
+/*每个页面公共css */
+:not(not) {
+	box-sizing: border-box;
+}
+page {
+	background-color: #FFFFFF;
+	color: #333333;
+}
+.content{
+	padding: 30rpx
+}
+.status-bar {
+	height: var(--status-bar-height);
+	width: 100%;
+	background-color: #fffcfd;
+}
+</style>

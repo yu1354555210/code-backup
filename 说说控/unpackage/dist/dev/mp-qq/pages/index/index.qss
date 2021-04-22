@@ -1,0 +1,53 @@
+.index-tab {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  font-size: 30rpx;
+}
+.index-tab view {
+  margin-right: 28rpx;
+  position: relative;
+  margin-bottom: 10rpx;
+  text-align: center;
+}
+.index-tab view.cur {
+  font-size: 44rpx;
+  border-bottom: 8rpx solid #ffc800;
+}
+.search {
+  height: 60rpx;
+  background: #eaeaea;
+  border-radius: 200px;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  padding-left: 5%;
+  font-size: 30rpx;
+  color: #a7a7a7;
+  margin: 40rpx 0;
+}
+.search image {
+  position: absolute;
+  width: 38rpx;
+  height: 38rpx;
+  left: 45%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.nav-to-top {
+  margin: 20rpx 0 0;
+  width: 100%;
+  height: 112rpx;
+}
+

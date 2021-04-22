@@ -1,0 +1,25 @@
+.login-btn {
+  width: 550rpx;
+  height: 84rpx;
+  position: absolute;
+  bottom: 140rpx;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.login-btn image {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 200rpx;
+}
+.login-btn::after {
+  display: none;
+}
+.login-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+

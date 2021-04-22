@@ -1,0 +1,1 @@
+<view class="content"><avatar-list vue-id="56b1581b-1" dataList="{{dataList}}" bind:__l="__l"></avatar-list><block qq:if="{{isShowLoading}}"><bg-repeat vue-id="56b1581b-2" bind:__l="__l"></bg-repeat></block></view>

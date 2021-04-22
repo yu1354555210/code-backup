@@ -1,0 +1,105 @@
+.list {
+  padding: 0 0 50rpx;
+}
+.item {
+  padding: 30rpx;
+  background: #fff;
+  box-shadow: -1px 3px 21px 3px rgba(0,0,0,0.09);
+  border-radius: 30rpx;
+  margin-bottom: 30rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+}
+.item .text-info {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  line-height: 36rpx;
+  font-size: 30rpx;
+}
+.item .text-info .text-tag {
+  width: 160rpx;
+  height: 44rpx;
+  background: #fff;
+  border: 1rpx solid #999;
+  border-radius: 22rpx;
+  font-size: 26rpx;
+  color: #999;
+  line-height: 44rpx;
+  text-align: center;
+  margin-top: 30rpx;
+  font-weight: 500;
+}
+.item .item-bottom {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  margin-top: 20rpx;
+}
+.item .item-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  height: 60rpx;
+}
+.item .item-btn image {
+  width: 60rpx;
+  height: 60rpx;
+}
+.item .item-btn .like-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  margin-left: 30rpx;
+  font-weight: bold;
+  font-size: 26rpx;
+  color: #ff5c46;
+  width: 120rpx;
+}
+.item .item-btn .like-btn image {
+  margin-right: 10rpx;
+}
+.item .text-tag-box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.item .text-tag-box .text-tag {
+  height: 40rpx;
+  background: #fff;
+  border: 2rpx solid #ffcd00;
+  border-radius: 20rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  font-size: 24rpx;
+  color: #ffcd00;
+  padding: 0 20rpx;
+  font-weight: 500;
+  margin-right: 20rpx;
+}
+

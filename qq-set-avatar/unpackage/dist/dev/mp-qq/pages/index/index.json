@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "情侣头像大师",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "avatar-list": "/components/list/list"
+  }
+}

@@ -1,0 +1,41 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"projectname": "qq-set-avatar",
+	"qqappid": "1110662175",
+	"qqLibVersion": "1.6.3",
+	"scripts": {
+		"beforeCompile": "",
+		"beforePreview": "",
+		"beforeUpload": ""
+	},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"id": 0
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "bg-repeat": "/category/bg-repeat/bg-repeat",
+    "avatar-list": "/components/list/list"
+  }
+}

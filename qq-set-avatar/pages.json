@@ -1,0 +1,39 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "情侣头像大师",
+				"enablePullDownRefresh": false // 删除此项: 不开启系统自带的下拉刷新, 默认false
+			}
+		}
+	],
+	"subPackages": [{
+		"root": "detail",
+		"pages": [{
+			"path": "detail",
+			"style": {
+				"navigationBarTitleText": " "
+			}
+		}]
+	}, {
+		"root": "category",
+		"pages": [{
+			"path": "category",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		}]
+	}],
+
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#FFFFFF"
+	},
+	"condition": { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式（list 的索引项）
+		"list": [{}]
+	}
+}

@@ -1,0 +1,1 @@
+.login-bg{width:750rpx;height:1334rpx;position:fixed;background-size:100% 100%;z-index:-1;overflow:hidden}.login-btn{width:566rpx;height:146rpx;position:absolute;top:997rpx;left:50%;-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%);display:block;padding:0;border:0!important}.login-btn image{height:100%}

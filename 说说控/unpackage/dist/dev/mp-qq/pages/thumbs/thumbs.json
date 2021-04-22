@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "我的赞",
+  "usingComponents": {
+    "t-list": "/components/list/list"
+  }
+}

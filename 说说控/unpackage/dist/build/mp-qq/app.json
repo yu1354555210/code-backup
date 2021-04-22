@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/category/category",
+    "pages/mine/mine",
+    "pages/detail/detail",
+    "pages/thumbs/thumbs",
+    "pages/search/list-search"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#fffcfd",
+    "navigationBarTitleText": "说说控",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#8fa2a6",
+    "selectedColor": "#ffc300",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/index.png",
+        "selectedIconPath": "static/index-cur.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "iconPath": "static/category.png",
+        "selectedIconPath": "static/category-cur.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "static/mine.png",
+        "selectedIconPath": "static/mine-cur.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "navigateToMiniProgramAppIdList": [
+    "1110662175"
+  ],
+  "usingComponents": {
+    "mescroll-body": "/components/mescroll-uni/mescroll-body",
+    "mescroll-uni": "/components/mescroll-uni/mescroll-uni",
+    "cu-custom": "/colorui/components/cu-custom"
+  }
+}

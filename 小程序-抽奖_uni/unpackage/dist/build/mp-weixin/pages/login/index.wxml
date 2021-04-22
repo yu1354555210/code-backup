@@ -1,0 +1,1 @@
+<view><image class="login-bg" src="/static/images/login-bg.jpg" mode="aspectFill"></image><button class="login-btn" type="primary" open-type="getUserInfo" lang="zh_CN" plain="true" data-event-opts="{{[['getuserinfo',[['bindGetUserInfo',['$event']]]]]}}" bindgetuserinfo="__e"><image src="/static/images/login-btn.png" mode="aspectFill"></image></button></view>

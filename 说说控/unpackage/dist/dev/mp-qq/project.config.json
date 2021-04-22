@@ -1,0 +1,53 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"projectname": "说说控",
+	"qqappid": "1110748806",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"name": "mine",
+					"query": "",
+					"id": 0,
+					"pathName": "pages/mine/mine"
+				},
+				{
+					"name": "category",
+					"query": "",
+					"id": 1,
+					"pathName": "pages/category/category"
+				},
+				{
+					"name": "search",
+					"query": "",
+					"id": 2,
+					"pathName": "pages/search/list-search"
+				}
+			]
+		}
+	}
+}

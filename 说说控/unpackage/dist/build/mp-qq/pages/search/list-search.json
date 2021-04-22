@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "搜索",
+  "usingComponents": {
+    "t-list": "/components/list/list",
+    "m-search": "/components/mehaotian-search-revision/mehaotian-search-revision"
+  }
+}
