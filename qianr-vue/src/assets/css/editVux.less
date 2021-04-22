@@ -1,0 +1,150 @@
+.wrapper {
+    //更改header默认背景颜色
+    .vux-header {
+        height: .88rem;
+        background-color: #fff;
+        border-bottom: .03rem solid #f9f9f9;
+        position: relative;
+        z-index: 66;
+        .vux-header-title {
+            color: #3e3c47;
+            font-size: .34rem;
+        }
+        .vux-header-left .left-arrow:before {
+            border-color: #3e3c47;
+        }
+        .vux-header-right{
+            line-height: normal;
+        }
+    } // 更改红色按钮默认颜色
+    .weui-btn_warn {
+        background-color: #ff5363 !important;
+    } //更改tab默认样式
+    .tab-server{
+        .vux-tab-wrap {
+            margin-top: .3rem;
+            .vux-tab {
+                padding: 0 .25rem;
+                .vux-tab-item {
+                    background: none;
+                    font-size: .3rem !important;
+                    position: relative;
+                    flex: 0 0 1.3rem;
+                    margin-right: .75rem;
+                    &.show-dot::after {
+                        content: '';
+                        position: absolute;
+                        display: block;
+                        width: 8px;
+                        height: 8px;
+                        background-color: #f74c31;
+                        border-radius: 5px;
+                        right: -3px;
+                        top: 10px;
+                        background-clip: padding-box;
+                    }
+                }
+            }
+        }
+    }
+    .weui-search-bar{
+        background-color: #fff;
+        padding: .55rem .25rem;
+        .weui-search-bar__box .weui-search-bar__input{
+            height: .7rem;
+            line-height: .7rem;
+            padding: 0;
+        }
+        // .weui-icon-search{
+        //     // top: 50%;
+        //     // transform: translateY(-50%);
+        // }
+        .weui-search-bar__label{
+            padding: 0 .15rem;
+            text-align: left;
+            line-height: .7rem;
+            color: #9fabbe;
+            font-size: .3rem;
+        }
+    }
+}
+
+body{
+    .vux-loading .weui-toast {
+        width: 2rem;
+        min-height: 2rem;
+        top: 50%;
+        left: 50%;
+        bottom: auto;
+        transform: translate(-50%, -50%);
+    }
+    
+    .weui-toast {
+        top: auto;
+        bottom: 20%;
+        white-space: nowrap;
+        z-index: 33333;
+        min-height: 2rem;
+    }
+    //更改toast默认位置
+    .weui-toast.vux-toast-bottom {
+        bottom: 10% !important;
+    }
+}
+
+
+// 更改tab默认背景颜色
+.vux-tab {
+    background-color: #fbfbfd !important;
+}
+
+.weui-tabbar .weui-tabbar__icon {
+    width: 24px;
+    height: 24px;
+}
+
+// 更改input默认高度
+.this-form-main {
+    .weui-cell {
+        padding: 0;
+    }
+    .weui-input {
+        height: 1.2rem;
+        color: #9fabbe;
+        font-size: .26rem;
+    }
+}
+
+.btn-blue {
+    .weui-btn {
+        background-color: #7395ec;
+        &.weui-btn_primary:not(.weui-btn_disabled):active {
+            background-color: #6986bd;
+        }
+    }
+}
+
+.btn-orders-blue {
+    .weui-btn {
+        background-color: #53c6ff;
+        &.weui-btn_primary:not(.weui-btn_disabled):active {
+            background-color: #53c6ff;
+        }
+    }
+}
+
+.btn-malls-blue {
+    .weui-btn {
+        background-color: #53c6ff;
+        &.weui-btn_primary:not(.weui-btn_disabled):active {
+            background-color: #55b0dc;
+        }
+    }
+}
+
+.orders-dialog-footer{
+    .weui-btn {
+        padding: .02rem .5rem;
+        font-size: .28rem;
+    }
+}

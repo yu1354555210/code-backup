@@ -1,0 +1,257 @@
+.text-sm {
+  font-size: 0.26rem;
+}
+
+* {
+  touch-action: pan-y;
+}
+
+.this-form-container {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 501;
+  top: 0;
+  left: 0;
+
+  .this-form-wrap {
+    width: 6rem;
+    min-height: 4rem;
+    background-color: #fff;
+    border-radius: 0.1rem;
+    padding: 0.35rem 0.75rem;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    .this-form-title {
+      text-align: center;
+      font-size: 0.36rem;
+      color: #000000;
+      position: relative;
+      margin-bottom: 0.04rem;
+
+      &:after {
+        display: block;
+        content: '';
+        width: 0.78rem;
+        height: 0.04rem;
+        background-color: #eb636d;
+        position: absolute;
+        bottom: -0.05rem;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .this-form-back {
+        width: 0.42rem;
+        height: 0.42rem;
+        background-image: url('../img/icon-form-back.png');
+        background-size: 100% 100%;
+        position: absolute;
+        left: -0.28rem;
+        top: 0.08rem;
+      }
+    }
+
+    .this-form-focus-title{
+      text-align: center;
+      font-size: 0.28rem;
+      color: #000000;
+      margin-bottom: 0.4rem;
+      span{
+        color: #eb636d;
+      }
+    }
+
+    .this-form-input {
+      border-bottom: 1px solid #eb636d;
+      width: 100%;
+      position: relative;
+      padding-top: 0.35rem;
+
+      .icon-phone,
+      .icon-phone2 {
+        background-image: url('../img/icon-form-phone.png');
+        width: 0.25rem;
+        height: 0.39rem;
+      }
+
+      .icon-pwd,
+      .icon-pwd2 {
+        background-image: url('../img/icon-form-pwd.png');
+        width: 0.29rem;
+        height: 0.35rem;
+      }
+
+      .icon-code {
+        background-image: url('../img/icon-form-code.png');
+        width: 0.32rem;
+        height: 0.34rem;
+      }
+
+      .icon-phone2 {
+        background-image: url('../img/icon-form-phone2.png');
+      }
+
+      .icon-pwd2 {
+        background-image: url('../img/icon-form-pwd2.png');
+      }
+
+      .form-icon {
+        background-size: 100% 100%;
+        position: absolute;
+        left: 0.1rem;
+        bottom: 0.15rem;
+        z-index: 33;
+      }
+
+      .see {
+        width: 0.36rem;
+        height: 0.23rem;
+        background-image: url('../img/see.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 33;
+        display: inline-block;
+
+        &.see-close {
+          background-image: url('../img/see-close.png');
+        }
+      }
+
+      .weui-cells,
+      .weui-cell {
+        padding: 0;
+        margin: 0;
+
+        &:before,
+        &:after {
+          display: none;
+        }
+
+        .weui-input {
+          height: 0.7rem;
+          width: 100%;
+          padding-left: 0.56rem;
+          border: none;
+          outline: none;
+          color: #353535;
+          font-size: 0.24rem;
+        }
+      }
+
+      .icon-form-code {
+        font-size: 0.24rem;
+        color: #eb636d;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      &.this-form-on-icon{
+        .weui-input {
+          padding-left: 0.1rem;
+        }
+      }
+    }
+
+    .this-form-other {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.1rem;
+
+      a {
+        font-size: 0.24rem;
+        color: #eb636d;
+      }
+    }
+
+    .this-form-btn-box {
+      margin: 0.5rem 0;
+
+      .this-form-btn {
+        background-color: #eb636d;
+        height: 0.7rem;
+        line-height: 0.7rem;
+        font-size: 0.3rem;
+      }
+    }
+
+    .this-form-type {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      a {
+        color: #353535;
+        font-size: 0.24rem;
+
+        span {
+          display: inline-block;
+          vertical-align: middle;
+          margin-left: 0.12rem;
+        }
+
+        i {
+          display: inline-block;
+          vertical-align: middle;
+          width: 0.51rem;
+          height: 0.51rem;
+          background-size: 100% 100%;
+
+          &.icon-quick {
+            background-image: url('../img/icon-quick-game.png');
+          }
+
+          &.icon-wechat {
+            background-image: url('../img/icon-wechat.png');
+          }
+        }
+      }
+    }
+
+    .this-form-info {
+      font-size: 0.22rem;
+      color: #eb636d;
+      text-align: center;
+    }
+
+    .this-form-qrcode {
+      text-align: center;
+      img{
+        margin: 0 auto;
+      }
+    }
+
+    .this-form-focus-qrcode{
+      width: 2.84rem;
+      height: 2.84rem;
+      background-image: url(../img/focus-qrcode-bg.png);
+      background-size: 100% 100%;
+      margin: 0 auto .3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img{
+        width: 2.6rem;
+        height: 2.6rem;
+      }
+    }
+
+    .this-bind-text {
+      border: 1px solid #eb636d;
+      padding: .1rem 0;
+      margin-top: .35rem;
+      border-radius: .1rem;
+    }
+  }
+}
